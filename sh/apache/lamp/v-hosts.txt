@@ -1,0 +1,67 @@
+Adding a new virtual host
+Alright, let’s create a new virtual host. Start by creating the directories for your new site. You can put the directories anywhere you want, but the convention for Ubuntu is that web sites belong in /var/www, and I recommend following that convention. Let’s create a folder for the domain that contains an htdocs folder for the web site and a logs folder for the logs.
+
+sudo mkdir /var/www/yourdomain.com
+sudo mkdir /var/www/yourdomain.com/htdocs
+sudo mkdir /var/www/yourdomain.com/logs
+Now, create a new file in the sites-available directory:
+
+sudo nano /etc/apache2/sites-available/yourdomain.com
+And paste in this virtual host config:
+
+<VirtualHost *>
+ 
+        ServerName yourdomain.name
+        ServerAlias www.yourdomain.name
+        ServerAdmin webmaster@yourdomain.com
+ 
+        DocumentRoot /var/www/yourdomain.com/htdocs
+ 
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride All
+        </Directory>
+ 
+        <Directory /var/www/yourdomain.com/htdocs>
+                Options FollowSymLinks
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+ 
+        CustomLog /var/www/yourdomain.com/logs/access.log combined
+        ErrorLog /var/www/yourdomain.com/logs/error.log
+        LogLevel warn
+ 
+</VirtualHost>
+Now you just enable the site:
+
+sudo a2ensite yourdomain.com
+And reload Apache:
+
+sudo /etc/init.d/apache2 reload
+That’s it. You can do all kinds of crazy configuration in the virtual host, but that template is enough to get your site up and running. If your DNS is set up right you should be able to hit your domain in a browser and see whatever is in /var/www/yourdomain.com.
+
+
+
+///////////////// ++++++++++++++++++++++++++++++++++++++++++++++++++++++ //////////////////////////////////////
+apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1 for ServerName
+To solve this error follow these instructions:
+
+Open up httpd.conf:
+vi /etc/apache2/httpd.conf
+
+Add this line to the file:
+ServerName localhost
+
+Open up hosts file:
+vi /etc/hosts
+
+Remove this line:
+127.0.1.1    YourPC'sName
+
+sudo a2ensite test.loc
+
+Restart apache2:
+service apache2 restart
+

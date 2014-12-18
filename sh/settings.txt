@@ -1,0 +1,7 @@
+
+# Empty Desctop bug (Dont work right mouse batton on desctop):
+System Tools -> Preferences -> Advanced Settings -> Desctop (В 12.04 этого пункта нет - решается твиком в проге "Дополнительные параметры системы")
+
+
+# set default 
+exo-preferred-applications

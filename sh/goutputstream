@@ -1,0 +1,1 @@
+cd && rm .goutputstream-* -v
