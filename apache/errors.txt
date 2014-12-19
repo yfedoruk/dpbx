@@ -1,0 +1,5 @@
+if you don't have httpd.conf under /etc/apache2, you should have apache2.conf - simply add
+
+ServerName localhost
+
+then restart apache2 service
