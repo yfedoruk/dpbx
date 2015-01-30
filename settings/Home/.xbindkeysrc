@@ -1,0 +1,18 @@
+keystate_scrolllock= enable
+
+# Examples of commands:
+# "xbindkeys_show"
+# control + 0
+
+"amixer set Master 1%-"
+control + 1
+#ScrollLock
+
+"amixer set Master 1%+"
+control + 2
+
+"mocp -P"
+control + p
+
+"mocp -U"
+control + shift + p
