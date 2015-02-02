@@ -5,4 +5,4 @@
 #sudo apt-get install mercurial
 
 #git
-sudo apt-get install git
+sudo apt-get install -y git
