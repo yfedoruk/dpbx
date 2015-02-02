@@ -1,0 +1,30 @@
+<div id="abc" ng-hide="showadv" ng-controller="optsCtrl">
+	<select name="end" id="end" ng-model="end" ng-click="endType(end)" >
+		<option value="never" >never</option>
+		<option value="count" >by occurrences</option>
+		<option value="date" >by date</option>
+	</select>
+	<p ng-show="shwoccurences" > Foo </p>
+	<p ng-show="shwbydate">	Bar	</p>
+</div>
+<script>
+var optsCtrl = function($scope){
+	$scope.end = 'never'; //initial value ( selected="selected" )
+	$scope.endType = function(e){
+		switch(e){
+			case 'never' : 
+				$scope.shwoccurences = false; 
+				$scope.shwbydate = false;
+				break;
+			case 'count' : 
+				$scope.shwoccurences = true; 
+				$scope.shwbydate = false;
+				break;
+			case 'date' :
+				$scope.shwoccurences = false; 
+				$scope.shwbydate = true;
+				break;
+		}
+	}
+}
+</script>

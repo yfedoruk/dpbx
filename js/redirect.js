@@ -1,0 +1,1 @@
+<select onchange="window.location='http://'+this.value" >

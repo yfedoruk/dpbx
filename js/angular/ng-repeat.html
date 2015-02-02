@@ -1,0 +1,43 @@
+<li ng-repeat="cat in categories" >
+    <input name="ids" id="tag_" value="" type="checkbox" ng-model="catForm['catid' + ($index)]">
+    <input name="ids" id="tag_" value="" type="checkbox" ng-model="catForm['catid[' + ($index) + ']']">
+    <label for="tag_">{{$index + 1}} {{cat}}</label>
+</li>
+
+<script>
+clnApp.controller('categoryCtrl', ['$scope', '$http', '$compile', function($scope, $http, $compile) {
+    $scope.catForm = {};
+    $scope.catForm.cat = {};
+    
+    $scope.delCat = function() {
+		//l($scope.catForm.cat);
+		var del = [],
+			i=0;
+		angular.forEach( $scope.catForm.cat, function(k, v){			// filter only checked values
+			if(k === true){
+				del['cat['+ i++ +']'] = v;								// send to server as array 
+			}
+		});
+        $http({
+            url: baseurl + "/calendar/default/delcategory",
+            method: "GET",
+            params : del // $('#event-dlg form').serialize()
+        })
+        .success(function(data, status, headers, config) {
+        }).error(function(data, status, headers, config) {
+            $scope.status = status;
+        });
+    }
+</script>
+
+
+
+/************************************************************************/
+<div ng-controller="settCntl">
+	<span ng-repeat="color in colors" rel="{{color}}" ></span>
+</div>
+<script>
+app.controller('settCntl', ['$scope', function($scope){
+	$scope.colors = [ '#ff0000', '#b3dc6c', '#ffff00', '#808000', '#ffa500', '#ff7f50', '#ee82ee', '#9fc6e7', ];
+}]);
+</script>

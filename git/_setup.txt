@@ -1,0 +1,52 @@
+https://help.github.com/articles/set-up-git
+https://help.github.com/articles/fork-a-repo
+
+
+# ************************************************
+git config -l
+git config --global user.name "yaroslav"
+git config --global user.email "yfedoruck@gmail.com" #use only your email from github!
+git clone https://...
+
+#update
+git fetch origin
+git merge origin/master
+
+
+#init repo
+cd ./folder
+git init
+
+# remote url
+git remote -v
+
+
+
+##add remote origin 
+git remote add origin ssh://git@github.com/yfedoruck/fashion.git
+
+#Change the 'origin' remote's URL
+git remote set-url origin ssh://git@github.com/yfedoruck/fashion.git        ##https://github.com/github/ReactiveCocoa.git
+
+
+# 
+git rm --cached file_to_stop_tracking_but_dont_want_to_delete.txt
+
+
+#
+git add -A  #stages All is equvalent to "git add .; git add -u"
+git add .   #stages new and modified, without deleted
+git add -u  #stages modified and deleted, without new
+git reset   #reset added files from index
+
+
+
+######### empty directory ##########
+Another way to make a directory stay empty (in the repo) is to create a .gitignore inside that directory that contains four lines:
+#+++++++++++++++++++++++++++++++++++++
+    # Ignore everything in this directory
+    *
+    # Except this file
+    !.gitignore
+#+++++++++++++++++++++++++++++++++++++
+or you could always put a README file in the directory with an explanation of why you want this, otherwise empty, directory in the repository.

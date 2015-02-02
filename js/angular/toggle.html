@@ -1,0 +1,16 @@
+<div ng-controller="Cntl2">
+	<input type="button" class="submit" value="asd" ng-model="expandme" ng-click="expandit(expandme)" ng-hide="collapsme">
+
+	<div id="advanced_options"  ng-show="expandme">
+		asdfasdf
+	</div>
+		
+</div>
+<script>
+function Cntl2($scope){
+	$scope.expandit = function(){
+		$scope.expandme = true;
+		$scope.collapsme = true;
+    };
+}
+</script>
