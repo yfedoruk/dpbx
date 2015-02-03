@@ -119,7 +119,3 @@ sudo apt-get -y install gdm
 
 #for convertation putty .ppk to ssh key
 sudo apt-get install putty-tools  #puttygen id_dsa.ppk -O private-openssh -o id_dsa
-
-#sopcast player
-sudo add-apt-repository ppa:ferramroberto/sopcast
-sudo apt-get update && sudo apt-get install sopcast-player
