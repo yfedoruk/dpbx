@@ -3,21 +3,11 @@
 sudo apt-get -y install aptitude
 sudo aptitude -y install build-essential
 
-#hmm..?
-sudo apt-get install ubuntu-restricted-extras
-
 #nautilus
 sudo apt-get -y install nautilus
 sudo apt-get -y install nautilus-open-terminal
 sudo apt-get install nautilus-actions
 nautilus -q
-
-sudo apt-get -y install mc
-
-#redactors
-sudo apt-get -y install gedit
-sudo apt-get -y install gedit-plugins
-sudo apt-get -y install vim
 
 ## FoxitReader ##
 # $sudo dpkg -i FoxitReader_1.1.0_i386
@@ -30,26 +20,12 @@ sudo apt-get -y install qt4-qtconfig #Then run qtconfig, make changes, exit, and
 
 sudo aptitude -y  install xchm
 
-#utilite devilspie
-sudo apt-get -y install devilspie
-mkdir ~/.devilspie
-echo '(if (is (application_name) "Terminal") (maximize))' > \
-~/.devilspie/gnome-terminal.ds
-
 sudo aptitude -y  install filezilla
 
 #cromium
 #sudo add-apt-repository -y ppa:chromium-daily/ppa  # as is errors update: sudo rm /etc/apt/sources.list.d/*chromium-daily* 
 #sudo apt-get update 
 sudo apt-get -y install chromium-browser
-
-#moc
-sudo apt-get -y install moc
-
-#archivators
-sudo apt-get -y install rar
-sudo apt-get -y install unrar
-sudo apt-get -y install p7zip-full
 
 #gimp 
 sudo apt-get -y install gimp
@@ -69,13 +45,6 @@ sudo apt-get -y install gconf-editor    #  apps → metacity → general: close,
 #psd files (photoshop)
 # look for gdk-pixbuf-psd
 
-# utilites
-sudo apt-get -y install expect
-sudo apt-get -y install colordiff
-sudo apt-get -y install xbindkeys
-sudo apt-get -y install ppa-purge
-
-
 # gnome
 sudo add-apt-repository -y ppa:gnome3-team/gnome3
 sudo apt-get update
@@ -87,9 +56,6 @@ sudo apt-get -y install gnome-tweak-tool
 #sudo apt-get -y install gnome-shell-extensions-common
 sudo apt-get -y install gnome-shell-extensions
 #sudo apt-get -y install gnome-terminal
-
-#hard utilites
-sudo apt-get -y install hardinfo
 
 # pdf 
 sudo apt-get -y install pdfedit
@@ -104,10 +70,6 @@ sudo apt-get -y install pdfedit
 #dropbox (32-bit)
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 sudo apt-get -y install nautilus-dropbox
-
-#preload ( daemon for speed loading often use applications )
-sudo apt-get -y install preload
-
 
 #bugs and fix locale
 #sudo apt-get -y install language-pack-en-base
