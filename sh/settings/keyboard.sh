@@ -9,3 +9,5 @@
 
 #How to apply it permanently?
 echo -option grp:lwin_toggle us,ru >>~/.Xkbmap
+
+#Don't put setxkbmap in your ~/.bashrc - use ~/.xinitrc instead.
