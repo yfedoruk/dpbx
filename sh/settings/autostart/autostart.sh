@@ -1,0 +1,1 @@
+~/.config/autostart/filename.desctop

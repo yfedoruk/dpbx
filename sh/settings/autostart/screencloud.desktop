@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ScreenCloud
+Comment=Capture and share screenshots easily
+Icon=screencloud
+Type=Application
+Exec=/opt/screencloud/screencloud.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true

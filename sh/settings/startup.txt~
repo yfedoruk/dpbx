@@ -1,0 +1,19 @@
+To execute a script at startup of Ubuntu
+
+Edit /etc/rc.local and add your commands
+The script must always end with exit 0
+
+To execute a script upon rebooting Ubuntu
+
+Put your script in /etc/rc0.d
+Make it executable (sudo chmod +x myscript)
+Note: The scripts in this directory are executed in alphabetical order
+
+The name of your script must begin with K99 to run at the right time. 
+To execute a script at shutdown
+
+Put your script in /etc/rc6.d
+Make it executable (sudo chmod +x myscript)
+Note: The scripts in this directory are executed in alphabetical order
+
+The name of your script must begin with K99 to run at the right time. 

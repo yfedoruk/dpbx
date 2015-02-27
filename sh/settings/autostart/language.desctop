@@ -1,0 +1,8 @@
+[Desktop Entry] 
+Name=EnRu
+Comment=Language switcher 
+Exec=setxkbmap -option grp:lwin_toggle us,ru
+Hidden=true
+NoDisplay=true 
+X-GNOME-Autostart-enabled=true
+
