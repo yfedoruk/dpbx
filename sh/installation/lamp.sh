@@ -17,3 +17,5 @@ php5-curl - CURL module for php5
 php5-dbg - Debug symbols for PHP5
 php5-dev - Files for PHP5 module development
 php5-gd - GD module for php5
+
+#install oauth. See OAuth.sh

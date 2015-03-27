@@ -1,4 +1,4 @@
-#
+#install pecl (pear)
 sudo apt-get install php-pear php5-dev
 
 #after that you need to run pecl install command for Oauth
@@ -13,10 +13,12 @@ extension=oauth.so # /etc/php5/apache2/php.ini (ubuntu)
 
 #check OAuth in phpinfo()
 phpinfo();
+php -m  #for cli php.ini
 
 #restart apache
-/etc/init.d/apache2 restart
+sudo service apache2 restart # /etc/init.d/apache2 restart
 
+######################################
 pecl channel-update pecl.php.net
 
     #Problem: in phpinfo() is oauth.ini: /etc/php5/apache2/conf.d/oauth.ini but no OAuth module loaded indeed.
