@@ -2,7 +2,7 @@
 sudo apt-get install php-pear php5-dev
 
 #after that you need to run pecl install command for Oauth
-sudo pecl install oauth
+sudo pecl install oauth			#need  'sudo pecl uninstall oauth'  if upgrade say: it is newest version
 
 #after that add oauth entry in php.ini file
 extension=oauth.so # /etc/php5/apache2/php.ini (ubuntu)
