@@ -19,14 +19,17 @@ sudo a2enmod ssl
 sudo a2ensite default-ssl
 
 #set up sertificates
-sudo vi /etc/apache2/sites-enabled/default-ssl
+sudo vi /etc/apache2/sites-enabled/default-ssl.conf		#default-ssl -- your site domain name
+
+# change for host config <VirtualHost *:80> to
+<VirtualHost *:443>
     # set ssl on
     SSLEngine on
         #optionally add after: SSLEngine on
         SSLProtocol all -SSLv2
         #to deny old protocol: SSLv2.
     #write down right paths
-    SSLCertificateFile    /etc/ssl/certs/server.pem
+    SSLCertificateFile    /etc/ssl/certs/server.crt
     SSLCertificateKeyFile /etc/ssl/private/server.key
 
 #3. Restart the server.
