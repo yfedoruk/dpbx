@@ -1,0 +1,501 @@
+From: <Saved by UnMHT>
+Subject: =?iso-2022-jp?B?NS4zLiAbJEInISdiJ2cnWidTJ1onYidgJ1MnUSdfJ1onVhsoQiAbJEInZidRJ1snXSdgJ1MbKEIgGyRCJ1MbKEIgGyRCJ1wnYCdeJ1EnXydVJ18nYCdbGyhCIBskQidjJ2QnYidgJ1wnVg==?=
+Date: Thu, Oct 14 2010 19:17:31 GMT+0300
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0000_E536A422.5E67C74C";
+	type="text/html"
+
+------=_NextPart_000_0000_E536A422.5E67C74C
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.linux-ink.ru/static/SL.5.1_Docs/Russification/Docs/sbs-sl-ru/s1-compressing-archiving-archiving.html
+
+=EF=BB=BF<html><head><meta content=3D"text/html; charset=3DUTF-8" http-equi=
+v=3D"Content-Type"><title>5.3. =D0=90=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=80=
+=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B5 =D1=84=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2=
+ =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=
+=D1=80=D0=BE=D0=BA=D0=B5</title><link type=3D"text/css" href=3D"linux-ink.c=
+ss" rel=3D"stylesheet"></link><meta content=3D"DocBook XSL Stylesheets V1.6=
+5.1" name=3D"generator"><link title=3D"Scientific Linux Cyrillic Edition"=
+ href=3D"index.html" rel=3D"home"></link><link title=3D"=D0=93=D0=BB=D0=B0=
+=D0=B2=D0=B0 5. =D0=A1=D0=B6=D0=B0=D1=82=D0=B8=D0=B5 =D0=B8 =D0=B0=D1=80=D1=
+=85=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B5 =D1=84=D0=
+=B0=D0=B9=D0=BB=D0=BE=D0=B2" href=3D"ch-compressing-archiving.html" rel=3D"=
+up"></link><link title=3D"5.2. =D0=A1=D0=B6=D0=B0=D1=82=D0=B8=D0=B5 =D1=84=
+=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=
+=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=D1=80=D0=BE=D0=BA=D0=B5" href=3D"s1-compres=
+sing-archiving-compressing.html" rel=3D"previous"></link><link title=3D"=D0=
+=A7=D0=B0=D1=81=D1=82=D1=8C II. =D0=A0=D0=B0=D0=B1=D0=BE=D1=82=D0=B0 =D0=B2=
+ =D1=81=D0=B8=D1=81=D1=82=D0=B5=D0=BC=D0=B5" href=3D"part-using.html" rel=
+=3D"next"></link><base href=3D"http://www.linux-ink.ru/static/SL.5.1_Docs/R=
+ussification/Docs/sbs-sl-ru/"></base></head><body bgcolor=3D"white" alink=
+=3D"#0000ff" link=3D"#0000ff" text=3D"black" vlink=3D"#840084"><div class=
+=3D"navheader"><table width=3D"100%" summary=3D"Navigation header"><tbody><=
+tr><th align=3D"center" colspan=3D"3">5.3. =D0=90=D1=80=D1=85=D0=B8=D0=B2=
+=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B5 =D1=84=D0=B0=D0=B9=D0=BB=
+=D0=BE=D0=B2 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=BD=D0=BE=D0=B9=
+ =D1=81=D1=82=D1=80=D0=BE=D0=BA=D0=B5</th></tr><tr><td align=3D"left" width=
+=3D"20%"><a href=3D"s1-compressing-archiving-compressing.html" accesskey=3D=
+"p">=D0=9F=D1=80=D0=B5=D0=B4.</a>&nbsp;</td><th align=3D"center" width=3D"6=
+0%">=D0=93=D0=BB=D0=B0=D0=B2=D0=B0 5. =D0=A1=D0=B6=D0=B0=D1=82=D0=B8=D0=B5=
+ =D0=B8 =D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=
+=D0=B8=D0=B5 =D1=84=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2</th><td align=3D"right"=
+ width=3D"20%">&nbsp;<a href=3D"part-using.html" accesskey=3D"n">=D0=A1=D0=
+=BB=D0=B5=D0=B4.</a></td></tr></tbody></table><hr></div><div lang=3D"ru" cl=
+ass=3D"sect1"><div class=3D"titlepage"><div><div><h2 style=3D"clear: both;"=
+ class=3D"title"><a name=3D"s1-compressing-archiving-archiving"></a>5.3. =
+=D0=90=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=
+=B5 =D1=84=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=
+=BD=D0=B4=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=D1=80=D0=BE=D0=BA=D0=B5</h2></div>=
+</div><div></div></div><a name=3D"id3049178" class=3D"indexterm"></a><a nam=
+e=3D"id3049187" class=3D"indexterm"></a><p>=D0=A4=D0=B0=D0=B9=D0=BB =D1=81=
+ =D1=80=D0=B0=D1=81=D1=88=D0=B8=D1=80=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC <tt cla=
+ss=3D"command">tar</tt> =E2=80=94 =D1=8D=D1=82=D0=BE =D0=BD=D0=B0=D0=B1=D0=
+=BE=D1=80 =D0=BE=D1=82=D0=B4=D0=B5=D0=BB=D1=8C=D0=BD=D1=8B=D1=85 =D1=84=D0=
+=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B8/=D0=B8=D0=BB=D0=B8 =D0=BA=D0=B0=D1=82=D0=
+=B0=D0=BB=D0=BE=D0=B3=D0=BE=D0=B2 =D0=B2 =D0=BE=D0=B4=D0=BD=D0=BE=D0=BC =D1=
+=84=D0=B0=D0=B9=D0=BB=D0=B5.
+          =D0=AD=D1=82=D0=BE =D0=B1=D1=8B=D0=B2=D0=B0=D0=B5=D1=82 =D1=83=D0=
+=B4=D0=BE=D0=B1=D0=BD=D0=BE =D0=BF=D1=80=D0=B8 =D1=81=D0=BE=D0=B7=D0=B4=D0=
+=B0=D0=BD=D0=B8=D0=B8 =D1=80=D0=B5=D0=B7=D0=B5=D1=80=D0=B2=D0=BD=D1=8B=D1=
+=85 =D0=BA=D0=BE=D0=BF=D0=B8=D0=B9 =D0=B8 =D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=
+=BE=D0=B2.
+	</p><p>=D0=92=D0=BE=D1=82 =D0=BD=D0=B5=D0=BA=D0=BE=D1=82=D0=BE=D1=80=D1=8B=
+=D0=B5 =D0=BE=D0=BF=D1=86=D0=B8=D0=B8, =D0=B8=D1=81=D0=BF=D0=BE=D0=BB=D1=8C=
+=D0=B7=D1=83=D0=B5=D0=BC=D1=8B=D0=B5 =D1=81 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=
+=D0=B4=D0=BE=D0=B9 <tt class=3D"command">tar</tt>:
+	</p><div class=3D"itemizedlist"><ul type=3D"disc"><li><p><tt class=3D"opti=
+on">-c</tt> =E2=80=94 =D1=81=D0=BE=D0=B7=D0=B4=D0=B0=D1=82=D1=8C =D0=BD=D0=
+=BE=D0=B2=D1=8B=D0=B9 =D0=B0=D1=80=D1=85=D0=B8=D0=B2</p></li><li><p><tt cla=
+ss=3D"option">-f</tt> =E2=80=94 =D0=B2 =D1=81=D0=BE=D1=87=D0=B5=D1=82=D0=B0=
+=D0=BD=D0=B8=D0=B8 =D1=81 =D0=BE=D0=BF=D1=86=D0=B8=D0=B5=D0=B9
+	      <tt class=3D"option">-c</tt> =D0=B8=D1=81=D0=BF=D0=BE=D0=BB=D1=8C=D0=
+=B7=D1=83=D0=B5=D1=82=D1=81=D1=8F =D0=B4=D0=BB=D1=8F =D1=81=D0=BE=D0=B7=D0=
+=B4=D0=B0=D0=BD=D0=B8=D1=8F =D1=84=D0=B0=D0=B9=D0=BB=D0=B0 <tt class=3D"com=
+mand">tar</tt> =D0=B8=D0=B7 =D1=83=D0=BA=D0=B0=D0=B7=D0=B0=D0=BD=D0=BD=D0=
+=BE=D0=B3=D0=BE =D1=84=D0=B0=D0=B9=D0=BB=D0=B0; =D0=B2 =D1=81=D0=BE=D1=87=
+=D0=B5=D1=82=D0=B0=D0=BD=D0=B8=D0=B8 =D1=81 =D0=BE=D0=BF=D1=86=D0=B8=D0=B5=
+=D0=B9
+	      <tt class=3D"option">-x</tt> =D0=B8=D1=81=D0=BF=D0=BE=D0=BB=D1=8C=D0=
+=B7=D1=83=D0=B5=D1=82=D1=81=D1=8F =D0=B4=D0=BB=D1=8F =D1=80=D0=B0=D0=B7=D0=
+=B0=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F=
+ =D1=83=D0=BA=D0=B0=D0=B7=D0=B0=D0=BD=D0=BD=D0=BE=D0=B3=D0=BE =D1=84=D0=B0=
+=D0=B9=D0=BB=D0=B0</p></li><li><p><tt class=3D"option">-t</tt> =E2=80=94 =
+=D0=BF=D0=BE=D0=BA=D0=B0=D0=B7=D0=B0=D1=82=D1=8C =D1=81=D0=BF=D0=B8=D1=81=
+=D0=BE=D0=BA =D1=84=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B2 =D1=84=D0=B0=D0=B9=
+=D0=BB=D0=B5
+	    <tt class=3D"command">tar</tt></p></li><li><p><tt class=3D"option">-v<=
+/tt> =E2=80=94 =D0=BF=D0=BE=D0=BA=D0=B0=D0=B7=D1=8B=D0=B2=D0=B0=D1=82=D1=8C=
+ =D1=85=D0=BE=D0=B4 =D0=B2=D1=8B=D0=BF=D0=BE=D0=BB=D0=BD=D0=B5=D0=BD=D0=B8=
+=D1=8F =D0=BF=D1=80=D0=BE=D1=86=D0=B5=D1=81=D1=81=D0=B0 =D0=B0=D1=80=D1=85=
+=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F</p></li><li><p=
+><tt class=3D"option">-x</tt> =E2=80=94 =D0=B8=D0=B7=D0=B2=D0=BB=D0=B5=D1=
+=87=D1=8C =D1=84=D0=B0=D0=B9=D0=BB=D1=8B =D0=B8=D0=B7 =D0=B0=D1=80=D1=85=D0=
+=B8=D0=B2=D0=B0</p></li><li><p><tt class=3D"option">-z</tt> =E2=80=94 =D1=
+=81=D0=B6=D0=B0=D1=82=D1=8C =D1=84=D0=B0=D0=B9=D0=BB
+	    <tt class=3D"filename">tar</tt> =D1=81 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=
+=D1=8C=D1=8E =D0=BF=D1=80=D0=BE=D0=B3=D1=80=D0=B0=D0=BC=D0=BC=D1=8B <tt cla=
+ss=3D"command">gzip</tt>
+	    </p></li><li><p><tt class=3D"option">-j</tt> =E2=80=94 =D1=81=D0=B6=D0=
+=B0=D1=82=D1=8C =D1=84=D0=B0=D0=B9=D0=BB
+	    <tt class=3D"filename">tar</tt> =D1=81 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=
+=D1=8C=D1=8E =D0=BF=D1=80=D0=BE=D0=B3=D1=80=D0=B0=D0=BC=D0=BC=D1=8B <tt cla=
+ss=3D"command">bzip2</tt>
+	    </p></li></ul></div><p>=D0=A7=D1=82=D0=BE=D0=B1=D1=8B =D1=81=D0=BE=D0=
+=B7=D0=B4=D0=B0=D1=82=D1=8C =D1=84=D0=B0=D0=B9=D0=BB tar, =D0=BD=D0=B0=D0=
+=B1=D0=B5=D1=80=D0=B8=D1=82=D0=B5 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=
+=B4=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=D1=80=D0=BE=D0=BA=D0=B5:</p><pre class=
+=3D"screen"><tt class=3D"command">tar -cvf =D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=
+=D0=B9=D0=BB=D0=B0.tar =D0=BA=D0=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3/=D1=84=D0=
+=B0=D0=B9=D0=BB</tt></pre><p>=D0=92 =D1=8D=D1=82=D0=BE=D0=BC =D0=BF=D1=80=
+=D0=B8=D0=BC=D0=B5=D1=80=D0=B5 <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=
+=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tar</tt> =E2=80=94 =D1=81=D0=BE=D0=B7=D0=B4=
+=D0=B0=D0=B2=D0=B0=D0=B5=D0=BC=D1=8B=D0=B9 =D0=B0=D1=80=D1=85=D0=B8=D0=B2=
+=D0=BD=D1=8B=D0=B9 =D1=84=D0=B0=D0=B9=D0=BB, <tt class=3D"filename">=D0=BA=
+=D0=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3/=D1=84=D0=B0=D0=B9=D0=BB</tt> =E2=80=
+=94 =D0=BA=D0=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3 =D0=B8=D0=BB=D0=B8 =D1=84=D0=
+=B0=D0=B9=D0=BB, =D0=BA=D0=BE=D1=82=D0=BE=D1=80=D1=8B=D0=B9 =D0=BD=D0=B5=D0=
+=BE=D0=B1=D1=85=D0=BE=D0=B4=D0=B8=D0=BC=D0=BE =D0=BF=D0=BE=D0=BC=D0=B5=D1=
+=81=D1=82=D0=B8=D1=82=D1=8C =D0=B2 =D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=BD=D1=
+=8B=D0=B9 =D1=84=D0=B0=D0=B9=D0=BB.
+	</p><p>=D0=92=D1=8B =D0=BC=D0=BE=D0=B6=D0=B5=D1=82=D0=B5 =D1=81=D0=BE=D0=
+=B7=D0=B4=D0=B0=D1=82=D1=8C =D1=84=D0=B0=D0=B9=D0=BB <tt class=3D"command">=
+tar</tt> =D0=B8=D0=B7 =D0=BD=D0=B5=D1=81=D0=BA=D0=BE=D0=BB=D1=8C=D0=BA=D0=
+=B8=D1=85 =D1=84=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B8 =D0=BA=D0=B0=D1=82=D0=
+=B0=D0=BB=D0=BE=D0=B3=D0=BE=D0=B2 =D0=BE=D0=B4=D0=BD=D0=BE=D0=B2=D1=80=D0=
+=B5=D0=BC=D0=B5=D0=BD=D0=BD=D0=BE, =D0=BF=D0=B5=D1=80=D0=B5=D1=87=D0=B8=D1=
+=81=D0=BB=D0=B8=D0=B2 =D0=B8=D1=85 =D1=87=D0=B5=D1=80=D0=B5=D0=B7 =D0=BF=D1=
+=80=D0=BE=D0=B1=D0=B5=D0=BB:
+          </p><pre class=3D"screen"><tt class=3D"command">tar -cvf =D0=B8=
+=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tar /home/user/docs /home/user/=
+figures</tt></pre><p>=D0=92 =D1=80=D0=B5=D0=B7=D1=83=D0=BB=D1=8C=D1=82=D0=
+=B0=D1=82=D0=B5 =D0=B2=D1=8B=D0=BF=D0=BE=D0=BB=D0=BD=D0=B5=D0=BD=D0=B8=D1=
+=8F =D1=8D=D1=82=D0=BE=D0=B9 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D1=8B =D0=
+=B2=D1=81=D0=B5 =D1=84=D0=B0=D0=B9=D0=BB=D1=8B =D0=B8=D0=B7 =D0=BA=D0=B0=D1=
+=82=D0=B0=D0=BB=D0=BE=D0=B3=D0=BE=D0=B2
+	  <tt class=3D"filename">docs</tt> =D0=B8 <tt class=3D"filename">figures</=
+tt>, =D0=BF=D1=80=D0=B8=D0=BD=D0=B0=D0=B4=D0=BB=D0=B5=D0=B6=D0=B0=D1=89=D0=
+=B8=D1=85 =D0=BA=D0=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3=D1=83 <tt class=3D"fil=
+ename">/home/user</tt>, =D0=B1=D1=83=D0=B4=D1=83=D1=82 =D0=BF=D0=B5=D1=80=
+=D0=B5=D0=BC=D0=B5=D1=89=D0=B5=D0=BD=D1=8B =D0=B2 =D0=BD=D0=BE=D0=B2=D1=8B=
+=D0=B9 =D1=84=D0=B0=D0=B9=D0=BB =D1=81 =D0=BD=D0=B0=D0=B7=D0=B2=D0=B0=D0=BD=
+=D0=B8=D0=B5=D0=BC
+	  <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0=
+.tar</tt> =D0=B2 =D1=82=D0=B5=D0=BA=D1=83=D1=89=D0=B5=D0=BC =D0=BA=D0=B0=D1=
+=82=D0=B0=D0=BB=D0=BE=D0=B3=D0=B5.
+	</p><p>=D0=94=D0=BB=D1=8F =D0=BF=D1=80=D0=BE=D1=81=D0=BC=D0=BE=D1=82=D1=80=
+=D0=B0 =D1=81=D0=BE=D0=B4=D0=B5=D1=80=D0=B6=D0=B8=D0=BC=D0=BE=D0=B3=D0=BE=
+ =D1=84=D0=B0=D0=B9=D0=BB=D0=B0 =D0=BD=D0=B0=D0=B1=D0=B5=D1=80=D0=B8=D1=82=
+=D0=B5 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=BD=D0=BE=D0=B9 =D1=81=
+=D1=82=D1=80=D0=BE=D0=BA=D0=B5:</p><pre class=3D"screen"><tt class=3D"comma=
+nd">tar -tvf =D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tar</tt></pr=
+e><p>=D0=A7=D1=82=D0=BE=D0=B1=D1=8B =D0=B8=D0=B7=D0=B2=D0=BB=D0=B5=D1=87=D1=
+=8C =D1=81=D0=BE=D0=B4=D0=B5=D1=80=D0=B6=D0=B8=D0=BC=D0=BE=D0=B5 =D1=84=D0=
+=B0=D0=B9=D0=BB=D0=B0 <tt class=3D"command">tar</tt>, =D0=BD=D0=B0=D0=B1=D0=
+=B5=D1=80=D0=B8=D1=82=D0=B5:
+	</p><pre class=3D"screen"><tt class=3D"command">tar -xvf =D0=B8=D0=BC=D1=
+=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tar</tt></pre><p>=D0=AD=D1=82=D0=B0 =D0=
+=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 =D0=BD=D0=B5 =D1=83=D0=B4=D0=B0=D0=
+=BB=D1=8F=D0=B5=D1=82 =D1=84=D0=B0=D0=B9=D0=BB <tt class=3D"command">tar</t=
+t>, =D0=B0 =D0=BF=D0=BE=D0=BC=D0=B5=D1=89=D0=B0=D0=B5=D1=82 =D0=BA=D0=BE=D0=
+=BF=D0=B8=D0=B8 =D1=80=D0=B0=D0=B7=D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=
+=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=BD=D0=BE=D0=B3=D0=BE =D1=81=D0=BE=D0=B4=D0=
+=B5=D1=80=D0=B6=D0=B8=D0=BC=D0=BE=D0=B3=D0=BE =D0=B2 =D1=82=D0=B5=D0=BA=D1=
+=83=D1=89=D0=B8=D0=B9 =D1=80=D0=B0=D0=B1=D0=BE=D1=87=D0=B8=D0=B9 =D0=BA=D0=
+=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3,
+          =D1=81=D0=BE=D1=85=D1=80=D0=B0=D0=BD=D1=8F=D1=8F =D0=B2=D1=81=D1=
+=8E =D1=81=D1=82=D1=80=D1=83=D0=BA=D1=82=D1=83=D1=80=D1=83, =D1=81=D0=BE=D0=
+=B4=D0=B5=D1=80=D0=B6=D0=B0=D0=B2=D1=88=D1=83=D1=8E=D1=81=D1=8F =D0=B2 =D0=
+=B0=D1=80=D1=85=D0=B8=D0=B2=D0=BD=D0=BE=D0=BC =D1=84=D0=B0=D0=B9=D0=BB=D0=
+=B5.=20
+          =D0=9D=D0=B0=D0=BF=D1=80=D0=B8=D0=BC=D0=B5=D1=80, =D0=B5=D1=81=D0=
+=BB=D0=B8 =D1=84=D0=B0=D0=B9=D0=BB <tt class=3D"command">tar</tt> =D1=81=D0=
+=BE=D0=B4=D0=B5=D1=80=D0=B6=D0=B8=D1=82 =D1=84=D0=B0=D0=B9=D0=BB
+	  <tt class=3D"filename">example.txt</tt> =D0=B2 =D0=BA=D0=B0=D1=82=D0=B0=
+=D0=BB=D0=BE=D0=B3=D0=B5
+	  <tt class=3D"filename">docs/</tt>, =D0=B2 =D1=80=D0=B5=D0=B7=D1=83=D0=BB=
+=D1=8C=D1=82=D0=B0=D1=82=D0=B5 =D1=80=D0=B0=D0=B7=D0=B0=D1=80=D1=85=D0=B8=
+=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D1=8F =D0=B1=D1=83=D0=B4=
+=D0=B5=D1=82 =D1=81=D0=BE=D0=B7=D0=B4=D0=B0=D0=BD =D0=BA=D0=B0=D1=82=D0=B0=
+=D0=BB=D0=BE=D0=B3 <tt class=3D"filename">docs/</tt> =D0=B2 =D1=82=D0=B5=D0=
+=BA=D1=83=D1=89=D0=B5=D0=BC =D0=BA=D0=B0=D1=82=D0=B0=D0=BB=D0=BE=D0=B3=D0=
+=B5 =D0=B8 =D1=84=D0=B0=D0=B9=D0=BB <tt class=3D"filename">example.txt</tt>=
+ =D0=B2=D0=BD=D1=83=D1=82=D1=80=D0=B8 =D0=BD=D0=B5=D0=B3=D0=BE.
+	</p><p>=D0=9F=D0=BE=D0=BC=D0=BD=D0=B8=D1=82=D0=B5, =D1=87=D1=82=D0=BE =D0=
+=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 <tt class=3D"command">tar</tt> =D0=
+=BF=D0=BE =D1=83=D0=BC=D0=BE=D0=BB=D1=87=D0=B0=D0=BD=D0=B8=D1=8E =D0=BD=D0=
+=B5 =D1=81=D0=B6=D0=B8=D0=BC=D0=B0=D0=B5=D1=82 =D1=84=D0=B0=D0=B9=D0=BB=D1=
+=8B. =D0=94=D0=BB=D1=8F =D1=81=D0=BE=D0=B7=D0=B4=D0=B0=D0=BD=D0=B8=D1=8F =
+=D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=BD=D0=BE=D0=B3=D0=BE =D1=84=D0=B0=D0=B9=
+=D0=BB=D0=B0 <tt class=3D"command">tar</tt>, =D1=81=D0=B6=D0=B0=D1=82=D0=BE=
+=D0=B3=D0=BE =D0=BF=D1=80=D0=B8 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=D0=B8 <tt cl=
+ass=3D"command">bzip</tt>, =D0=B8=D1=81=D0=BF=D0=BE=D0=BB=D1=8C=D0=B7=D1=83=
+=D0=B9=D1=82=D0=B5 =D0=BE=D0=BF=D1=86=D0=B8=D1=8E
+	  <tt class=3D"option">-j</tt>:
+	</p><pre class=3D"screen"><tt class=3D"command">tar -cjvf =D0=B8=D0=BC=D1=
+=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tbz =D1=84=D0=B0=D0=B9=D0=BB</tt></pre><=
+p>=D0=A4=D0=B0=D0=B9=D0=BB=D0=B0=D0=BC <tt class=3D"command">tar</tt>, =D1=
+=81=D0=B6=D0=B0=D1=82=D1=8B=D0=BC =D0=BF=D1=80=D0=B8 =D0=BF=D0=BE=D0=BC=D0=
+=BE=D1=89=D0=B8
+	  <tt class=3D"command">bzip2</tt>, =D0=BF=D1=80=D0=B8=D0=BD=D1=8F=D1=82=
+=D0=BE =D0=B4=D0=B0=D0=B2=D0=B0=D1=82=D1=8C =D1=80=D0=B0=D1=81=D1=88=D0=B8=
+=D1=80=D0=B5=D0=BD=D0=B8=D0=B5
+	  <tt class=3D"filename">.tbz</tt> =D0=B8=D0=BB=D0=B8 <tt class=3D"filenam=
+e">tar.bz2</tt>. =20
+	</p><p>=D0=A3=D0=BA=D0=B0=D0=B7=D0=B0=D0=BD=D0=BD=D0=B0=D1=8F =D0=B2=D1=8B=
+=D1=88=D0=B5 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=B0 =D1=81=D0=BE=D0=B7=
+=D0=B4=D0=B0=D0=B5=D1=82 =D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=BD=D1=8B=D0=B9=
+ =D1=81=D0=B6=D0=B0=D1=82=D1=8B=D0=B9 =D1=84=D0=B0=D0=B9=D0=BB <tt class=3D=
+"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tbz</tt>. =D0=
+=9F=D1=80=D0=B8 =D1=80=D0=B0=D0=B7=D0=B0=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=
+=80=D0=BE=D0=B2=D0=B0=D0=BD=D0=B8=D0=B8 =D1=84=D0=B0=D0=B9=D0=BB=D0=B0
+	  <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0=
+.tbz</tt> =D0=BF=D1=80=D0=B8 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=D0=B8 =D0=BA=D0=
+=BE=D0=BC=D0=B0=D0=BD=D0=B4=D1=8B
+	  <tt class=3D"command">bunzip2</tt> =D1=84=D0=B0=D0=B9=D0=BB
+	  <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0=
+.tbz</tt> =D1=83=D0=B4=D0=B0=D0=BB=D1=8F=D0=B5=D1=82=D1=81=D1=8F =D0=B8 =D0=
+=B7=D0=B0=D0=BC=D0=B5=D0=BD=D1=8F=D0=B5=D1=82=D1=81=D1=8F =D1=84=D0=B0=D0=
+=B9=D0=BB=D0=BE=D0=BC
+	  <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0=
+.tar</tt>.
+	</p><p>=D0=92=D1=8B =D0=BC=D0=BE=D0=B6=D0=B5=D1=82=D0=B5 =D1=82=D0=B0=D0=
+=BA=D0=B6=D0=B5 =D0=B8=D0=B7=D0=B2=D0=BB=D0=B5=D1=87=D1=8C =D1=81=D0=BE=D0=
+=B4=D0=B5=D1=80=D0=B6=D0=B8=D0=BC=D0=BE=D0=B5 =D0=B8 =D1=80=D0=B0=D0=B7=D0=
+=B0=D1=80=D1=85=D0=B8=D0=B2=D0=B8=D1=80=D0=BE=D0=B2=D0=B0=D1=82=D1=8C =D1=
+=84=D0=B0=D0=B9=D0=BB <tt class=3D"command">bzip</tt>
+	<tt class=3D"command">tar</tt> =D1=81 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=D1=8C=
+=D1=8E =D0=BE=D0=B4=D0=BD=D0=BE=D0=B9 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=
+=D1=8B:</p><pre class=3D"screen"><tt class=3D"command">tar -xjvf =D0=B8=D0=
+=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tbz</tt></pre><p>	  =D0=94=D0=BB=
+=D1=8F =D1=81=D0=BE=D0=B7=D0=B4=D0=B0=D0=BD=D0=B8=D1=8F <tt class=3D"comman=
+d">tar</tt> =D1=84=D0=B0=D0=B9=D0=BB=D0=B0, =D1=81=D0=B6=D0=B0=D1=82=D0=BE=
+=D0=B3=D0=BE =D0=BF=D1=80=D0=B8 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=D0=B8 <tt cl=
+ass=3D"command">gzip</tt>, =D0=B8=D1=81=D0=BF=D0=BE=D0=BB=D1=8C=D0=B7=D1=83=
+=D0=B9=D1=82=D0=B5 =D0=BE=D0=BF=D1=86=D0=B8=D1=8E
+          <tt class=3D"option">-z</tt>:
+        </p><pre class=3D"screen"><tt class=3D"command">tar -czvf =D0=B8=D0=
+=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=B0.tgz =D1=84=D0=B0=D0=B9=D0=BB</tt><=
+/pre><p><tt class=3D"command">tar</tt> =D1=84=D0=B0=D0=B9=D0=BB=D0=B0=D0=BC=
+, =D1=81=D0=B6=D0=B0=D1=82=D1=8B=D0=BC =D0=BF=D1=80=D0=B8 =D0=BF=D0=BE=D0=
+=BC=D0=BE=D1=89=D0=B8
+          <tt class=3D"command">gzip</tt>, =D0=BF=D1=80=D0=B8=D0=BD=D1=8F=
+=D1=82=D0=BE =D0=B4=D0=B0=D0=B2=D0=B0=D1=82=D1=8C =D1=80=D0=B0=D1=81=D1=88=
+=D0=B8=D1=80=D0=B5=D0=BD=D0=B8=D0=B5
+          <tt class=3D"filename">.tgz</tt>.
+        </p><p>=D0=AD=D1=82=D0=B0 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=
+=B0 =D1=81=D0=BE=D0=B7=D0=B4=D0=B0=D0=B5=D1=82 =D0=B0=D1=80=D1=85=D0=B8=D0=
+=B2=D0=BD=D1=8B=D0=B9 =D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tar</tt> =D0=B8 =D1=81=D0=B6=D0=B8=D0=BC=D0=B0=D0=B5=D1=82 =D0=B5=
+=D0=B3=D0=BE =D0=B2 =D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tgz</tt> (=D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tar</tt> =D0=BD=D0=B5 =D1=81=D0=BE=D1=85=D1=80=D0=B0=D0=BD=D1=8F=
+=D0=B5=D1=82=D1=81=D1=8F). =D0=95=D1=81=D0=BB=D0=B8 =D0=B2=D1=8B =D0=B4=D0=
+=B5=D0=BA=D0=BE=D0=BC=D0=BF=D1=80=D0=B5=D1=81=D1=81=D0=B8=D1=80=D1=83=D0=B5=
+=D1=82=D0=B5 =D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tgz</tt> =D1=81 =D0=BF=D0=BE=D0=BC=D0=BE=D1=89=D1=8C=D1=8E =D0=BA=
+=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D1=8B
+          <tt class=3D"command">gunzip</tt>, =D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tgz</tt> =D1=83=D0=B4=D0=B0=D0=BB=D1=8F=D0=B5=D1=82=D1=81=D1=8F=
+ =D0=B8 =D0=B7=D0=B0=D0=BC=D0=B5=D0=BD=D1=8F=D0=B5=D1=82=D1=81=D1=8F =D0=BD=
+=D0=B0 =D1=84=D0=B0=D0=B9=D0=BB
+          <tt class=3D"filename">=D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=
+=BB=D0=B0.tar</tt>.
+        </p><p>=D0=92=D1=8B =D0=BC=D0=BE=D0=B6=D0=B5=D1=82=D0=B5 =D0=B8=D0=
+=B7=D0=B2=D0=BB=D0=B5=D1=87=D1=8C =D1=81=D0=BE=D0=B4=D0=B5=D1=80=D0=B6=D0=
+=B8=D0=BC=D0=BE=D0=B5 <tt class=3D"command">gzip</tt> <tt class=3D"command"=
+>tar</tt> =D1=84=D0=B0=D0=B9=D0=BB=D0=B0 =D0=BE=D0=B4=D0=BD=D0=BE=D0=B9 =D0=
+=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=BE=D0=B9:</p><pre class=3D"screen"><tt=
+ class=3D"command">tar -xzvf =D0=B8=D0=BC=D1=8F_=D1=84=D0=B0=D0=B9=D0=BB=D0=
+=B0.tgz</tt></pre><div style=3D"margin-left: 0.5in; margin-right: 0.5in;"=
+ class=3D"tip"><table border=3D"0" summary=3D"Tip"><tbody><tr><td align=3D"=
+center" width=3D"25" valign=3D"top" rowspan=3D"2"><img src=3D"./stylesheet-=
+images/tip.png" alt=3D"[Tip]"></td><th align=3D"left">=D0=9F=D0=BE=D0=B4=D1=
+=81=D0=BA=D0=B0=D0=B7=D0=BA=D0=B0</th></tr><tr><td align=3D"left" valign=3D=
+"top" colspan=3D"2"><p>=D0=9D=D0=B0=D0=B1=D0=B5=D1=80=D0=B8=D1=82=D0=B5 =D0=
+=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=D1=
+=80=D0=BE=D0=BA=D0=B5 <tt class=3D"command">man tar</tt> =D0=B4=D0=BB=D1=8F=
+ =D0=BF=D0=BE=D0=BB=D1=83=D1=87=D0=B5=D0=BD=D0=B8=D1=8F =D0=B1=D0=BE=D0=BB=
+=D0=B5=D0=B5 =D0=BF=D0=BE=D0=B4=D1=80=D0=BE=D0=B1=D0=BD=D0=BE=D0=B9 =D0=B8=
+=D0=BD=D1=84=D0=BE=D1=80=D0=BC=D0=B0=D1=86=D0=B8=D0=B8 =D0=BE =D0=BA=D0=BE=
+=D0=BC=D0=B0=D0=BD=D0=B4=D0=B5 <tt class=3D"command">tar</tt>.
+	  </p></td></tr></tbody></table></div></div><div class=3D"navfooter"><hr><=
+table width=3D"100%" summary=3D"Navigation footer"><tbody><tr><td align=3D"=
+left" width=3D"40%"><a href=3D"s1-compressing-archiving-compressing.html"=
+ accesskey=3D"p">=D0=9F=D1=80=D0=B5=D0=B4.</a>&nbsp;</td><td align=3D"cente=
+r" width=3D"20%"><a href=3D"ch-compressing-archiving.html" accesskey=3D"u">=
+=D0=A3=D1=80=D0=BE=D0=B2=D0=B5=D0=BD=D1=8C =D0=B2=D1=8B=D1=88=D0=B5</a></td=
+><td align=3D"right" width=3D"40%">&nbsp;<a href=3D"part-using.html" access=
+key=3D"n">=D0=A1=D0=BB=D0=B5=D0=B4.</a></td></tr><tr><td align=3D"left" wid=
+th=3D"40%" valign=3D"top">5.2. =D0=A1=D0=B6=D0=B0=D1=82=D0=B8=D0=B5 =D1=84=
+=D0=B0=D0=B9=D0=BB=D0=BE=D0=B2 =D0=B2 =D0=BA=D0=BE=D0=BC=D0=B0=D0=BD=D0=B4=
+=D0=BD=D0=BE=D0=B9 =D1=81=D1=82=D1=80=D0=BE=D0=BA=D0=B5&nbsp;</td><td align=
+=3D"center" width=3D"20%"><a href=3D"index.html" accesskey=3D"h">=D0=9D=D0=
+=B0=D1=87=D0=B0=D0=BB=D0=BE</a></td><td align=3D"right" width=3D"40%" valig=
+n=3D"top">&nbsp;=D0=A7=D0=B0=D1=81=D1=82=D1=8C II. =D0=A0=D0=B0=D0=B1=D0=BE=
+=D1=82=D0=B0 =D0=B2 =D1=81=D0=B8=D1=81=D1=82=D0=B5=D0=BC=D0=B5</td></tr></t=
+body></table></div></body></html>
+------=_NextPart_000_0000_E536A422.5E67C74C
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.linux-ink.ru/static/SL.5.1_Docs/Russification/Docs/sbs-sl-ru/linux-ink.css
+
+/*
+
+CSS for Red Hat Linux Project docs from the Documentation Project
+
+Written by Tammy Fox and Garrett LeSage
+
+Copyright 2003 Tammy Fox, Garrett LeSage, and Red Hat, Inc.
+
+License: GPL
+
+*/
+
+
+body    {
+        background-color: #ffffff;
+        color: #000000;
+        margin: 10px;
+        padding: 0;
+        font-family: helvetica, arial,sans-serif;
+        font-size: 12pt;
+        /* needed so buttons created with css don't bleed into text */
+        line-height: 1.3;
+        }
+
+body.book, body.article, body.chapter, body.part, body.preface, body.sect1,=
+ body.index, body.colophon, body.glossary, body.reference, body.refentry {
+        font-family: helvetica, arial,sans-serif;
+        font-size: 12pt;
+        background-color: #ffffff;
+        margin: 0;
+        padding : 0;
+        }
+
+
+li p {
+        display: inline;
+}
+
+div.table table {
+        width: 95%;
+        background-color: #DCDCDC;
+        color: #000000;
+        border-spacing: 0;
+}
+
+div.table table th {
+        border: 1px solid #A9A9A9;
+        background-color: #A9A9A9;
+        color: #000000;
+}
+
+div.table table td {
+        border: 1px solid #A9A9A9;
+        background-color: #DCDCDC;
+        color: #000000;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+        margin-top: 2px;
+
+}
+
+div.note table, div.tip table, div.important table, div.caution table, div.=
+warning table {
+        width: 95%;
+        border: 2px solid #B0C4DE;
+        background-color: #F0F8FF;
+        color: #000000;
+        /* padding inside table area */
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+}
+
+.qandaset table {
+        border-collapse: collapse;
+}
+.qandaset {
+}
+.qandaset tr.question {
+}
+.qandaset tr.question td {
+        font-weight: bold;
+        padding: 1em 1em 0;
+}
+.qandaset tr.answer td {
+        padding: 0.25em 1em 1.5em;
+}
+.qandaset tr.question td, .qandaset tr.answer td {
+}
+
+hr {
+        border: 0;
+        border-bottom: 1px solid #ccc;
+}
+
+h1, h2, h3, h4 {
+        font-family: luxi sans,sans-serif;
+        color: #990000;
+        font-weight: bold;
+}
+h1 {
+        font-size: 1.75em;
+}
+=20
+h2 {
+        font-size: 1.25em;
+}
+=20
+h3 {
+        font-size: 1.1em;
+}
+
+a:link  {
+                color:  #000066;
+                }
+
+a:visited
+                {
+                color:  #333399;
+                }
+
+code.screen, pre.screen {
+        font-family: monospace;
+        font-size: 12pt;
+        display: block;
+        padding: 10px;
+        border: 1px solid #bbb;
+        background-color: #eee;
+        color: #000;
+        overflow: auto;
+        border-radius: 2.5px;
+        -moz-border-radius: 2.5px;
+        margin: 0.5em 2em;
+}
+
+div.example {
+        padding: 10px;
+        border: 1px solid #bbb;
+        margin: 0.5em 2em;
+}
+
+/* make guibuttons look like real buttons */
+.guibutton {
+        color: #000000;
+        font-family: helvetica, arial, sans-serif;
+        background-color: #DCDCDC;
+        padding: 1px 3px;
+        font-size: 10pt;
+        border: outset 2px;
+        text-decoration: none;
+}
+
+------=_NextPart_000_0000_E536A422.5E67C74C
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.linux-ink.ru/static/SL.5.1_Docs/Russification/Docs/sbs-sl-ru/stylesheet-images/tip.png
+
+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
+tcJjSgAAAABJRU5ErkJggg==
+------=_NextPart_000_0000_E536A422.5E67C74C--

@@ -1,6 +1,7 @@
 /*
 !/.gitignore
 !/sh/
+!/bash/
 !/apache/
 !/settings/
 !/js/

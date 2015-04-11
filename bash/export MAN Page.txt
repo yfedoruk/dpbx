@@ -1,0 +1,43 @@
+export
+
+Set an environment variable. Mark each name to be passed to child processes in the environment.
+
+Syntax
+      export [-fn] [-p] [name[=value]]
+
+Options
+      -f   The names refer to shell functions; 
+           otherwise the names refer to shell variables
+      -n   No longer mark each name for export.
+      -p   Display output in a form that may be reused as input. 
+
+If no names are supplied, or if the `-p' option is given, a list of exported names is displayed.
+
+The return status is zero unless an invalid option is supplied, one of the names is not a valid shell variable name, or `-f' is supplied with a name that is not a shell function.
+
+export is a BOURNE shell command and a POSIX `special' builtin.
+
+Example - local variables
+
+old_file=export.csv
+new_file=last.csv
+mv $old_file $new_file
+
+Example - global variables
+
+mydepartment=Sales ; export mydepartment
+mycustomer='Brown Brothers' ; export mycustomer
+
+"An average user will saturate their cognitive capacity if they have more than seven things to remember"
+
+Related:
+
+env - Display, set, or remove environment variables
+echo - Display message on screen
+hostname - Print or set system name
+local - Create variables
+printenv - Print environment variables
+readonly - Mark variables/functions as readonly
+shift - Shift positional parameters
+unset - Remove variable or function names
+Equivalent Windows command: SETX - Set environment variables permanently

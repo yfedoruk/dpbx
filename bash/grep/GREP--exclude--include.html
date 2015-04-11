@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta id="metaLanguage" http-equiv="Content-Language" content="ru"><title>
+	GREP--исключить /--включить синтаксис (делать не grep через определенные файлы) - efreedom
+</title><link rel="shortcut icon" href="http://zzxgo.com/efreedom/img/favicon.ico">
+    <script src="GREP--exclude--include_files/ga.js" async="" type="text/javascript"></script><script language="javascript" type="text/javascript" src="GREP--exclude--include_files/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="GREP--exclude--include_files/efreedom.html"></script>
+    <script type="text/javascript" language="javascript">window.google_analytics_uacct = "UA-4332911-7";</script>
+    <!--[if lte IE 7]> <link rel="Stylesheet" type="text/css" href="http://zzxgo.com/efreedom/css/efreedom-IE.css" /> <![endif]--><link rel="Stylesheet" type="text/css" href="GREP--exclude--include_files/efreedom_002.html">
+    <link rel="Stylesheet" type="text/css" href="GREP--exclude--include_files/Prettify.html">
+    <script language="javascript" type="text/javascript" src="GREP--exclude--include_files/Prettify_002.html"></script>
+<link href="GREP--exclude--include_files/buttons.css" type="text/css" rel="stylesheet"></head><body><div id="content"><div id="mainContent"><div id="questionTemplate"><h2 id="questionTitle">GREP--исключить /--включить синтаксис (делать не grep через определенные файлы)</h2>
+
+<div id="questionArea">
+
+    <div id="fullQuestion">
+        <div id="fullQuestionBody"><p>Я ищу для строки "foo =" (без 
+кавычек) в текстовых файлов в дереве каталогов. Это на общих Linux 
+машине, у меня есть оболочки bash:</p>
+
+<pre class="prettyprint"><code><span class="pln">grep </span><span class="pun">-</span><span class="pln">ircl </span><span class="str">"foo="</span><span class="pln"> </span><span class="pun">*</span><span class="pln"><br></span></code></pre>
+
+<p> В каталогах, также являются многие двоичные файлы, которые сопрягают "foo =".Как эти результаты не являются актуальными и замедляют поиск, я хочу grep пропустить поиск этих файлов (главным образом, JPEG и PNG изображения): как это будет делать?
+</p>
+
+<p>Я знаю есть exclude = план и--включают = план варианты, но то, что формат шаблона?manpage grep говорит: </p>
+
+<pre class="prettyprint"><code><span class="pun">--</span><span class="pln">include</span><span class="pun">=</span><span class="pln">PATTERN &nbsp; &nbsp; </span><span class="typ">Recurse</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> directories only searching file matching PATTERN</span><span class="pun">.</span><span class="pln"><br></span><span class="pun">--</span><span class="pln">exclude</span><span class="pun">=</span><span class="pln">PATTERN &nbsp; &nbsp; </span><span class="typ">Recurse</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> directories skip file matching PATTERN</span><span class="pun">.</span><span class="pln"><br></span></code></pre>
+
+<p>Поиск по <em>включают grep</em>, <em>grep включают исключить</em>, <em>исключить grep</em> и варианты не нашел что-либо отношение</p>
+
+<p>Если есть способ лучше оглавлению только в определенных файлов, я все для него; перемещение нарушителя файлов не является альтернативой, не может найти только определенные каталоги (структура каталога является большой беспорядок, все во всем мире).Кроме того я не могу установить что-нибыдь, так что я должен делать с общие инструменты (например, <em>grep</em> или было предложено <em>найти</em>).</p>
+
+<p><strong>ОБНОВЛЕНИЯ: <a href="http://ru.efreedom.com/Question/1-221921/grep-exclude-include-syntax-do-not-grep-through-certain-files#221929">@ Адам Rosenfield</a> в ответ, как раз то, что я искал:</strong></p>
+
+<pre class="prettyprint"><code><span class="pln">grep </span><span class="pun">-</span><span class="pln">ircl </span><span class="pun">--</span><span class="pln">exclude</span><span class="pun">=*.{</span><span class="pln">png</span><span class="pun">,</span><span class="pln">jpg</span><span class="pun">}</span><span class="pln"> </span><span class="str">"foo="</span><span class="pln"> </span><span class="pun">*</span><span class="pln"><br></span></code></pre>
+
+<p><a href="http://ru.efreedom.com/Question/1-221921/grep-exclude-include-syntax-do-not-grep-through-certain-files#222021">@ rmeador</a> в ответ также является хорошим решением:</p>
+
+<pre class="prettyprint"><code><span class="pln">grep </span><span class="pun">-</span><span class="typ">Ir</span><span class="pln"> </span><span class="pun">--</span><span class="pln">exclude</span><span class="pun">=</span><span class="str">"*\.svn*"</span><span class="pln"> </span><span class="str">"pattern"</span><span class="pln"> </span><span class="pun">*</span><span class="pln"><br></span></code></pre>
+
+<blockquote>
+  <p>Поиск рекурсивно, игнорирует двоичные файлы и не заглянуть внутрь Subversion скрытые папки.(...)</p></blockquote></div></div></div></div></div></div></body></html>

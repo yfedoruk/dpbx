@@ -1,0 +1,13 @@
+me@utnubu:~/.tmp$ cat file
+111
+222
+333
+
+me@utnubu:~/.tmp$ sed -i '1 i 000' file
+
+me@utnubu:~/.tmp$ cat file
+000
+111
+222
+333
+

@@ -1,0 +1,35 @@
+
+******************** unzip .gz *****************
+gunzip yourfile.gz
+
+******************** unzip .tar
+tar -zxvf yourfile.tar.gz
+
+********************* unzip .bz2 ***************
+tar -jxvf yourfile.tar.bz2 
+
+
+gzip -cd < tefl-jobs-abroad.db.sql.gz |  mysql -ucontextuser -pcontextpass st_wp_onlinetefl
+
+
+****************** How do you gunzip a file and keep the .gz file? ********
+You're looking for:
+    gzcat x.txt.gz >x.txt
+The gzcat command is equivalent to gunzip -c which simply writes the output stream to stdout. This will leave the compressed file untouched. So you can also use:
+    gunzip -c x.txt.gz >x.txt
+Note that on some systems gzcat is also known as zcat.
+
+
+
+/////
+tar exclude directory:
+Use a wild card in the --exclude option argument.
+For example, suppose you have 3 directories a, b & c.
+Each directory has 3 files.
+a: d e f
+b: g h i
+c: j k l
+To exclude all of the files in b, use --exclude 'b/*'
+To also exclude the directory b, use --exclude 'b/*' --exclude 'b'
+
+

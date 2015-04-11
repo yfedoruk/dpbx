@@ -1,0 +1,503 @@
+From: <Saved by UnMHT>
+Subject: =?iso-2022-jp?B?UmVndWxhciBFeHByZXNzaW9ucyBpbiBncmVw?=
+Date: Wed, Feb 02 2011 13:38:25 GMT+0200
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0000_DC3CAD68.48472B95";
+	type="text/html"
+
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: text/html; charset="windows-1251"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.robelle.com/smugbook/regexpr.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1251"><title>Regular Expressions in grep</title><base href=3D"ht=
+tp://www.robelle.com/smugbook/"></base></head><body background=3D"backgroun=
+d.gif">
+<a href=3D"http://www.robelle.com/"><img src=3D"robelle.gif" alt=3D"[Robell=
+e]"></a>
+<a href=3D"welcome.html"><img src=3D"smug.gif" alt=3D"[SmugBook]"></a>
+<a href=3D"index.html"><img src=3D"index.gif" alt=3D"[Index]"></a>
+<a href=3D"manpages.html"><img src=3D"up.gif" alt=3D"[Prev]"></a>
+<a href=3D"whence.html"><img src=3D"down.gif" alt=3D"[Next]"></a>
+
+<h3>Searching Files on UNIX</h3>
+
+On <a href=3D"mpe.html">MPE</a> you can display files
+using the :Print command, Fcopy, <a href=3D"nuggets.html#magnet">Magnet</a>,
+or <a href=3D"qedit.html">Qedit</a> (with pattern
+match searches). On <a href=3D"hp-ux.html">HP-UX</a>
+you can display files using <b>cat</b> and even better using
+<b>more</b> (and string search using the slash &quot;/&quot; command), and
+<a href=3D"qedit.html">Qedit</a> (including searches of $Include files, and=
+ so on),
+but if you really want to search for patterns of text
+like a UNIX guru, <a href=3D"#grep">grep</a> is the tool for you.
+<p>
+<a href=3D"regexpr1.txt">Text version.</a>
+</p><p>
+<table border=3D"1">
+<tbody><tr>
+<td>cat report.c</td><td>{prints file on stdout, no pauses}
+</td></tr><tr>
+<td>cat -v -e -t dump</td><td>{show non-printing characters too}
+</td></tr><tr>
+<td>cat &gt;newfile</td><td>{reads from stdin, writes to &#x27;newfile&#x27=
+;}
+</td></tr><tr>
+<td>cat rpt1.c inp.c test.s &gt;newfile</td><td>{combine 3 files into 1}
+</td></tr><tr>
+<td>more report.c</td><td>{space for next page, q to quit}
+</td></tr><tr>
+<td>ps -a | more</td><td>{page through the full output of ps}
+</td></tr><tr>
+<td>grep smug *.txt</td><td>{search *.txt files for &#x27;smug&#x27;}</td><=
+/tr>
+</tbody></table>
+</p><p>
+MPE users will take a while to remember that
+<b>more</b>, like most UNIX tools,
+responds to a Return by printing the next line,
+not the next screen. Use the Spacebar to print the next
+page.  Type &quot;q&quot; to quit.
+To scan ahead to find a string pattern, type &quot;/&quot; and enter
+a <a href=3D"#expression">regular expression</a> to match.
+For further help, type &quot;h&quot;.
+
+<a name=3D"grep"><h4>Searching Files Using UNIX grep</h4></a>
+
+The <b>grep</b> program is a standard
+<a href=3D"unix.html">UNIX</a>
+utility that searches through a set of files for an arbitrary text
+pattern, specified through a
+<a href=3D"#expression">regular expression.</a>
+Also check the <a href=3D"manpages.html">man pages as well</a>
+for <strong>egrep</strong> and <strong>fgrep</strong>. The
+<a href=3D"mpe.html">MPE</a>
+equivalents are
+<b>MPEX</b>
+and
+<a href=3D"nuggets.html#magnet">Magnet</a>, both third-party products.
+By default, grep is case-sensitive (use -i to ignore case).
+By default, grep ignores the context of a string (use -w to
+match <i>words</i> only).
+By default, grep shows the lines that match (use -v to show
+those that <b>don&#x27;t</b> match).
+</p><p>
+<a href=3D"regexpr2.txt">Text version.</a>
+</p><p>
+<table border=3D"1">
+<tbody><tr>
+<td> % grep BOB tmpfile</td><td>{search &#x27;tmpfile&#x27; for &#x27;BOB&#=
+x27; anywhere in a line}
+</td></tr><tr>
+<td> % grep -i -w blkptr * </td><td>{search files in <a href=3D"cwd.html">C=
+WD</a> for word <i>blkptr</i>, any case}
+</td></tr><tr>
+<td> % grep run[- ]time *.txt</td><td>{find &#x27;run time&#x27; or &#x27;r=
+un-time&#x27; in all txt files}
+</td></tr><tr>
+<td> % who | grep root </td><td>{pipe <b>who</b> to <b>grep</b>, look for=
+ <i>root</i>}</td></tr>
+</tbody></table>
+</p><p>
+<a name=3D"expression"><h4>Understanding Regular Expressions</h4></a>
+
+<b>Regular Expressions</b> are a feature of <a href=3D"unix.html">UNIX</a>.
+They describe a pattern to match, a sequence of characters,
+not words, within a line of text.
+Here is a quick summary of the special characters used
+in the <a href=3D"#grep">grep</a> tool and their meaning:
+</p><p>
+<a href=3D"regexpr3.txt">Text version.</a>
+</p><p>
+<table border=3D"1">
+<tbody><tr>
+<td>^ (Caret)</td><td>=3D</td><td>match expression at the start of a line,=
+ as in ^A.
+</td></tr><tr>
+<td>$ (Question)</td><td>=3D</td><td>match expression at the end of a line,=
+ as in A$.
+</td></tr><tr>
+<td>\ (Back Slash)</td><td>=3D</td><td>turn off the special meaning of the=
+ next character, as in \^.
+</td></tr><tr>
+<td>[ ] (Brackets)</td><td>=3D</td><td>match any <b>one</b> of the enclosed=
+ characters, as in [aeiou].
+Use Hyphen &quot;-&quot; for a range, as in <code>[0-9]</code>.
+</td></tr><tr>
+<td>[^ ]</td><td>=3D</td><td>match any one character <b>except</b> those en=
+closed in [ ], as in [^0-9].
+</td></tr><tr>
+<td>. (Period)</td><td>=3D</td><td>match a single character of any value,=
+ except end of line.
+</td></tr><tr>
+<td>* (Asterisk)</td><td>=3D</td><td>match zero or more of the preceding ch=
+aracter or expression.
+</td></tr><tr>
+<td>\{x,y\}</td><td>=3D</td><td>match <b>x</b> to <b>y</b> occurrences of=
+ the preceding.
+</td></tr><tr>
+<td>\{x\}</td><td>=3D</td><td>match exactly <b>x</b> occurrences of the pre=
+ceding.
+</td></tr><tr>
+<td>\{x,\}</td><td>=3D</td><td>match <b>x</b> or more occurrences of the pr=
+eceding.</td></tr>
+</tbody></table>
+</p><p>
+As an <a href=3D"mpe.html">MPE</a> user, you may
+find regular expressions difficult to use at first.
+Please persevere, because they are used in many
+UNIX tools, from <b>more</b> to <b>perl</b>.
+Unfortunately, some tools use simple regular expressions and others use ext=
+ended
+regular expressions and some extended features have been merged
+into simple tools, so that it looks as if every tool has its own
+syntax. Not only that, regular expressions use the
+same characters as shell <a href=3D"wildcard.html">wildcarding</a>,
+but they are <b>not</b> used in exactly the same way.
+What do you expect of an operating system built by graduate students?
+</p><p>
+Since you usually type regular expressions within
+shell commands, it is good practice to enclose the regular
+expression in single quotes (&#x27;) to stop the shell from expanding
+it before passing the argument to your search tool.
+Here are some examples using <b>grep</b>:
+</p><p>
+<a href=3D"regexpr4.txt">Text version.</a>
+</p><p>
+<table border=3D"1">
+<tbody><tr>
+<td>grep smug files</td><td>{search <i>files</i> for lines with &#x27;smug&=
+#x27;}
+</td></tr><tr>
+<td>grep &#x27;^smug&#x27; files</td><td>{&#x27;smug&#x27; at the start of=
+ a line}
+</td></tr><tr>
+<td>grep &#x27;smug$&#x27; files</td><td>{&#x27;smug&#x27; at the end of a=
+ line}
+</td></tr><tr>
+<td>grep &#x27;^smug$&#x27; files</td><td>{lines containing only &#x27;smug=
+&#x27;}
+</td></tr><tr>
+<td>grep &#x27;\^s&#x27; files</td><td>{lines starting with &#x27;^s&#x27;,=
+ &quot;\&quot; escapes the ^}
+</td></tr><tr>
+<td>grep &#x27;[Ss]mug&#x27; files</td><td>{search for &#x27;Smug&#x27; or=
+ &#x27;smug&#x27;}
+</td></tr><tr>
+<td>grep &#x27;B[oO][bB]&#x27; files</td><td>{search for BOB, Bob, BOb or=
+ BoB }
+</td></tr><tr>
+<td>grep &#x27;^$&#x27; files</td><td>{search for blank lines}
+</td></tr><tr>
+<td>grep &#x27;[0-9][0-9]&#x27; file</td><td>{search for pairs of numeric=
+ digits}</td></tr>
+</tbody></table>
+</p><p>
+<b>Back Slash</b> &quot;\&quot; is used to <i>escape</i> the next
+symbol, for example, turn off the special meaning that it has.
+To look for a Caret &quot;^&quot; at the start of a line, the
+expression is <code>^\^</code>.
+<b>Period</b> &quot;.&quot; matches any single character. So <code>b.b</cod=
+e> will
+match &quot;bob&quot;, &quot;bib&quot;, &quot;b-b&quot;, etc.
+<b>Asterisk</b> &quot;*&quot; does not mean the same thing in regular expre=
+ssions
+as in wildcarding; it is a modifier that applies to the
+preceding single character, or expression such as <code>[0-9]</code>.
+An asterisk matches <b>zero</b> or more of what precedes it.
+Thus <code>[A-Z]*</code> matches any number of upper-case letters,
+including none, while <code>[A-Z][A-Z]*</code> matches <b>one</b>
+or more upper-case letters.
+</p><p>
+The <b>vi</b> editor uses <code>\&lt; \&gt;</code> to match characters
+at the beginning and/or end of a <b>word boundary</b>.
+A word boundary is either the edge of the line or any character
+except a letter, digit or underscore &quot;_&quot;.
+To look for <code>if</code>, but skip <code>stiff</code>, the
+expression is <code>\&lt;if\&gt;</code>.
+For the
+same logic in <b>grep</b>, invoke it with the <b>-w</b> option.
+And remember that
+regular expressions are <b>case-sensitive</b>.  If you don&#x27;t
+care about the case, the expression to match &quot;if&quot; would be
+<code>[Ii][Ff]</code>,
+where the characters in <b>square brackets</b> define a character
+set from which the pattern must match one character. Alternatively, you
+could also invoke <b>grep</b> with the <b>-i</b> option to ignore case.
+</p><p>
+Here are a few more examples of <b>grep</b> to show you what
+can be done:
+</p><p>
+<a href=3D"regexpr5.txt">Text version.</a>
+</p><p>
+<table border=3D"1">
+<tbody><tr>
+<td>grep &#x27;^From: &#x27; /usr/mail/$USER</td><td>{list your mail}
+</td></tr><tr>
+<td>grep &#x27;[a-zA-Z]&#x27;</td><td>{any line with at least one letter}
+</td></tr><tr>
+<td>grep &#x27;[^a-zA-Z0-9]</td><td>{anything not a letter or number}
+</td></tr><tr>
+<td>grep &#x27;[0-9]\{3\}-[0-9]\{4\}&#x27;</td><td>{999-9999, like phone nu=
+mbers}
+</td></tr><tr>
+<td>grep &#x27;^.$&#x27;</td><td>{lines with exactly one character}
+</td></tr><tr>
+<td>grep &#x27;&quot;smug&quot;&#x27;</td><td>{&#x27;smug&#x27; within doub=
+le quotes}
+</td></tr><tr>
+<td>grep &#x27;&quot;*smug&quot;*&#x27;</td><td>{&#x27;smug&#x27;, with or=
+ without quotes}
+</td></tr><tr>
+<td>grep &#x27;^\.&#x27;</td><td>{any line that starts with a Period &quot;=
+.&quot;}
+</td></tr><tr>
+<td>grep &#x27;^\.[a-z][a-z]&#x27;</td><td>{line start with &quot;.&quot;=
+ and 2 lc letters}</td></tr>
+</tbody></table>
+</p><p>
+</p><hr>
+<a href=3D"http://www.robelle.com/"><img align=3D"bottom" src=3D"robelle.gi=
+f" alt=3D"[Robelle]"></a>
+<a href=3D"welcome.html"><img src=3D"smug.gif" alt=3D"[SmugBook]"></a>
+<a href=3D"index.html"><img src=3D"index.gif" alt=3D"[Index]"></a>
+<a href=3D"unix.html"><img src=3D"chapter.gif" alt=3D"[Unix]"></a>
+<a href=3D"manpages.html"><img src=3D"up.gif" alt=3D"[Prev]"></a>
+<a href=3D"whence.html"><img src=3D"down.gif" alt=3D"[Next]"></a>
+
+</body></html>
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/background.gif
+
+R0lGODlhZABkAPcAAP///////f///f///P///P///P//+///+///+///+///+///+///+v//+v//
++v//+f//+f//+f//+P//+P//+P//9///9//+9//+9v/+9v/99v/99f/99f/89f/89P/89P/79P/7
+9P/79P/69P/68//68//58//58v/58v/48v/48f/48f/38f/38P/38P/28P/27//27//17//17v/1
+7v/07v/07f/07f/z7f/z7P/z7P/y7P/y7P/y7P/x7P/x6//x6//w6//w6v/w6v/v6f/v6f/u6P/u
+6P/t51dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dX
+V1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dX
+V1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV6R9
+/1xXV5tXXlfNZP+D//uaXvxXV1dXV2ZZ/71XV1dXXldXV/9XV1f/x8ZX/1z/ZJtX/1z/xP+UXldX
+yIhX/25XV1dXV1dXV95X/71XV41X6K21W/9lV1dXV1dXV1e1V/9X/71XV1dX/1ytrY2E/2FXV8uU
+5L3/gPeTXldXbllX/1z/bFdX5L1XV7OE+57VgVdXoK6trVdX+q1bkrZX5L1XV1dX/2CmyP9v/26i
+11lX5L1XV5uDXlei19Zq/63/8aSq/27/gP+UXldXV1lXXlf/11lX/21XV/9XV1dXV/+EuIDVgf+U
+Xlei11lX/61joP5X/71XV9Zq5L1XV1dXXldXV/+E/4ai11lX/71XV8uUXlf/yOV1/25XV1dXV1f/
+bl5X5L1XV+p1V65Xdf9XV1dXV1dX/2FXV/9XV1dXV8uUXldtt3OF8Fr9gVhXV1dXV1dX/2FXV8uU
+XleFuf5X9Fp4ya9X/GdXV1dXV1dXV/+M/1dlqf9X55R4zsuUV1dXVyH5BAEAAAAALAAAAABkAGQA
+QAj/AFGoQCHCQ4YMHEQIPIFiRYsTHzicoJGDhgoTJEKIOOHCxYoSITyIWEGDh44ZKhi2WEGCwwYR
+LWbQgPHxxAqZKkR88IAhAoUPMG7oiCGCAgQOK2zMaMkhhM0WKASW4DBhA4oYLk6QUBEjB1YXMGa4
+QMEw5YcOH0yICPlhJAwXKj5kgGABpgu1IUpEBUnC4YkNEyBgAFGChIcOHjQWlqthg4cPJUaUUPEC
+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
++AAHUIAKCAgAOw==
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/robelle.gif
+
+R0lGODlhIAAgALMAAClKSgAxY3OElAAxnDExnDFjnGNjnGOctZyczpzOzr29vc7Ozs7O/87//+fn
+/////ywAAAAAIAAgAAAE/tApQau9OAulJP9gKI7c5jxOqq5su5bbI890bc9pCZgy6Y8CwK7zUCyM
+x0VSgSgEBoel0kgR8pDKrPIQ6HYL2uwkeJ2KFw2vGqE1jocnTliZUHsN83e5Tbd38WZHVXtJWQx+
+AWxhekRucwtcamCLjHGPSE1PUZeDjViFj4tTnZahpoukRYFKAggIRg18ZpVFnwtOfgUFBgcICQsM
+gmSNYQKIxwEEtFgKdcheBQIJwctYA88FCMFtqVgGyICcw6UIxwXbecJwtYeIiqfLt4i/oczd5X70
+p6PjRYjZbNCtckNKwrMuBA7YylIBjsGD0OhhqQKnBIgkv9yQGGTlg4aPExqEDJlgBSRIkUJ0oFzJ
+siXLCAAAOw==
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/smug.gif
+
+R0lGODlhIAAgALMAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwICAgP8AAAD/AP//AAAA//8A/wD/
+/////ywAAAAAIAAgAAMExfAdRKu9OKNzJP9gKI7c9pxoqq5rabJw7CHG65F4SNdd7usG3u3nowiJ
+AECRZvIlEwklztgkPaFQ6YjaE12xWK2O2f18wWDxh3s7o9HqCdmjBLzv2fHxYOfj72JsHHYJfn9w
+a3ODWIaHYS57jY2OSXKRkoR/SVKCIJmTaQAUnIohn5lZohWkl2aMhEkWg0qdXq+qFLOJrZ5Zsnxq
+tSN2qroiwsNSlSTIyXF6VURFQdHSU9SJGtoYQTwT1Nvb3UEl4+bn6OgRACH+5VRoaXMgZmlsZSB3
+YXMgY3JlYXRlZCBieSAgICANDUdyYXBoaWMgV29ya3Nob3AgZm9yIFdpbmRvd3MgMS4xcg0NZnJv
+bSBBbGNoZW15IE1pbmR3b3JrcyBJbmMuDVAuTy4gQm94IDUwMA1CZWV0b24sIE9udGFyaW8NTDBH
+IDFBMCBDQU5BREENDVRoaXMgaW1hZ2UgbWF5IGhhdmUgYmVlbiBjcmVhdGVkIGJ5DWEgcGFydHkg
+b3RoZXIgdGhhbiBBbGNoZW15IE1pbmR3b3JrcyBJbmMuDQ1Vc2Ugbm8gaG9va3MAOw==
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/index.gif
+
+R0lGODlhIAAgALMAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwICAgP8AAAD/AP//AAAA//8A/wD/
+/////ywAAAAAIAAgAAMEuPAdRKu9OKNzJP9gKI7c9pxoqq5ruZFwPBkvmNwyiRh0eP8iQIzCq3Fw
+uJBwuDMekImgjGhMPqMfgJazDVFt2KuSSwZ9P7/0+LBcfs7XNDBbdrt6x3BeKeyam2h6YjlvgHFh
+aoQThoo5cI1MeJCRTiQMl5iZXowxlyGYm5Kdn56hlTmgIo+EqaqcqKUjq52xsq8wrRwMpqy1B7UV
+oriZxH9FkzE0xy4azRg8eDs0zs7QPCXW2drb2xEAIf7lVGhpcyBmaWxlIHdhcyBjcmVhdGVkIGJ5
+ICAgIA0NR3JhcGhpYyBXb3Jrc2hvcCBmb3IgV2luZG93cyAxLjFyDQ1mcm9tIEFsY2hlbXkgTWlu
+ZHdvcmtzIEluYy4NUC5PLiBCb3ggNTAwDUJlZXRvbiwgT250YXJpbw1MMEcgMUEwIENBTkFEQQ0N
+VGhpcyBpbWFnZSBtYXkgaGF2ZSBiZWVuIGNyZWF0ZWQgYnkNYSBwYXJ0eSBvdGhlciB0aGFuIEFs
+Y2hlbXkgTWluZHdvcmtzIEluYy4NDVVzZSBubyBob29rcwA7
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/up.gif
+
+R0lGODdhIAAgAMIAAObm+r6+vi9PT////3CAkAAA/wAAAAAAACwAAAAAIAAgAAADpghB3P4wkhAU
+vTjrTScYQCiOZDl206CubOuuYSd4KmdvhDBXw+1fDB3tRwwOfwWfkYdM3pYfX2GqzB05U+rTysRm
+v1oMtLcBmzXjshmM5kYz63MmjYnLxW4yxX4H5uF8WW07b3WBTniEeoZ8g1eAdo5daoJbijdfVZeY
+YRx0nJqPNoiebhZENg2Ep6g4OYQdrXNWQn4StxA6OwtCuLi6OjLAw8TFxAkAOw==
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/down.gif
+
+R0lGODdhIAAgAMIAAObm+r6+vi9PT////3CAkAAA/wAAAAAAACwAAAAAIAAgAAADpghB3P4wkhAU
+vTjrTScYQCiOZDl206CubOuuYSd4KmdvhDBXw+1fDB3tRwwObQXiInfkFJI/I+/2hN6kH2rVh+1h
+quCtrZsJm8fM6dcc5pDXbDAunYXHxZj35X7O0717fHhAf2WCVn47dYF8boV2bGiKgBttkk2Vg3OT
+WoiOnEien5gaoqMVFkqOdKmqGkGKHa6JOTsoErgQOra1ub67OjLAw8TFxAkAOw==
+------=_NextPart_000_0000_DC3CAD68.48472B95
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.robelle.com/smugbook/chapter.gif
+
+R0lGODdhIAAgAMIAAObm+r6+vi9PT/8AAP///3CAkAAAAAAAACwAAAAAIAAgAAADpwhR3P4wlhAU
+vTjrTScgQCiOZDl2E6GubOuuYSd4KmdvhTBXxO1fDB3tRwwOiT4jD5nMHTcDpvLDGUSR057Gei06
+lxmu+JcNi89dTfmCbqeBXyrF7VbHtXP62b6Ts/VjGGsYgFwZg4RWeW2Cd1VpjHB9eFuJe5JPP2iN
+k0ybmGBEnyidSKMLcRZMOFOqq4c5fR2vmEJwErgQOjsLQrm5uzoywcTFxsUJADs=
+------=_NextPart_000_0000_DC3CAD68.48472B95--

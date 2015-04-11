@@ -1,0 +1,16 @@
+# start ssh-add if need
+	eval `ssh-agent -s`
+	ssh-add
+
+#create keys
+#ssh-keygen -t rsa -C "your_email@example.com"
+ssh-keygen -t rsa
+
+$ ssh-keygen (only once in Ubuntu!!!)
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host
+
+// on different port
+ssh-copy-id -i ~/.ssh/id_rsa.pub '-p 3879 user@host'
+
+//Remove key from known_hosts
+sed -i '6d' ~/.ssh/known_hosts          #Will modify the file ~/.ssh/known_hosts:6 , removing the 6th line.
