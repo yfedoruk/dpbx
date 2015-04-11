@@ -18,3 +18,6 @@ kill -9 PID
 
 #For get a PID use:
 ps x --forest
+
+
+sudo kill -9 $(pidof firefox)
