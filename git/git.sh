@@ -135,6 +135,7 @@ git branch -m <newname> #If you want to rename the current branch
 ################################# CONFLICTS ######
 git checkout --theirs -- path/to/conflicted-file.txt
 git checkout --ours -- path/to/conflicted-file.txt
+git merge -X theirs branchB #from branchA
 git pull -Xtheirs
 
 
