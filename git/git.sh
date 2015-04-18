@@ -3,6 +3,7 @@
 git config remote.origin.url git@github.com:oberig/vac.git
 git config --global user.name "yfedoruck"
 git config --global user.email yfedoruck@gmail.com
+git config --global core.pager 'less -+$LESS -R'		#exit from `pager`
 
 git config core.filemode false
 git config alias.checkout co
