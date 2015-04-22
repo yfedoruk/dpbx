@@ -22,7 +22,7 @@ printf "
                 allow from all\r
                 #Require all granted
         </Directory>\r
-</VirtualHost>\r" > /etc/apache2/sites-available/yii.loc
+</VirtualHost>\r" > /etc/apache2/sites-available/yii.loc.conf
 
 sudo a2ensite yii.loc
 sudo service apache2 reload
