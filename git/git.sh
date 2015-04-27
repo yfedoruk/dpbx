@@ -6,6 +6,7 @@ git config --global user.email yfedoruck@gmail.com
 git config --global core.pager 'less -+$LESS -R'		#exit from `pager`
 git config --global pager.diff false #or git --no-pager diff
 
+git config --global core.mergeoptions --no-edit
 git config core.filemode false
 git config alias.checkout co
 git config alias.status stat
