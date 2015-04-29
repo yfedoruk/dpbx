@@ -1,0 +1,1 @@
+$(this).css("text-align", "center");
