@@ -24,6 +24,8 @@ printf "
         </Directory>\r
 </VirtualHost>\r" > /etc/apache2/sites-available/yii.loc.conf
 
+#for ServerAlias add host 127.0.0.1 to /etc/hosts too.
+
 sudo a2ensite yii.loc
 sudo service apache2 reload
 
