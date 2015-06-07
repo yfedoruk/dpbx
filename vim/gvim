@@ -1,0 +1,4 @@
+apt-get install vim-gtk
+
+!!! Only 
+sudo apt-get install vim-gnome

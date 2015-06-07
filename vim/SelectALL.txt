@@ -1,0 +1,8 @@
+Fast Select All
+Want to select an entire file in visual mode very quickly? Try ggVG in normal mode. 
+
+
+it wont allow me to COPY and PASTE... what am I doing wrong? it just selects but no copy option.. 
+
+"+y 
+will copy to your OS clipboard assuming you're using Vim on your local machine. 
