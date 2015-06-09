@@ -16,3 +16,7 @@ git@github.com:xolox/vim-session.git #and need git@github.com:xolox/vim-misc.git
 sudo apt-get install git
 
 # ubuntu: /usr/share/vim/vim72/syntax/
+
+#recomplation
+cd /usr/local/src/vim
+./configure --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python3.4/config
