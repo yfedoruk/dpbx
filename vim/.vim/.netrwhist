@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/etc/cron.daily'
+let g:netrw_dirhist_2='/usr/lib/gtk-2.0/2.10.0/loader-files.d'
+let g:netrw_dirhist_3='/usr/share/themes/HighContrastInverse1'
+let g:netrw_dirhist_4='/usr/share/themes'
