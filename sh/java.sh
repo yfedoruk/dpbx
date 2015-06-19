@@ -13,3 +13,13 @@ sudo gedit /etc/environment
     #Append to the end of the file: JAVA_HOME=/usr/lib/jvm/java-7-oracle
 #6. Removing Oracle JDK 7
 #sudo apt-get remove oracle-jdk7-installer
+
+
+
+
+
+
+
+#new
+sudo apt-cache search java | grep java8
+sudo apt-get install oracle-java8-installer
