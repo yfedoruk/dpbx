@@ -1,15 +1,18 @@
 #Ubuntu 12.04 (https://help.ubuntu.com/12.04/serverguide/certificates-and-security.html)
 
-#creating certificates
+#creating certificates  -des3 -- add password
 openssl genrsa -des3 -out server.key 2048
 openssl rsa -in server.key -out server.key.insecure
 mv server.key server.key.secure
 mv server.key.insecure server.key
-openssl req -new -key server.key -out server.csr
+openssl req -new -sha256 -key server.key -out server.csr
 openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 sudo cp server.crt /etc/ssl/certs
 sudo cp server.key /etc/ssl/private
 
+
+# check certificate
+openssl s_client -connect www.yoursite.com:443 < /dev/null 2>/dev/null | openssl x509 -text -in /dev/stdin | grep "Signature Algorithm"
 
 ## Enable HTTPS
 #1. Enable ssl
@@ -19,7 +22,7 @@ sudo a2enmod ssl
 sudo a2ensite default-ssl
 
 #set up sertificates
-sudo vi /etc/apache2/sites-enabled/default-ssl.conf		#default-ssl -- your site domain name
+sudo vi /etc/apache2/sites-enabled/default-ssl.conf     #default-ssl -- your site domain name
 
 # change for host config <VirtualHost *:80> to
 <VirtualHost *:443>
