@@ -1,10 +1,14 @@
 #How do I make git ignore mode changes (chmod)?
 # man git config (/color.diff.*slot)
-git config remote.origin.url git@github.com:oberig/vac.git
+
+# --global options will be saved in ~/.gitconfig
+#git config remote.origin.url git@github.com:oberig/vacsapi.git
 git config --global user.name "yfedoruck"
 git config --global user.email yfedoruck@gmail.com
-git config --global core.pager 'less -+$LESS -R'		#exit from `pager`
-git config --global pager.diff false #or git --no-pager diff
+#exit from `pager`
+git config --global core.pager 'less -+$LESS -R'
+#or git --no-pager diff
+git config --global pager.diff false
 
 git config --global core.mergeoptions --no-edit
 git config core.filemode false
@@ -38,22 +42,22 @@ git config --global color.ui auto
 #edit last commit message
 git commit --amend -m "New commit message"
 
-															######### UNDO ############
+                                                            ######### UNDO ############
 # last commit
 git commit ....
-git reset --soft HEAD^ 
+git reset --soft HEAD^
 edit
-git add .... 
+git add ....
 git commit -c ORIG_HEAD
 
 #restore to last commit
     git checkout HEAD file/to/restore.txt
-    
+
     # RESTORE to 'abcde' commit
     git checkout abcde file/to/restore
-    
+
     # !to discard changes in working directory!
-    git checkout -- file.txt 
+    git checkout -- file.txt
 
 # Undo 'git add' before commit
     git reset HEAD some_file
@@ -81,7 +85,7 @@ git push origin master --force  ### force push, override remote branch
 
 # Undo a whole Git merge? (after pull)
     git reset --hard commit_sha
-    # push after RESET --HARD : 
+    # push after RESET --HARD :
     git push -f origin master #(--force)
 
 #view logs
@@ -102,7 +106,7 @@ $ git config branch.master.remote origin
 $ git config branch.master.merge refs/heads/master
 
 
-# force update on pull.  undo all local changes 
+# force update on pull.  undo all local changes
 git reset --hard HEAD
 git pull
 
@@ -123,9 +127,9 @@ git rebase origin/master
 # diff between branches
 git diff --name-status master dev
 # compare the tips of each branch.
-git diff branch1..branch2 
+git diff branch1..branch2
 
-git checkout master   # switch to master 
+git checkout master   # switch to master
 git merge bug1        # merging with bug1
 git branch -d bug1    # delete bug1 branch
 git push origin :bug1 # delete bug1 on remote server (github)
@@ -143,11 +147,11 @@ git pull -Xtheirs
 
 
 ######### VIEW ###########
- git diff --name-only 
+ git diff --name-only
 #ignore whitespace
  git diff -w
  git diff --ignore-space-at-eol #only whitespace at end file
- 
+
 # file log history
 git blame css/style.css | grep #postPopup
 #search SomeWord history
