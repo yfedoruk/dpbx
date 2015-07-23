@@ -1,9 +1,6 @@
 #hard utilites
 sudo apt-get -y install hardinfo
 
-#moc
-sudo apt-get -y install moc
-
 #mc
 sudo apt-get -y install mc
 
