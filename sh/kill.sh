@@ -21,3 +21,6 @@ ps x --forest
 
 
 sudo kill -9 $(pidof firefox)
+
+#best
+killall firefox
