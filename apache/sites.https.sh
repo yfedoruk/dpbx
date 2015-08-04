@@ -17,9 +17,9 @@
         <Directory /home/slava/www/loc.inmyvac.com/>
                 Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
-                Order allow,deny
-                allow from all
-                #Require all granted 
+                #Order allow,deny
+                #allow from all
+                Require all granted
         </Directory>
 </VirtualHost>
 
@@ -35,8 +35,8 @@
         <Directory /home/slava/www/loc.inmyvac.com/>
                 Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
-                Order allow,deny
-                allow from all
-                #Require all granted·
+                #Order allow,deny
+                #allow from all
+                Require all granted
         </Directory>
 </VirtualHost>
