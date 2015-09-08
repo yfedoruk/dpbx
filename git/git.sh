@@ -44,9 +44,8 @@ git commit --amend -m "New commit message"
 
                                                             ######### UNDO ############
 # last commit
-git commit ....
 git reset --soft HEAD^
-edit
+... edit ...
 git add ....
 git commit -c ORIG_HEAD
 
