@@ -19,7 +19,7 @@ sudo apt-get install git
 
 #recomplation
 cd /usr/local/src/vim #https://github.com/codedreality/vim/tree/fix-python3x-support
-./configure --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/  #where is config.c 		/usr/lib/python3.4/config
+./configure --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/  #where is config.c      /usr/lib/python3.4/config
 
 #check ./configure output 
 checking --enable-pythoninterp argument... yes
@@ -40,3 +40,20 @@ can't find it!
 locate python | grep '/config$
 sudo apt-get install python2.7-dev
 sudo apt-get install libpython2.7-dev
+
+
+
+#Проверка очень простая. =))
+#Прописываете в конфиге 
+:imap <UP> <NOP>
+:imap <DOWN> <NOP>
+:imap <LEFT> <NOP>
+:imap <RIGHT> <NOP>
+:imap <HOME> <NOP>
+:imap <END> <NOP>
+:imap <PageUp> <NOP>
+:imap <PageDown> <NOP>
+:imap <Del> <NOP>
+
+
+#Если после этого вы не замечаете ничего необычного при работе, то вы — тру вимер и можете проводить в InsertMode сколько угодно времени и не обращать внимания на комментарии нубов. 
