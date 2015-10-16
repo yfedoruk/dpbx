@@ -11,6 +11,9 @@ git config --global core.pager 'less -+$LESS -R'
 git config --global pager.diff false
 
 git config --global core.mergeoptions --no-edit
+git config --global push.default current
+git config --global pull.default current # must set before: git branch -u origin/branch_name
+
 git config core.filemode false
 git config alias.checkout co
 git config alias.status stat
