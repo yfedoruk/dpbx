@@ -2,7 +2,10 @@
 # man git config (/color.diff.*slot)
 
 # --global options will be saved in ~/.gitconfig
-#git config remote.origin.url git@github.com:oberig/vacsapi.git
+# git config remote.origin.url git@github.com:oberig/vacsapi.git
+# git remote add origin git@github.com:yfedoruck/chat.git
+# git push -u origin master
+
 git config --global user.name "yfedoruck"
 git config --global user.email yfedoruck@gmail.com
 #exit from `pager`
