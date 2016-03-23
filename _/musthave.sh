@@ -40,3 +40,6 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #xmodmap -e "remove Lock = Caps_Lock" && xmodmap -e "keycode 9 = Caps_Lock NoSymbol Caps_Lock" && xmodmap -e "keycode 66 = Escape NoSymbol Escape" && xmodmap -pke > ~/.xmodmap
 # System settings > Keyboard > Layout settings > Options > Caps lock key behavior -> Swap Esc and Caps Lock
 
+# scrollbar back to standard (Ubuntu 12.04)
+sudo apt-get remove overlay-scrollbar liboverlay-scrollbar-0.2-0 liboverlay-scrollbar3-0.2-0
+
