@@ -3,14 +3,14 @@ mkdir /home/slava/www/$1
 echo 127.0.0.1  $1 >> /etc/hosts
 printf "<VirtualHost *:80>\r
         ServerAdmin webmaster@localhost\r
-        DocumentRoot /home/slava/www/$1\r
+        DocumentRoot /home/slava/www/$2\r
     ServerName $1\r
-    #ServerAlias www.$1\r
+    ServerAlias www.$1\r
         <Directory />\r
                 Options FollowSymLinks\r
                 AllowOverride None\r
         </Directory>\r
-        <Directory /home/slava/www/$1/>\r
+        <Directory /home/slava/www/$2/>\r
                 Options Indexes FollowSymLinks MultiViews\r
                 AllowOverride All\r
                 Order allow,deny\r
@@ -22,9 +22,9 @@ printf "<VirtualHost *:80>\r
 
 <VirtualHost *:443>\r
         ServerAdmin webmaster@localhost\r
-        DocumentRoot /home/slava/www/$1\r
+        DocumentRoot /home/slava/www/$2\r
     ServerName $1\r
-    #ServerAlias www.$1\r
+    ServerAlias www.$1\r
     SSLEngine on\r
         #optionally add after: SSLEngine on\r
         SSLProtocol all -SSLv2\r
@@ -35,7 +35,7 @@ printf "<VirtualHost *:80>\r
                 Options FollowSymLinks\r
                 AllowOverride None\r
         </Directory>\r
-        <Directory /home/slava/www/$1/>\r
+        <Directory /home/slava/www/$2/>\r
                 Options Indexes FollowSymLinks MultiViews\r
                 AllowOverride All\r
                 Order allow,deny\r
