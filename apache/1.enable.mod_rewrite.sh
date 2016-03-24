@@ -1,5 +1,5 @@
 sudo a2enmod rewrite
 sudo service apache2 restart
 
-#test it
+#test
 apache2ctl -M | grep  rewrite_module
