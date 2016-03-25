@@ -1,5 +1,8 @@
 #!bash
-mkdir /home/slava/www/$1
+dir="/home/slava/www/$2";
+if [ ! -d "${dir}" ]; then
+	mkdir /home/slava/www/$2
+fi
 echo 127.0.0.1  $1 >> /etc/hosts
 printf "<VirtualHost *:80>\r
         ServerAdmin webmaster@localhost\r
