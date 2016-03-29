@@ -16,7 +16,7 @@ nautilus -q
 
 
 # utilites
-apt-get -y install udisks colordiff hardinfo ppa-purge
+apt-get -y install udisks colordiff hardinfo ppa-purge xbindkeys
 apt-get -y install curl libcurl3 libcurl3-dev
 
 
