@@ -32,8 +32,12 @@ apt-get -y install gedit gedit-plugins
 
 #vim
 apt-get -y install vim
-cd ~/.vim/
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vimdir="$HOME/.vim/bundle/Vundle.vim";
+if [ ! -d "${vimdir}" ]; then
+	mkdir -p ${vimdir}
+	git clone https://github.com/gmarik/Vundle.vim.git ${vimdir}
+	vim -c "VundleInstall" -c"q!" -c"q!"
+fi
 
 
 #ubuntu 14.04. Caps_Lock/Esc
