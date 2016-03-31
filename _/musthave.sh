@@ -11,8 +11,7 @@ touch ~/Templates/new
 
 
 #nautilus
-apt-get -y install nautilus nautilus-open-terminal nautilus-actions
-nautilus -q
+apt-get -y install nautilus nautilus-open-terminal nautilus-actions && nautilus -q
 
 
 # utilites
