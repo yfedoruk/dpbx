@@ -3,12 +3,6 @@
 sudo apt-get -y install aptitude
 sudo aptitude -y install build-essential
 
-#nautilus
-sudo apt-get -y install nautilus
-sudo apt-get -y install nautilus-open-terminal
-sudo apt-get install nautilus-actions
-nautilus -q
-
 ## FoxitReader ##
 # $sudo dpkg -i FoxitReader_1.1.0_i386
 
