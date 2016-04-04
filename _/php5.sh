@@ -16,4 +16,9 @@ sudo apt-get remove php5-snmp #or sudo apt-get install snmp
 sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php5/apache2/php.ini
 
 # xdebug disable in terminal (cli) #http://stackoverflow.com/a/35438287
-sudo php5dismod -s cli xdebug
+# sudo php5dismod -s cli xdebug
+
+# disable xdebug http://stackoverflow.com/a/29604221
+# sudo php5dismod xdebug
+
+
