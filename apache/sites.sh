@@ -12,8 +12,15 @@ printf "<VirtualHost *:80>\r
         <Directory />\r
                 Options FollowSymLinks\r
                 AllowOverride None\r
+				Require all granted\r
         </Directory>\r
         <Directory /home/slava/www/$2/>\r
+				RewriteEngine on\r
+				# If a directory or a file exists, use the request directly\r
+				RewriteCond %{REQUEST_FILENAME} !-f\r
+				RewriteCond %{REQUEST_FILENAME} !-d\r
+				# Otherwise forward the request to index.php\r
+				RewriteRule . index.php\r
                 Options Indexes FollowSymLinks MultiViews\r
                 AllowOverride All\r
                 Order allow,deny\r
@@ -37,6 +44,7 @@ printf "<VirtualHost *:80>\r
         <Directory />\r
                 Options FollowSymLinks\r
                 AllowOverride None\r
+				Require all granted\r
         </Directory>\r
         <Directory /home/slava/www/$2/>\r
                 Options Indexes FollowSymLinks MultiViews\r
