@@ -2,6 +2,8 @@
 \deu+ 
 \du
 
+																			# ------------ admin -----------
+
 #create user
 psql -c "CREATE USER admin WITH PASSWORD '1';"
 
@@ -12,7 +14,7 @@ ALTER USER "user_name" WITH PASSWORD 'new_password';
 ALTER USER myuser RENAME TO newname;
 
 
-# -------------- roles -----------
+																			# -------------- roles -----------
 #set superuser/nosuperuser
 ALTER USER myuser WITH SUPERUSER;
 ALTER USER myuser WITH NOSUPERUSER
@@ -26,7 +28,7 @@ SELECT * FROM pg_ ...
 psql -h host -p port -U foo -W database
 Password for user foo: {gthcgtrnbdf}
 
-# -------------- schema ------
+																			# -------------- schema ------
 #list schemas 
 \dn
 
@@ -39,8 +41,14 @@ Password for user foo: {gthcgtrnbdf}
 #pretty format (on/off/auto or blank \x -- switch)
 \x 
 
-# ----------- ALTER TABLE -----------
+																			# ----------- ALTER TABLE -----------
 ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
+ALTER TABLE egt.log add CONSTRAINT egt_transferid_partner_id UNIQUE (transferid,partner_id);
+ALTER TABLE egt.log drop CONSTRAINT egt_transferid_partner_id;
+ALTER TABLE egt.log ADD partner_id bigint;
 
+
+																			# ----------- clone -----------------
 create table mytable_clone (like mytable including defaults including constraints including indexes);
+
 
