@@ -42,10 +42,11 @@ Password for user foo: {gthcgtrnbdf}
 \x 
 
 																			# ----------- ALTER TABLE -----------
-ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
-ALTER TABLE egt.log add CONSTRAINT egt_transferid_partner_id UNIQUE (transferid,partner_id);
-ALTER TABLE egt.log drop CONSTRAINT egt_transferid_partner_id;
 ALTER TABLE egt.log ADD partner_id bigint;
+ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
+ALTER TABLE egt.log add CONSTRAINT egt_transferid_partner_id UNIQUE (type_operation,transferid,partner_id);
+ALTER TABLE egt.log drop CONSTRAINT egt_transferid_partner_id;
+ALTER TABLE egt.games_new ADD FOREIGN KEY (game_id) REFERENCES cms.games(id);
 
 
 																			# ----------- clone -----------------
