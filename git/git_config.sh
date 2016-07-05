@@ -28,3 +28,4 @@ git config color.diff.frag cyan bold
 
 git config --global color.ui true
 git config --global color.ui auto
+git config --global merge.tool meld
