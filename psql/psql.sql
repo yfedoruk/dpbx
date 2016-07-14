@@ -44,9 +44,13 @@ Password for user foo: {gthcgtrnbdf}
 																			# ----------- ALTER TABLE -----------
 ALTER TABLE egt.log ADD partner_id bigint;
 ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
-ALTER TABLE egt.log add CONSTRAINT egt_transferid_partner_id UNIQUE (type_operation,transferid,partner_id);
-ALTER TABLE egt.log drop CONSTRAINT egt_transferid_partner_id;
+ALTER TABLE egt.log ADD CONSTRAINT egt_transferid_partner_id UNIQUE (type_operation,transferid,partner_id);
+ALTER TABLE cms.games2 ADD CONSTRAINT game_description_game_id_fkey FOREIGN KEY (id) REFERENCES cms.games(id);
+ALTER TABLE cms.games2 ADD CONSTRAINT game_description_game_id_fkey FOREIGN KEY (id) REFERENCES cms.games(id) ON DELETE CASCADE;
 ALTER TABLE egt.games_new ADD FOREIGN KEY (game_id) REFERENCES cms.games(id);
+ALTER TABLE egt.log DROP CONSTRAINT egt_transferid_partner_id;
+
+alter table public.pref_scores drop constraint pref_scores_gid_fkey, add constraint pref_scores_gid_fkey foreign key (gid) references pref_games(gid) on delete cascade;
 
 
 																			# ----------- clone -----------------
