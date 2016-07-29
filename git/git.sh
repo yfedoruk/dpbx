@@ -19,6 +19,9 @@
 #edit last commit message
 git commit --amend -m "New commit message"
 
+#cherry-pick `commit-hash` to current branch
+git cherry-pick <commit-hash>
+
                                                             ######### UNDO ############
 # last commit
 git reset --soft HEAD^
@@ -135,3 +138,8 @@ git grep SomeWord
 
 git diff --stat origin/fullcalendar
 git show | grep 'git'
+
+
+
+#### gitolite. List of removed repositories ###
+ssh git@git.xxx.com info
