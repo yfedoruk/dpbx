@@ -1,10 +1,10 @@
-Copying files from local directory to remote server:
+#Copying files from local directory to remote server:
 
 scp local/file account_name@hostname:/path/to/new/location
 
 scp -rvC local/directory/* account_name@hostname:/path/to/new/location
 
-and back (from home consol too)
+#and back (from home consol too)
 scp -rvC -P2222 username@server:/home/username/filename /localDirectory/      (-P2222 as need to different port than 22)
 
 
@@ -16,9 +16,9 @@ mysqldump -u $MyUSER -h $MyHOST -p$MyPASS $db | gunzip -9 > $FILE
 
 
 
-Мы все знаем и любим sftp и scp. Особенно за такую приятную мелочь как отсутствие докачки. Настоящие мужчины файлы не докачивают. Если трехгиговая немецкая порнушка оборвалась насередине, то ее качают заново ибо всякие там -c и rsync это удел слабаков и нытиков.
-Это официальная позиция разработчиков - в scp докачки небудет.
-Но. Человек слаб. Так в дальнем уголке .profile появляется (невиноватая я, оно само):
+#Мы все знаем и любим sftp и scp. Особенно за такую приятную мелочь как отсутствие докачки. Настоящие мужчины файлы не докачивают. Если трехгиговая немецкая порнушка оборвалась насередине, то ее качают заново ибо всякие там -c и rsync это удел слабаков и нытиков.
+#Это официальная позиция разработчиков - в scp докачки небудет.
+#Но. Человек слаб. Так в дальнем уголке .profile появляется:
 alias scpr="rsync --partial --progress --rsh=ssh"
 
 

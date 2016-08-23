@@ -57,6 +57,12 @@ ALTER TABLE cms.games2 ADD CONSTRAINT game_description_game_id_fkey FOREIGN KEY 
 ALTER TABLE egt.games_new ADD FOREIGN KEY (game_id) REFERENCES cms.games(id);
 ALTER TABLE egt.log DROP CONSTRAINT egt_transferid_partner_id;
 
+ALTER TABLE distributors ALTER COLUMN street SET NOT NULL;
+
+
+CREATE INDEX indx_cms_games_title ON cms.games (title);
+DROP INDEX cms.indx_title;
+
 --?? alter table public.pref_scores drop constraint pref_scores_gid_fkey, add constraint pref_scores_gid_fkey foreign key (gid) references pref_games(gid) on delete cascade;
 
 															/* reset id for all next rows.*/

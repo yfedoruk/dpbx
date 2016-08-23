@@ -29,3 +29,6 @@ git config color.diff.frag cyan bold
 git config --global color.ui true
 git config --global color.ui auto
 git config --global merge.tool meld
+
+# git remote -v
+# git remote set-url origin git@github.com:USERNAME/OTHERREPOSITORY.git
