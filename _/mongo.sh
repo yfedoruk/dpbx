@@ -17,3 +17,7 @@ service mongod restart
 pecl install mongo
 apt-get install libsasl2-dev
 echo 'extension=mongo.so' > /etc/php5/apache2/conf.d/mongo.ini
+
+#for php5.6
+#http://tecadmin.net/setup-mongodb-php5-apache2-ubuntu/
+sudo apt-get install php5.6-mongo

@@ -8,3 +8,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 apt-get update
 apt-get install postgresql-9.5 pgadmin3 postgresql-client postgresql-contrib
 
+
+#install for php7
+apt-get install php7.0-pgsql
+
