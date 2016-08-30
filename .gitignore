@@ -1,6 +1,7 @@
 /*
 !/.gitignore
 !/sh/
+!/install/
 !/bash/
 !/apache/
 !/_/
