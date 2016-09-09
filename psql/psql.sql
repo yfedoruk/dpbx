@@ -82,5 +82,17 @@ cat db.sql | psql newDB
 pg_dump oldDB --schema masters  | psql -h localhost newDB;
 
 
+-- creating table 
+create table netent.games_new (
+	id serial, -- autoincrement integer type
+	id bigserial, -- autoincrement bigint type
+	gameid bigint,
+	inner_game_id bigint references cms.games(id) ON UPDATE CASCADE ON DELETE CASCADE,
+PRIMARY KEY (id));
+
+
+
+
+
 
 
