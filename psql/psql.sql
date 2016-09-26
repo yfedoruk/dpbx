@@ -1,8 +1,17 @@
 #describe(list)
 \deu+ 
 \du
+																			# ------------ databases -----------
+#list
+\l
 
-																			# ------------ admin -----------
+#create 
+create database DB_NAME;
+
+#connect
+\c DB_NAME
+
+																			# ------------ admin, users -----------
 
 #create user
 psql -c "CREATE USER admin WITH PASSWORD '1';"
