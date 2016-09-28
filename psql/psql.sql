@@ -66,7 +66,9 @@ ALTER TABLE cms.games2 ADD CONSTRAINT game_description_game_id_fkey FOREIGN KEY 
 ALTER TABLE egt.games_new ADD FOREIGN KEY (game_id) REFERENCES cms.games(id);
 ALTER TABLE egt.log DROP CONSTRAINT egt_transferid_partner_id;
 
+# ---- modify ----
 ALTER TABLE distributors ALTER COLUMN street SET NOT NULL;
+ALTER TABLE egt.log ALTER COLUMN operation_id TYPE varchar(64);
 
 
 CREATE INDEX indx_cms_games_title ON cms.games (title);
