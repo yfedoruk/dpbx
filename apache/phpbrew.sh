@@ -31,4 +31,9 @@ sudo a2enmod rewrite
 #sudo apt-get install libapache2-mod-fastcgi php-fpm
 #sudo a2dismod fastcgi && sudo a2enmod fastcgi && apache2ctl configtest
 
+## enable/disable
+phpbrew ext enable/disable xdebug
+
+#install extensions
+phpbrew --debug ext install mongodb
 
