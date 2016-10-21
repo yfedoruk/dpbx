@@ -25,3 +25,10 @@ sudo sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php/5.6/apache2/p
 # sudo php5dismod xdebug
 
 
+#PHP SCREAM!
+
+pecl install scream-0.1.0
+#echo "extension=scream.so" >> php.ini
+#echo "scream.enabled=On" >> php.ini
+
+
