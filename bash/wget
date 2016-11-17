@@ -1,0 +1,3 @@
+wget --user=myuser --password=mypassword   myfile
+
+wget -cOFilmName.avi    http://ex.ua/1232132

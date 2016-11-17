@@ -1,0 +1,7 @@
+Pipe a gzipped mysql dump over ssh
+
+I had a problem with a server without any space left on the drive, but still had to dump a database. So what i did was pipe the output of `mysqldump` to gzip and then send it over ssh to another server.
+`mysqldump` outputs clear text so lets send that to gzip. We need to tell gzip to output the result to stdout so we can pipe it to ssh. We can do this by adding the -c option. Last we need to send it over ssh. You can pipe it over ssh by simply doing `ssh user@host ‘cat > ~/dump.sql.gz’
+At the end you’ll end up with a string like this,
+
+mysqldump -u MYSQL_USERNAME -p YOUR_DATABASE | gzip -c | ssh USERNAME@YOUR_TO_HOST 'cat > ~/dump.sql.gz'

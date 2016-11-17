@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+	<title>Linux: как добавить пользователя в группу » Постигаем основы операционных систем, учимся администрированию.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="MaxSite CMS">
+	<meta name="description" content="Linux: как добавить пользователя в группу">
+	<meta name="keywords" content="Linux: как добавить пользователя в группу">
+	<link rel="shortcut icon" href="http://guruadmin.ru/application/maxsite/templates/molse/ico/favicon4.ico" type="image/x-icon">
+	<link rel="stylesheet" href="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/print.css" type="text/css" media="print">
+	<link rel="stylesheet" href="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/custom_menu-015.css" type="text/css" media="screen">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://guruadmin.ru/feed">
+	
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/jquery-1.js"></script>
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/effects.js"></script>
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/effects_002.js"></script>
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/my_ef.js"></script>
+	
+	
+	<script type="text/javascript">
+	
+	function SpoilerToggle(id, link, showtext, hidetext)
+	{
+		var spoiler = document.getElementById(id);
+    	if (spoiler.style.display != "none")
+		{
+           	spoiler.style.display = "none";
+            link.innerHTML = showtext;
+            link.className = "spoiler_link_show";
+        }
+		else
+		{
+	       	spoiler.style.display = "block";
+            link.innerHTML = hidetext;
+            link.className = "spoiler_link_hide";
+        }
+    }
+	</script>
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/jquery_002.js"></script>
+	<link rel="stylesheet" href="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/rater.css" type="text/css" media="screen">
+	
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			lburl = 'http://guruadmin.ru/application/maxsite/plugins/lightbox/images/';
+			$('div.gallery a').lightBox({
+				imageLoading: lburl+'lightbox-ico-loading.gif',
+				imageBtnClose: lburl+'lightbox-btn-close.gif',
+				imageBtnPrev: lburl+'lightbox-btn-prev.gif',
+				imageBtnNext: lburl+'lightbox-btn-next.gif'
+			});
+			
+			$('a.lightbox').lightBox({
+				imageLoading: lburl+'lightbox-ico-loading.gif',
+				imageBtnClose: lburl+'lightbox-btn-close.gif',
+				imageBtnPrev: lburl+'lightbox-btn-prev.gif',
+				imageBtnNext: lburl+'lightbox-btn-next.gif'
+			});
+		});
+	</script>
+	<link rel="stylesheet" href="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/jquery.css" type="text/css" media="screen">
+	<script type="text/javascript" src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/comment_button.js"></script>
+
+<script src="Linux:%20%D0%BA%D0%B0%D0%BA%20%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F%20%D0%B2%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%83%20%C2%BB%20%D0%9F%D0%BE%D1%81%D1%82%D0%B8%D0%B3%D0%B0%D0%B5%D0%BC%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC,%20%D1%83%D1%87%D0%B8%D0%BC%D1%81%D1%8F%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E._files/3vInouQYS7840000Zh_bEkK4XP7W2fQcWWvCaRUkW0C9auy8fBB00m0QVWC0.asc" type="text/javascript"></script></head><body><div id="container"><div id="sub-container"><div id="wrapper"><div id="content"><div class="type type_page"><div class="page_only"><h1>Linux: как добавить пользователя в группу</h1><div class="info"><span>Метки:</span> <a href="http://guruadmin.ru/tag/Linux" rel="tag">Linux</a> | <a href="http://guruadmin.ru/tag/shell" rel="tag">shell</a> | <a href="http://guruadmin.ru/tag/%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B+Linux" rel="tag">команды Linux</a><br><span>Среда, 8 октября 2008 г.</span><br><span>Просмотров:</span> 40433<br><span>Подписаться на</span> <a href="http://guruadmin.ru/page/linux-kak-dobavit-polzovatelja-v-gruppu/feed">комментарии по RSS</a></div>
+
+
+<div class="page_content type_page">
+<p><span style="color: rgb(255, 0, 0);">Вопрос.</span> Как я могу добавить пользователя в группу в Linux?</p>
+<p><span id="more-138"></span></p>
+<p><span style="color: rgb(0, 153, 0);">Ответ. </span>Вы можете использовать команды <span style="font-weight: bold;">useradd </span>или<span style="font-weight: bold;">usermod </span>для добавления пользователя в группу. Команда <span style="font-style: italic;">useradd </span>создает нового пользователя или обновляет информацию у существующего. Команда <span style="font-style: italic;">usermod </span>модифицирует
+ существуюего пользователя. Вся информация о пользователях и группах 
+храниться в файлах /etc/passwd, /etc/shadow и /etc/group.</p><h3>Пример использования useradd - Добавляем нового пользователя&nbsp; в вторичную группу</h3>
+<p>Используем команду useradd для добавления нового пользователя в 
+существующую группу. Если группа не существует создайте её. Синтаксис:</p>
+<code>useradd -G {<span style="color: rgb(153, 102, 51);">group-name</span>} <span style="color: rgb(102, 51, 51);">username</span></code>
+<p>Создадим пользователя vivek и добавим его в группу developers. 
+Залогиньтесь как пользователь root и убедитесь что группа developers 
+существует:</p>
+
+<code></code>
+<p><small><code># grep developers /etc/group</code>
+</small></p><p>Вывод:</p><pre>developers:x:1124:</pre><p>Если группы нет, используйте команду groupadd для создания новой группы developers:</p>
+<p><small><code># groupadd developers</code>
+</small></p><p>Затем добавьте пользователя vivek в группу developers:</p><p><small><code># useradd -G developers vivek</code>
+</small></p><p>Установите пароль пользователю vivek:</p><p><small></small></p><p><small><code># passwd vivek</code>
+</small></p><p>Убедитесь что пользователь добавлен в группу developers:</p><p><small><code># id vivek</code>
+Output:</small></p><pre>uid=1122(vivek) gid=1125(vivek) groups=1125(vivek),1124(developers)</pre><p>Опция
+ -G позволяет добавить пользователю группу. Группы можно перечислять 
+через запятую. К примеру, добавим пользователя jerry в группы</p>
+<p>admins, ftp, www, and developers, введя:</p><p><small><code># useradd -G admins,ftp,www,developers jerry</code>
+</small></p>
+<code></code>
+<h3>Пример использования useradd - Добавляем нового пользователя в основную группу </h3><p>Для добавления пользователя tony в группу developers используем следующую команду:</p>
+
+<code></code>
+<p><small><code># useradd -g developers tony</code>
+</small></p><p><small><code># id tony </code>
+</small></p><p><small>uid=1123(tony) gid=1124(developers) groups=1124(developers)</small></p><p>Опция -g позволяет добавить пользователя в основную группу. Группа должна существовать.</p><h3>Пример использования usermod - Добавляем существующего пользователя в существующую группу</h3>
+<p>Добавляем существующего пользователя tony в вторичную группу ftp:</p><p><small><code># usermod -a -G ftp tony</code>
+</small></p><p>Изменяем существующему пользователю tony первучную группу на www:</p>
+<code><small># usermod -g www tony</small></code></div></div></div></div></div></div></div></body></html>

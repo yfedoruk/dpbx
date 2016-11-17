@@ -1,0 +1,34 @@
+License Key PhpStorm 8 
+ 
+User Name : EMBRACE
+===== LICENSE BEGIN =====
+43136-12042010
+00002UsvSON704l"dILe1PVx3y4"B3
+49AU6oSDJrsjE8nMOQh"8HTDJHIUUh
+gd1BebYc5U"6OxDbVsALB4Eb10PW8"
+===== LICENSE END =====
+
+User Name : TorReviver
+===== LICENSE BEGIN =====
+09574-12042010
+00000N7tVkjChpCjDvLjvELNOsgIeH
+1POKglQCIddVHUwb6RDtMpzpzeXi0Z
+RGN7yqI340MhKOu1odUVLb40g5HUF4
+===== LICENSE END =====
+
+User Name : Learn Programming
+===== LICENSE BEGIN =====
+63758-12042010
+00000Ryqh0NCC73lpRm!XVcxFChJ2g
+TUR2lZtlLXrPLbQ66Gs8MHs51RvF2y
+agoDlzne08Zm8VXbts1UMKE!EW4v8G
+===== LICENSE END =====
+
+===========WebStorm 10.0.1==============
+username:    webstorm
+===== LICENSE BEGIN =====
+72149-12042010
+00000cI5EYta7xt""jWOIDohDqQx7S
+SSsCH4oSb"1Y4edvtuSYyQ"iqGYhuo
+!8r1Zrqkj"TmWPZ!Eu"puCi6KV2SVe
+===== LICENSE END =====

@@ -1,0 +1,32 @@
+Search "catalog_product_entity" and rewrite it to "ik4f_catalog_product_entity" in the file catalog_product_entity.sql:
+
+sed -i 's/catalog_product_entity/ik4f_catalog_product_entity/g' catalog_product_entity.sql
+
+sed -i 's///g'
+
+
+grep -rn --exclude=*{\.sql,\.svn,\.log}* '[^(static)] public function getAllOptions' .
+
+sed -i "s/protected function _getItemsData()/protected function _getItemsData2()/g" ./app/code/core/Mage/Catalog/Model/Layer/Filter/Price.php ./app/code/core/Mage/Catalog/Model/Layer/Filter/Decimal.php ./app/code/core/Mage/Catalog/Model/Layer/Filter/Category.php
+ ./app/code/core/Mage/Catalog/Model/Layer/Filter/Abstract.php ./app/code/core/Mage/Catalog/Model/Layer/Filter/Attribute.php
+
+
+
+
+# подстановка (найти и заменить) "foo" на "bar" в каждой строке
+sed 's/foo/bar/' # заменяет только первое вхождение в строке
+sed 's/foo/bar/4' # заменяет только 4 вхождение в строке
+sed 's/foo/bar/g' # заменяет ВСЕ вхождения в строке
+sed 's/(.*)foo(.*foo)/1bar2/' # заменяет друг за другом
+sed 's/(.*)foo/1bar/' # заменяет только завершающее слово
+
+# ЗАМЕНЯЕТ "foo" на "bar" ТОЛЬКО для строк ,содержащих "baz"
+sed '/baz/s/foo/bar/g'
+
+# подставляет "foo" на "bar" КРОМЕ строк, содержащих "baz"
+sed '/baz/!s/foo/bar/g' 
+
+#
+sed -i 's/чево менять/на кого менять/' /path/to/your/files/*
+
+примерно так 

@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns= "http://www.w3.org/1999/xhtml">
+<head>
+
+<link rel="stylesheet" type="text/css" href="belug1.css" />
+
+<title>The ps Command</title></head>
+
+<body bgcolor="#ffffff">
+
+<a href="index.html">LINFO</a>
+
+<br /><center><h1>The ps Command</h1></center><br />
+
+<table width="100%"><tbody><tr><td width="10%"></td><td width="80%">
+
+<br />
+
+<p>
+The <i>ps</i> (i.e., <i>process status</i>) <a href="command.html">command</a> is used to provide information about the currently running <a href="process.html"><i>processes</i></a>, including their <i>process identification numbers</i> (PIDs).
+</p>
+
+<p>
+A process, also referred to as a <i>task</i>, is an <i>executing</i> (i.e., running) instance of a program. Every process is assigned a unique PID by the system. 
+</p>
+
+<p>
+The basic syntax of ps is
+</p>
+
+<blockquote>
+<p>
+<code>ps [options]</code>
+</p>
+</blockquote>
+
+<p>
+When ps is used without any options, it sends to <a href="standard_output.html"><i>standard output</i></a>, which is the display monitor by default, four items of information for at least two processes currently on the system: the <a href="shell.html"><i>shell</i></a> and ps. A shell is a program that provides the traditional, text-only user interface in <a href="unix-like.html">Unix-like</a> <a href="operating_systems_list.html">operating systems</a> for issuing commands and interacting with the system, and it is <i>bash</i> by default on <a href="linuxdef.html">Linux</a>. ps itself is a process and it <i>dies</i> (i.e., is terminated) as soon as its output is displayed. 
+</p>
+
+<p>
+The four items are labeled  PID, TTY, TIME and CMD. TIME is the amount of CPU (central processing unit) time in minutes and seconds that the process has been running. CMD is the name of the command that launched the process. 
+</p>
+
+<p>
+TTY (which now stands for <i>terminal type</i> but originally stood for <i>teletype</i>) is the name of the <a href="console.html"><i>console</i></a> or <i>terminal</i> (i.e., combination of monitor and keyboard) that the user <a href="login_def.html">logged into</a>, which can also be found by using the <i>tty</i> command. This information is generally only useful on a multi-user network. 
+</p>
+
+<p>
+A common and convenient way of using ps to obtain much more complete information about the processes currently on the system is to use the following: 
+</p>
+
+
+<blockquote>
+<p>
+<code>ps -aux | less</code>
+</p>
+</blockquote>
+
+</p>
+The <i>-a</i> option tells ps to list the processes of all users on the system rather than just those of the current user, with the exception of <i>group leaders</i> and processes not associated with a terminal. A group leader is the first member of a group of related processes. 
+</p>
+
+<p>
+The <i>-u</i> option tells ps to provide detailed information about each process. The <i>-x</i> option adds to the list processes that have no controlling terminal, such as <i>daemons</i>, which are programs that are launched during <i>booting</i> (i.e., computer startup) and run unobtrusively in the background until they are activated by a particular event or condition. 
+</p>
+
+<p>
+As the list of processes can be quite long and occupy more than a single screen, the output of <i>ps -aux</i> can be <a href="pipes.html"><i>piped</i></a> (i.e., transferred) to the <i>less</i> command, which lets it be viewed one screenful at a time. The output can be advanced one screen forward by pressing the SPACE bar and one screen backward by pressing the <i>b</i> key.
+</p>
+
+<p>
+Among the information that ps -aux provides about each process is the user of the process, the PID, the percentage of CPU used by the process, the percentage of <a href="memory.html">memory</a> used by the process, VSZ (virtual size in kilo<a href="byte.html">bytes</a>), RSS (real memory size or resident set size in 1024 byte units), STAT (the process state code), the starting time of the process, the length of time the process has been active and the command that initiated the process. The process state codes include D, uninterruptable sleep; N, low priority; R, runnable (on run queue); S, sleeping; T, traced or stopped; Z, defunct (<i>zombie</i>).
+</p>
+
+<p>
+In contrast to most commands, the hyphen preceding ps's options is optional, not mandatory. Thus, the following could be (and sometimes is) used in place of the above command:
+</p>
+
+
+<blockquote>
+<p>
+<code>ps aux | less</code>
+</p>
+</blockquote>
+
+<p>
+An alternative set of options for viewing all the processes running on a system is
+</p>
+
+<blockquote>
+<p>
+<code>ps -ef | less</code>
+</p>
+</blockquote>
+
+<p>
+The <i>-e</i> option generates a list of information about every process currently running. The <i>-f</i> option generates a listing that contains fewer items of information for each process than the <i>-l</i> option.
+</p>
+
+<p>
+Among the columns displayed by <i>ps -ef</i>, UID contains the username of the account that <i>owns</i> the process  (which is usually the same user that started the process) and STIME displays the time the process started, or the starting date if it started more than 24 hours ago. 
+</p>
+
+<p>
+The processes shown by ps can be limited to those belonging to any given user by piping the output through <i>grep</i>, a <a href="filters.html">filter</a> that is used for searching text. For example, processes belonging to a user with a username <i>adam</i> can be displayed with the following:
+</p>
+
+<blockquote>
+<p>
+<code>ps -ef | grep adam</code>
+</p>
+</blockquote>
+
+<p>
+The -l option generates a <i>long</i> listing, and when used together with the -e and -f options creates a table with 15 columns:
+</p>
+
+<blockquote>
+<p>
+<code>ps -efl</code>
+</p>
+</blockquote>
+
+<p>
+The additional columns of most interest are NI and SZ. The former shows the <i>nice</i> value of the process, which determines the priority of the process. The higher the value, the lower the priority. The default nice value is 0 on Linux systems.
+</p>
+
+<p>
+The latter displays the size of the process in memory. The value of the field is the number of <i>pages</i> the process is occupying. On Linux systems a page is 4,096 bytes.
+</p>
+
+<p>
+ps is most often used to obtain the PID of a malfunctioning process in order to terminate it with the <i>kill</i> command. For example, if the PID of a <i>frozen</i> or <i>crashed</i> program is found to be 1125, the following can usually terminate the process:
+</p>
+
+<blockquote>
+<p>
+<code>kill 1125</code>
+</p>
+</blockquote>
+
+<p>
+ps -ef or ps -efl can then be used to confirm that the process really has stopped. If it has not, then the more forceful <i>-9</i> option should be used, i.e.,
+</p>
+
+<blockquote>
+<p>
+<code>kill -9 1125</code>
+</p>
+</blockquote>
+
+<p>
+The <a href="pstree.html"><i>pstree</i></a> command is similar to ps in that it can be used to show all of the processes on the system along with their PIDs. However, it differs in that it presents its output in a <i>tree diagram</i> that shows how processes are related to each other and in that it provides less detailed information about each process than does ps. 
+</p>
+
+
+
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+<p><br /></p>
+
+<p class="copy">Created May 20, 2005.<br />
+Copyright &#169; 2005 The Linux Information Project. All Rights Reserved.</p>
+
+</td><td width="10%"></td></tr></tbody></table>
+
+</body></html>

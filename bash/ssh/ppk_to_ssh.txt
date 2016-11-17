@@ -1,0 +1,6 @@
+Do it with Putty. :)
+
+Linux: sudo apt-get install putty-tools
+puttygen id_dsa.ppk -O private-openssh -o id_dsa
+
+then copy id_dsa to ./ssh/ and enjoi ssh login@site.com 

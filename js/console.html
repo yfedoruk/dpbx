@@ -1,0 +1,522 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru"> 
+<head> 
+<title>Работа с Firebug console с помощью jQuery</title> 
+<meta name="title" content="Работа с Firebug console с помощью jQuery" /> 
+<meta name="description" content="Если у вас еще нет Firebug, вам давно пора им обзавестись. Не говоря о многих полезных его функциях, например, отслеживание HTTP-трафика и поиска ошибок CSS проекта, с помощью консоли в Firebug можно отлаживать ваш JavaScript." /> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="http://i.codenet.ru/min.css" />
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="http://www.codenet.ru/np-includes/templates/codenet/styles.ie6.css" media="screen, projection" />
+<![endif]--> 
+
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые статьи" href="http://feeds.feedburner.com/codenet/read" /> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые сообщения на форуме" href="http://feeds.feedburner.com/codenet/forum" /> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые сайты в каталоге" href="http://feeds.feedburner.com/codenet/cat" /> 
+<link rel="alternate" type="application/rss+xml" title="CodeNet.Ru - новые исходники" href="http://feeds.feedburner.com/codenet/sources" /> 
+
+<meta name="verify-v1" content="ZuirPLme4DTpdfqSqtolx2w0hscTr5RuK9Tek+K1aAs=" /> 
+<link rel="icon" href="http://i.codenet.ru/favicon.ico" /> 
+
+<script type="text/javascript" src="http://i.codenet.ru/jquery.min.js"></script> 
+ 
+<meta property='og:title' content='Работа с Firebug console с помощью jQuery' />
+<meta property='og:site_name' content='CodeNet.ru' />
+<meta property='og:url' content='http://www.codenet.ru/webmast/js/firebug-console-jquery.php' />
+<meta property='og:type' content='article' />
+<meta property="og:description" content="Если у вас еще нет Firebug, вам давно пора им обзавестись. Не говоря о многих полезных его функциях, например, отслеживание HTTP-трафика и поиска ошибок CSS проекта, с помощью консоли в Firebug можно отлаживать ваш JavaScript." /> 
+<meta property="og:image" content="http://i.codenet.ru/logo_150x100.gif" /> 
+ 
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-3078405597865084");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-3078405597865084", "codenet_left_240x400");
+GA_googleAddSlot("ca-pub-3078405597865084", "codenet_top_728x90");
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+
+<script type="text/javascript">
+<!--
+function ce_collapse(id) {var e=$('#source'+id);e.height('200px');e.css('overflow','scroll');$('#cesource'+id).html('<a href="#" onclick="ce_expand('+id+');return false;">Развернуть исходник<\/a>');}
+
+function ce_expand(id) {
+	var e=$('#source'+id);
+	e.height('auto');
+	e.css('overflow','hidden');
+	$('#cesource'+id).html('<a href="#" onclick="ce_collapse('+id+');return false;">Свернуть исходник<\/a>');
+	}
+//-->
+</script>
+
+</head> 
+ 
+<body bgcolor="white" class="m0" > 
+ 
+<div id="cnwrapper"> 
+
+<div class="btop"> 
+<!-- codenet_top_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("codenet_top_728x90");
+</script></div>
+ 
+<div id="cnheader">
+	<div id="logo">
+		<div>
+			<a href="http://www.codenet.ru/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAcCAMAAADx2dmpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAK7v////5NLvRAAAAEdJREFUeNpiYCQKMBADRoBRcCORjUezB85GFkdTMEKMQpbCSuISRGGPGoVDihEzvkaNGk1XqEbhlCU92Ie3UaP1IJFGAQQYACt2A9WxwuoaAAAAAElFTkSuQmCC" style="border:0;width:74px;height:28px;" alt="CodeNet - все для программиста!" title="CodeNet - все для программиста!" /></a><br />
+			<a href="http://www.codenet.ru/"><font color="#FF8C00">Все для программиста!</font></a>
+		</div>
+	</div>
+ 
+<script type="text/javascript"> 
+<!--
+cnsd=document;cnst=escape(cnsd.title);
+cnst=cnst.replace(/\+/g,'%2B');cnsa=navigator.appName;
+cnsn=(cnsa.substring(0,2)=='Mi')?0:1;cnss=screen;cnspx=(cnsn==0)?cnss.colorDepth:cnss.pixelDepth;
+document.write('<img alt="" s'+'rc="http://s.codenet.ru/cnt-gif1x1.php?e='+cnss.width+'.'+cnss.height+'&amp;d='+cnspx+'&amp;r='+escape(cnsd.referrer)+'&amp;p='+escape(cnsd.location)+'&amp;t='+cnst+'" width="1" height="1" border="0" />');
+//-->
+</script><noscript><img src="http://s.codenet.ru/cnt-gif1x1.php?468&amp;c=0" width="1" height="1" border="0" alt="" /></noscript> 
+ 
+<script type="text/javascript"><!--
+new Image().src = "//counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();//--></script><!--/LiveInternet--> 
+ 
+<div id="searchform"> 
+ 
+	<div id="search1">
+
+		<form action="http://www.codenet.ru/search/search.php" method="get"> 
+			<table><tr><td class="sft1">
+				<input type="text" name="q" value="" />
+			</td><td class="sft2">
+				<input type="submit"  value="Искать" />
+			</td></tr></table>
+		</form> 
+
+
+		<ul>
+			<li class="active"><a href="http://www.codenet.ru/">Статьи</a></li>
+			<li><a href="http://forum.codenet.ru/">Форум</a></li>
+			<li><a href="http://sources.codenet.ru/">Исходники</a></li>
+			<li><a href="http://cat.codenet.ru/">Каталог</a></li>
+			<li><a href="http://www.codenet.ru/hosting/">Хостинг</a></li>
+			<li><a href="http://www.codenet.ru/services/">Утилиты</a></li>
+		</ul>
+	</div>
+
+	<div id="search2">
+
+		<form action="http://www.codenet.ru/search/" method="get"> 
+
+			<div class="t">Справочник функций</div>
+			<table><tr><td class="sft1">
+				<input type="text" name="q" value="" />
+			</td><td class="sft2">
+				<input type="submit" value="Искать" />
+			</td></tr></table>
+			<div>
+				<select> 
+					<option value="any">Все справочники</option> 
+					<option value="cpp">Си/Си++</option> 
+					<option value="cpp1">Borland C++</option> 
+					<option value="cpp2">Си/Си++ (DOS)</option> 
+					<option value="cpp3">Си/Си++ (Unix/Linux)</option> 
+					<option value="pascal">Pascal</option> 
+					<option value="perl">Perl</option> 
+					<option value="winapi">WinAPI</option> 
+				</select> 
+			</div>
+
+		</form>
+	</div>
+	<div style="clear:both"></div>
+</div>
+
+
+</div>
+
+<div class="delimiter" style="clear:both"></div>
+
+<div class="leftcol">
+          <!-- По умолчанию -->
+<div class="se">
+	<script type="text/javascript" src="http://inf.devconf.ru/rotator/?place=141&mode=original"></script>
+	
+</div>
+<!-- По умолчанию -->
+<div class="se">
+	<h3>Ваш аккаунт</h3>
+
+<table>
+<form action="http://forum.codenet.ru/ajax/login.php" method="post" id="common_login_form" class="m0">
+<input type="hidden" name="type" value="html"/>
+<tr>
+	<td>Логин:</td>
+	<td><input type="text" name="login" value="" style="width:100%;" /></td>
+</tr>
+<tr>
+	<td>Пароль:</td>
+	<td><input type="password" name="password" value="" style="width:100%;" /></td>
+</tr>
+<tr>
+	<td colspan="2" style="padding:3px;">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tr><td><input type="checkbox" name="store_session" id="common_store_session" /></td><td><label for="common_store_session">Запомнить меня</label></td></tr>
+		</table>                 
+	</td>
+</tr>
+</table>
+
+<div id="common_login_button">
+	<input type="submit" value="Войти &gt;&gt;" />
+	<span></span>
+</div>
+
+<div style="margin-top:10px;">
+<a href="http://forum.codenet.ru/restore-password/">Забыли пароль?</a><br />
+<a href="http://forum.codenet.ru/reg" style="color:red;font-weight:bold;">Регистрация</a>
+</div>
+
+<div style="margin-top:10px;">
+<div style="color:#404040;margin-bottom:3px;">Информацию о новых материалах можно получать и без регистрации:</div>
+<div class="rss" style="font-size:11px;padding:5px;width:auto;"><a rel="nofollow" href="http://www.codenet.ru/r/fb/codenet/forum">RSS</a></div>
+<div class="twitter" style="font-size:11px;padding:5px;width:auto;margin-left:3px;"><a rel="nofollow" href="http://www.codenet.ru/r/twitter/">Twitter</a></div>
+<div class="rss" style="background-color:#597da3;font-size:11px;padding:5px;width:auto;margin-left:3px;"><a rel="nofollow" href="http://vkontakte.ru/club32056391">ВКонтакте</a></div>
+</div>
+
+
+
+	
+</div>
+<!-- Баннер -->
+<div class="se" style="padding:0;margin:0 0 10px 0;text-align:center;background-color:white;border:none;">
+	<!-- codenet_left_240x400 -->
+<script type='text/javascript'>
+GA_googleFillSlot("codenet_left_240x400");
+</script>
+
+	
+</div>
+<!-- Пустой -->
+<div class="block_empty"><div style="margin-bottom:10px;" id="codent_social_block">
+
+<div id="vk_groups" style="margin-bottom:5px;"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.getScript('http://userapi.com/js/api/openapi.js?34',function() {
+        VK.Widgets.Group("vk_groups", {mode: 0, width: "auto", height: "320"}, 32056391);
+        });
+    });
+
+function removesocialblockcallback(data) {
+	if (data.status=='ok') {
+	$('#codent_social_block').hide(500);
+		}
+	else alert(data.error);
+	}
+
+function removesocialblock() {
+
+	$.ajax({
+	    url: 'http://www.codenet.ru/social_block_remove.php',
+	    type: 'GET',
+		crossDomain: true,
+		dataType: "jsonp"
+		});
+
+	return false;
+	}
+
+</script>
+
+<div style="float:right;padding:5px 0 0 0;">
+<a href="#" onclick="return removesocialblock();" style="font-size:9px;">Убрать блок ВКонтакте навсегда</a>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<!-- По умолчанию -->
+<div class="se">
+	<h3>Последние темы форума</h3>
+
+<div class="fm" id="flt">
+<ul>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71015/%D0%BF%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C+%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC">помоги создать алгоритм</a> &mdash; 2012-05-15 12:19:09<span style="color:#c0c0c0"> (0)</span>
+<div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / VladimirTS1991</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71014/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0+%D1%81%D0%BE+%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B0%D0%BC%D0%B8+List%3C%3E+C%23%2C+%D0%BE%D1%87%D0%B5%D0%BD%D1%8C+%D0%BD%D0%B0%D0%B4%D0%BE%21">Работа со списками List<> C#, очень надо!</a> &mdash; 2012-05-15 11:45:48 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370659#answer_370659">(10)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / Silakoff</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71013/DateTimePicker+%D1%8E%D0%BB%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%B4%D0%B0%D1%82%D0%B0">DateTimePicker юлианская дата</a> &mdash; 2012-05-15 11:28:05 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370636#answer_370636">(6)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/8" class="light">Borland C++ Builder</a> / m-d-k</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71012/%D0%9A%D0%B0%D0%BA+%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D0%BC%D0%B0%D0%BA%D1%80%D0%BE%D1%81+%D0%B4%D0%BB%D1%8F+%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B%3F">Как правильно написать макрос для таблицы?</a> &mdash; 2012-05-15 10:55:35 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370660#answer_370660">(4)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/13" class="light">Visual Basic</a> / kaf</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71011/+error+LNK2001%3A+%D0%BD%D0%B5%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9+%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9+%D1%81%D0%B8%D0%BC%D0%B2%D0%BE%D0%BB"> error LNK2001: неразрешенный внешний символ</a> &mdash; 2012-05-15 10:03:52 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370655#answer_370655">(15)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / KokosSPb</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71010/%D0%9E+%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F">О нотация</a> &mdash; 2012-05-15 01:10:21 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370604#answer_370604">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / roman@</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71009/DSA+-+%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC">DSA - Алгоритм</a> &mdash; 2012-05-14 23:01:13 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370605#answer_370605">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / LawManiak</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71007/%D0%9A%D0%B0%D0%BA+%D1%8D%D1%82%D0%BE+%D0%B7%D0%B0%D0%BC%D1%83%D1%82%D0%B8%D1%82%D1%8C%3F">Как это замутить?</a> &mdash; 2012-05-14 21:24:27<span style="color:#c0c0c0"> (0)</span>
+<div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/26" class="light">Java</a> / Smitt_85</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71006/ExtJs-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D1%8C+%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81+%D0%BF%D1%80%D0%B8+evt%3A+listener%3A+resize+">ExtJs-выполнить запрос при evt: listener: resize </a> &mdash; 2012-05-14 20:39:47<span style="color:#c0c0c0"> (0)</span>
+<div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/19" class="light">Web программирование</a> / webdev</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71005/%D0%9A%D0%B0%D0%BA+%D0%BD%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C+%D1%8D%D1%82%D1%83+%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83">Как написать эту программу</a> &mdash; 2012-05-14 19:47:18 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370606#answer_370606">(4)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / ekaterina-</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71002/+%D0%9A%D0%B0%D0%BA+%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D0%B2%D0%B0%D1%82%D1%8C+%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B5+jpeg-%D1%84%D0%B0%D0%B9%D0%BB%D1%8B+%D0%B2+TJPEGImage%3F"> Как открывать разные jpeg-файлы в TJPEGImage?</a> &mdash; 2012-05-14 16:44:40 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370599#answer_370599">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/8" class="light">Borland C++ Builder</a> / m-d-k</div></li>
+<li><a style="font-size:13px;" href="http://www.codenet.ru/r/f/q71001/%D0%9A%D0%B0%D0%BA+%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C+%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BF%D0%BE%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9+%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80+%D1%87%D0%B5%D1%80%D0%B5%D0%B7+%D1%81%D0%BE%D0%BA%D0%B5%D1%82%D1%8B">Как организовать многопоточный сервер через сокеты</a> &mdash; 2012-05-14 16:07:50 <a style="color:#c00000;font-weight:bold;" href="http://www.codenet.ru/r/f/p370607#answer_370607">(1)</a><div class="hint"><a href="http://www.codenet.ru/r/f/questions/theme/30" class="light">C/C++/C# - общие вопросы</a> / scorpionl3</div></li>
+</ul>
+</div>
+<div align="right" style="padding:5px;"><a href="http://www.codenet.ru/r/f/new">Показать новые сообщения &raquo;</a></div>
+	
+</div>
+<!-- По умолчанию -->
+<div class="se">
+	<h3>Почтовая рассылка</h3>
+<form action="http://www.codenet.ru/maillist/subscribe" method="post" class="m0" style="padding-right:10px;">
+
+<input name="email" type="text" value="ваш@email.ru" accesskey="e" title="почтовая рассылка (Alt-E)" style='width:100%' onfocus='if (this.value=="ваш@email.ru") this.value=""' onblur='if (this.value=="") this.value="ваш@email.ru"' />
+
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td style="padding:4px;"><input checked="checked" type="radio" name="sub" value="1" id="subs1" /></td><td style="padding:4px"><label for="subs1">Подписаться</label></td></tr>
+<tr><td style="padding:4px"><input type="radio" name="sub" value="0" id="subs2" /></td><td style="padding:4px"><label for="subs2">Отписаться</label></td></tr>
+</table> 
+
+<input type="submit" value="Вперед !" class="ism" /><br /><br />
+
+Подписчиков: <strong>19100</strong><br />
+<a href="http://www.codenet.ru/mail/">Последний выпуск</a>: <strong>23.04.2012</strong>
+
+</form>
+
+
+	
+</div>
+</div>
+<div class="centercol">
+<!-- Контент (один на станице) -->
+<div class="content">
+	<div class="path"><a href="/">CodeNet</a> / <a href="/cat/Languages/">Языки программирования</a> / <a href="/cat/Languages/JavaScript/">Java Script</a> / <a href="/cat/Languages/JavaScript/Debugging/">Отладка</a> <br />
+</div><div style="padding:0;margin:0;width:100%;border-bottom:solid 1px #C6D6DE;"></div>
+<h1>Работа с Firebug console с помощью jQuery</h1><div class="social">
+
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 2692845, onlyWidgets: true});
+</script>
+
+<div style="float:left;width:180px;">
+<div id="vk_like"></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "button", pageUrl: "http://www.codenet.ru/webmast/js/firebug-console-jquery.php"});
+</script>
+</div>
+
+<div style="float:left;width:150px;">
+<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.codenet.ru/webmast/js/firebug-console-jquery.php" data-count="horizontal" data-via="CodeNetRu" data-lang="ru">Твитнуть</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>
+
+<div style="float:left;">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=290955720945342";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="http://www.codenet.ru/webmast/js/firebug-console-jquery.php" data-send="true" data-layout="button_count" data-width="300" data-show-faces="true" data-font="arial"></div>
+
+</div>
+
+<div style="float:left;width:180px;">
+<g:plusone size="medium" href="http://www.codenet.ru/webmast/js/firebug-console-jquery.php"></g:plusone>
+
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div>
+
+<div style="clear:both"></div>
+</div>
+<div align="right">
+Автор: <a href="http://r.codenet.ru/?http://frontendme.ru/" target="_blank">FrontEndMe</a><br>
+27 апреля 2010 года
+</div>
+
+<h1>Работа с Firebug console с помощью jQuery</h1>
+
+<p>Если у вас еще нет Firebug, вам давно <a href="http://r.codenet.ru/?http://getfirebug.com/">пора им обзавестись</a>. Не говоря о многих полезных его функциях, например, отслеживание HTTP-трафика и поиска ошибок CSS проекта, с помощью консоли в Firebug можно отлаживать ваш JavaScript.
+</p><p>Полный список всех возможностей Firebug Console (англ.) <a href="http://r.codenet.ru/?http://getfirebug.com/console.html">находится на офф. сайте</a>. А мы пока рассмотрим самые основные:
+
+</p><h1>1. Вывод обычной строки «Hello World!» в консоль.</h1>
+
+<pre>
+console.log('Hello World!');
+</pre>
+
+<p>2. Вывод в консоль строки из переменной text. Ф-я отображает справа файл и строку из которой была вызвана.
+
+</p><pre>var text = $$('.selector')[0].firstChild.data;
+console.debug('текст внутри элемента ".selector" = %s', text);
+</pre>
+<p>3. Вывод кол-ва ссылок в документе:
+</p><pre>
+var links = $$('a');
+console.info('кол-во ссылок на странице = %i', links.length);
+</pre>
+<p>4. Так выводится дробное число:
+</p><pre>
+console.warn('число Pi = %f', Math.PI);
+</pre>
+<p>5. Вывод в консоль непосредственно объекта «.selector», кликнув по которому вы увидете все его свойства:
+</p><pre>
+console.error('объект ".selector" = %o', $$('.selector')[0].firstChild);
+</pre>
+
+<p>6. Для того, чтобы вывести в Firebug Console сообщения группой:
+
+</p><pre>console.group(groupname);
+console.log("сообщение 1 из %s", groupname);
+console.log("сообщение 2 из %s", groupname);
+console.log("сообщение 3 из %s", groupname);
+console.groupEnd();
+</pre>
+
+<p>7. Чтобы заглянуть в сам объект (dir) или элемент (dirxml):
+
+</p><pre>
+console.dir({a: 'test', b: function() {return true;}});
+console.dirxml($$('.selector'));
+</pre>
+
+<p>8. Также пригодится простая проверка:
+
+</p><pre>
+console.assert(1 === true);
+</pre>
+
+<p>9. Если вы вдруг заблудитесь в коде, можно узнать все вызванные функции. Вставьте этот код в нужное место:
+
+</p><pre>
+console.trace();
+</pre>
+
+<p>10. И, на последок, код для замерения времени выполнения операции:
+
+</p><pre>
+var timeName = '100';
+console.time(timeName);
+for(var i=0;i&lt;100;i++) {
+	console.log(i);
+	}
+console.timeEnd(timeName);
+</pre>
+
+<p>Я рекомендую посмотреть в работе каждый предложенный пример. Таким образом, наиболее вероятно, то что эта информация «отложится» у вас в голове и вы вспомните о нужном методе отладки в нужный момент времени. </p>
+
+
+<div class="hr" style="margin-top:15px;"></div>
+
+<!-- Яндекс.Директ -->
+<div style="margin:10px 0;" id="yandex_ad"></div>
+<script type="text/javascript">
+(function(w, d, n, s, t) {
+    w[n] = w[n] || [];
+    w[n].push(function() {
+        Ya.Direct.insertInto(1959, "yandex_ad", {
+            site_charset: "utf-8",
+            ad_format: "direct",
+            font_size: 1,
+            font_family: "arial",
+            type: "flat",
+            limit: 2,
+            title_font_size: 3,
+            site_bg_color: "FFFFFF",
+            header_bg_color: "FFFFFF",
+            title_color: "285A99",
+            url_color: "285A99",
+            all_color: "285A99",
+            text_color: "404040",
+            hover_color: "285A99",
+            favicon: true
+        });
+    });
+    t = d.documentElement.firstChild;
+    s = d.createElement("script");
+    s.type = "text/javascript";
+    s.src = "http://an.yandex.ru/system/context.js";
+    s.setAttribute("async", "true");
+    t.insertBefore(s, t.firstChild);
+})(window, document, "yandex_context_callbacks");
+</script>
+
+
+<a name="addcomment"></a>
+
+<div class="hr"></div>
+
+<h1>Оставить комментарий</h1>
+
+<p style="color:red">Оставлять комментарии могут только зарегистрированные пользователи.</p>
+
+<p>Если вы не являетесь зарегистрированным пользователем, то вам необходимо <a href="http://forum.codenet.ru/reg">зарегистрироваться</a>.
+Регистрация бесплатна. Если вы уже зарегистрированы на CodeNet, то вам необходимо
+ввести логин и пароль в <a href="#top">верхней</a> (Alt-U) части страницы. </p>
+
+<a name="comments"></a><h1>Комментарии</h1>
+<div id="cn_comments"><a name="comment_10824"></a>
+
+<h4><span class="comment_number">1.</span> <a href="http://forum.codenet.ru/u30138" target="_blank">BlackHeretic</a> / 28 апреля 2010,  16:34:46<div class="comments_votes" id="cv_10824"><img class="comments_votes_good" alt="Мне нравится" id="cvg_10824" src="http://i.codenet.ru/vote_good.gif" /><img class="comments_votes_bad" alt="Мне не нравится" id="cvb_10824" src="http://i.codenet.ru/vote_bad.gif" /></div></h4>
+Отличная ознакомительная статья! Спасибо :)<br />
+Правда jQuery тут лишний, на его месте может быть что угодно. Заголовок несколько путает. Статья фактически о консоли.<br />
+Кстати, та же самая консоль присутствует и в Google Chrome.<script type="text/javascript">
+$(document).ready(function() {
+	$('.comments_votes_good').click(function() {
+		var s=$(this).attr('id');s=s.substring(4,99);
+		$('#cv_'+s).load('/comments/votes_good/'+s);
+		});
+	$('.comments_votes_bad').click(function() {
+		var s=$(this).attr('id');s=s.substring(4,99);
+		$('#cv_'+s).load('/comments/votes_bad/'+s);
+		});
+	});
+</script>
+</div><div style="clear:both;"></div>
+	
+</div></div>
+</div> 
+<div style="clear:both;"></div>
+ 
+<div style="margin-top:10px;padding:10px;border-top:solid 1px #C6D6DE;" align="center" id="cnfooter"> 
+ 
+<a href="http://www.codenet.ru/read/clame/">Реклама на сайте</a> |
+<a href="http://www.codenet.ru/read/links/exchange/">Обмен ссылками</a> |
+<a href="http://www.codenet.ru/read/links/">Ссылки</a> |
+<a href="http://www.codenet.ru/read/export/">Экспорт (RSS)</a> |
+<a href="http://www.codenet.ru/read/contacts/">Контакты</a> 
+<br /> 
+<a href="#" onclick="document.location='/'+'/www.codenet.ru/read/publish/';return false;">Добавить статью</a> |
+<a href="#" onclick="document.location='/'+'/sources.codenet.ru/upload.php';return false;">Добавить исходник</a> |
+<a href="#" onclick="document.location='/'+'/www.codenet.ru/hosting/my.php';return false;">Добавить хостинг-провайдера</a> |
+<a href="#" onclick="document.location='/'+'/cat.codenet.ru/cncat_add.php';return false;">Добавить сайт в каталог</a> 
+<br /> 
+ 
+<div id="v12">
+</div>
+ 
+</div> 
+</body> 
+</html>

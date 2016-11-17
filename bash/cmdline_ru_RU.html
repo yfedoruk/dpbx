@@ -1,0 +1,746 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Полезные команды в Linux</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="keywords" content="полезные основные команды linux">
+  <meta name="description" content="Основные команды linux. Список полезных команд в Linux.">
+  <link rel="shortcut icon" href="http://www.pixelbeat.org/favicon.ico" type="image/x-icon"/>
+<link rel="alternate" type="application/rss+xml" title="www.pixelbeat.org" href="/feed/rss2.xml"/>
+<style type="text/css">
+acronym {
+    font-variant: normal; /* stop opera auto capitalising */
+    border-bottom: 1px dotted; /* chrome doesn't otherwise highlight */
+}
+acronym:hover {
+    cursor: help;
+}
+
+q {
+    font-style: italic;
+}
+
+/* logical styles:
+kbd  for user keyboard entry
+code for snippets of computer code
+samp for computer status messages
+
+I use kbd below to actually represent a key on a keyboard
+*/
+kbd {
+    padding: 0px 1px 0px 1px;
+    margin: 0px 1px 0px 0px;
+    background-color: rgb(255,255,192);
+    border-top: 1px solid rgb(255,255,64);
+    border-left: 1px solid rgb(255,255,64);
+    border-right: 2px solid rgb(180,200,86);
+    border-bottom: 2px solid rgb(180,200,86);
+    font-size: 85%;
+}
+
+/* Move headings closer to the following info */
+h1,h2 {
+    padding: 16px 0px 6px 0px;
+    margin: 0px 0px 0px 0px;
+}
+h3 {
+    padding: 6px 0px 2px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+font.snippet {
+    font-size: smaller;
+    background-color: rgb(255,255,192);
+    border: 1px dashed rgb(180,200,86);
+    padding: 0px 2px 0px 2px; /* top left bottom right */
+}
+
+pre.snippet {
+    font-size: 100%;
+    background-color: rgb(255,255,192);
+    border: 1px dashed rgb(180,200,86);
+    text-align: left;
+    padding: 3px;
+    width: 50em;
+    /*
+    position: relative;
+    left: 10%;
+    */
+}
+
+pre.snippet font.comment {
+    color: rgb(180,200,86);
+}
+
+pre.snippet .hl {
+    background-color: #000000;
+    color: rgb(255,255,192);
+}
+
+pre.shell {
+    color: #bbbbbb;
+    background-color: #000000;
+    border: 1px solid;
+    margin: 15px 0px 15px 0px;
+    text-indent: 0;
+    text-align: left;
+    padding: 3px;
+    width: 50em;
+}
+
+pre.shell font.comment {
+    color: rgb(128,128,128);
+}
+
+/* shrink container to fit around contained text etc.
+ * Use with pre.shell if you've long lines.
+ * Note min-width ignored for display:table-cell on ff2 at least,
+ * hence why this additional class is needed.
+ * Note also that stuff doesn't break around a <pre> with this. */
+.shrink {
+    width: auto !important;
+    display: table-cell;
+}
+
+pre.shell .hl {
+    background-color: #bbbbbb;
+    color: #000000;
+}
+
+.monospace {
+    font-family: monospace;
+    white-space: pre;
+}
+.nw {
+    white-space: nowrap;
+}
+
+a { /*add :link for external links*/
+    text-decoration: none; /* don't underline links by default */
+    outline-style: none;   /* don't put dotted box around clicked links */
+}
+a:hover {
+    text-decoration: underline;
+}
+img { border-style: none; }
+a.blog {
+    background-color: rgb(180,200,86);
+    border: 1px solid;
+    font-size: 75%;
+}
+pre.shell a {
+    color: rgb(128,128,255); /* keep links visible on black background */
+}
+pre.shell b {
+    color: rgb(255,255,255); /* bold = white */
+    font-weight: normal;
+}
+
+/* These 2 are trying to emulate:
+   &lt;table border="1" cellspacing="0" cellpadding="1"&gt; */
+table.pixelbeat {
+    padding: 0px;
+    border: 2px ridge rgb(255,255,192); /* entry */
+    border-collapse: collapse;
+    background-color: rgb(255,255,192);
+}
+table.pixelbeat td {
+    padding: 0px;
+    padding-left: 2px;
+    border: 2px ridge rgb(255,255,192);
+    border-collapse: collapse;
+}
+tr.pbtitle, td.pbtitle {
+    background-color: rgb(180,220,100);
+}
+.dark {
+    color: rgb(180,200,86) !important;
+}
+.darkbg {
+    background-color: rgb(180,200,86) !important;
+}
+.medium {
+    color: rgb(180,220,100) !important;
+}
+.mediumbg {
+    background-color: rgb(180,220,100) !important;
+}
+
+.icon {
+    padding: 2px 3px 1px 3px; /* t r b l */
+    margin: 0;
+    text-align: center;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid;
+    cursor: pointer;
+}
+.blue {
+    background-color: #1845CC;
+    border-color: #c3cde8 #000033 #000033 #c3cde8;
+}
+
+.orange {
+    background-color: #ff8000;
+    border-color: #ffc8a4 #3f1a01 #3f1a01 #ffc8a4;
+}
+
+.preload {
+    display: none;
+}
+
+/* This is required when the reddit widget does not
+   have the expanded=1 parameter. Also hide header. */
+.score.dislikes, .score.likes, .reddit-header {
+    display:none !important;
+}
+/* The rest of the reddit stuff for when style=off */
+.reddit-voting-arrows {
+    display:none !important;
+}
+.rembeddit-content {
+    margin-top: 5px;
+}
+.reddit-entry {
+    padding: 0px 9px 10px; 9px; /* t r b l */
+}
+.rembeddit {
+    border: 1px solid rgb(180,220,100);
+    background-color: rgb(255,255,192);
+    max-width: 30em;
+}
+.rembeddit small {
+    color: gray;
+}
+.rembeddit a { text-decoration: none; } /* Don't underline links */
+
+/* Styling for google custom search widget
+   See: http://code.google.com/apis/ajaxsearch/documentation/reference.html */
+#cse {
+    padding: 0px 3px 0px 3px; /* t r b l */
+    border: 1px solid rgb(180,220,100);
+    border-top: none;
+    background-color: rgb(255,255,192);
+}
+#cse .gs-title { text-decoration: none; } /* Don't underline links */
+/* Remove the following if you want to show comments.pixelbeat.org and www.pixelbeat.org on each result.
+   Note, separate tabs don't seem to be shown if you add both {www,comments}.pixelbeat.org? */
+#cse .gs-webResult .gs-visibleUrl-short { display:none; }
+/* There is already branding shown in watermark */
+#cse .gsc-branding { display:none; }
+
+</style>
+<style type="text/css" media="screen, projection">
+/* Based on http://jessey.net/simon/articles/007.html */
+
+body {
+    margin: 0em;
+    padding: 0em;
+    color: #222;
+    /* Hmm: these mess up some pics and ls.py.html
+       background: rgb(252,252,230) none;
+       background: rgb(252,255,224) none; */
+}
+
+.invisible {
+    display: none;
+}
+
+#sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9em;
+    height: 100%;
+    background: rgb(255,255,192);
+    color: black;
+    z-index: 3;
+}
+
+#menu,.dynamenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9em;
+    background: rgb(255,255,192);
+    color: black;
+    z-index: 2;
+}
+
+#adds {
+    height: 100%;
+    width: 9em;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 9em;
+    background: rgb(255,255,192);
+    color: black;
+    z-index: 1;
+}
+
+/* IE 6 doesn't support '>',
+   hence the following will just apply to gecko.
+   Note "x > y" means select any y that is a direct child of x.
+   Note it must be a child not a descendant.
+   Remove the > to specify descendant.
+   Note also any children of the sidebar will be fixed.
+
+   Update 14 June 2010, Android doesn't auto change this
+   to absolute like iPhone does, so when one zooms in,
+   the sidebar obstructs the display. Therefore leave it
+   absolute for everyone.
+
+   Update 30 June 2010, Later android (since Froyo)
+   work like android, in that they auto change to absolute.
+   Froyo = 1.5% of android market currently, so leave
+   the following commented out for a while.
+body > #sidebar {
+    position: fixed;
+}
+*/
+
+#content {
+    height: 100%;
+    margin-left: 11em; /* 9em + 2 */
+    padding: 1em;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: small;
+    max-width: 62em; /* a little smaller than 1024 on normal text on linux at least */
+    width: auto;
+    text-align: justify;
+}
+
+#menu a,#footer a {
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.3em;
+    padding-right: 0.2em;
+    /* width: 12.2em; */ /* IE6 needs this for footer highlight? */
+    background: rgb(180,200,86) none;
+    color: rgb(255,255,192);
+    font-weight: bold;
+    font-size: x-small;
+    font-family: Verdana, Arial, sans-serif;
+    margin-bottom: 1px;
+}
+
+#menu a:hover,#footer a:hover {
+    /* background: rgb(180,220,100) none; */
+    background: rgb(180,220,100) none;
+    color: black;
+}
+
+</style>
+<style type="text/css" media="print">
+
+.title	{ width : 100%;
+	  margin : 1cm;
+	  padding: 0cm;
+	  z-index : 0;}
+
+/* This hides all the menus etc so they aren't printed out*/
+#sidebar{	display:none;}
+
+.contentText {	padding : 0.5cm;
+		margin-top : 0.5cm;
+		margin-right : 0cm;
+		margin-left : 0cm;}
+
+</style>
+<!--[if IE 6]>
+<link rel="stylesheet" href="/IE6hack.css" type="text/css" media="screen, projection"/>
+<![endif]-->
+
+<script type="text/javascript">
+<!--
+function add_to_any_url(type)
+{
+    url  = "http://www.addtoany.com/?"
+    url += "sitename="+document.domain+"&"
+    url += "siteurl=http://"+document.domain+"/&"
+    if (type == "feed") {
+        url += "linkname="+encodeURIComponent("The latest")+"&"
+        url += "linkurl="+encodeURIComponent("http://"+document.domain+"/feed/rss2.xml")+"&"
+    } else {
+        url += "linkname="+encodeURIComponent(document.title)+"&"
+        url += "linkurl="+encodeURIComponent(document.URL)+"&"
+    }
+    url += "type="+type
+    return url
+}
+function subscribe()
+{
+    url  = add_to_any_url("feed")
+    window.location = url
+}
+function bookmark()
+{
+    url  = add_to_any_url("page")
+    window.location = url
+}
+function comments()
+{
+    first_dot=document.domain.indexOf(".")
+    if (first_dot == -1) {
+        comments_domain="comments.pixelbeat.org"
+    } else {
+        comments_domain="comments" + document.domain.substring(first_dot)
+    }
+    url = document.URL.replace("://"+document.domain, "://"+comments_domain)
+    window.location = url
+}
+//-->
+</script>
+
+</head>
+
+<body>
+        <div id="content" style="max-width:100%;">
+                <div class="contentText">
+<!--We've a lot of info on this page so make it smaller-->
+<div style="font-size: 85%;">
+<table class="pixelbeat">
+<tr>
+<td><a href="cmdline.html">English</a></td>
+<td><a href="cmdline_pl_PL.html">Polski</a></td>
+<td><a href="cmdline_zh_CN.html">中文</a></td>
+<td><a href="cmdline_es_AR.html">Castellano</a></td>
+<td><a href="cmdline_ja_JP.html">日本語</a></td>
+<td><a href="cmdline_pt_BR.html">Português do Brasil</a></td>
+<td><a href="cmdline_hu_HU.html">Magyar</a></td>
+<td><a href="cmdline_sr_YU.html">Srpski</a></td>
+</tr>
+</table>
+<br/>
+<table>
+<tr>
+<td><a href="http://anstar.org/poleznye-komandy-linux/">Anstar</a> has kindly translated this page.<br/>
+<br/>
+Список основных команд Linux. Все команды тестировались на Fedora и Ubuntu.
+</td>
+</tr>
+</table>
+
+<br/>
+<table class="pixelbeat">
+<tbody>
+
+<tr id="misc" class="pbtitle"><td colspan="2"><b>Команда</b></td><td><b>Описание</b></td></tr>
+  <tr><td>•</td><td class="nw">apropos whatis</td><td>Показать команды соответствующие строке. См. также <a href="scripts/threadsafe">threadsafe</a></td></tr>
+  <tr><td>•</td><td class="nw"><a href="lkdb/less.html">man</a> -t man | ps2pdf - &gt; man.pdf</td><td>Создать pdf версию страницы мануала (man)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">which command</td><td>Показать полный путь к файлу команды</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">time command</td><td>Выполнить команду и отобразить время выполнения</td></tr>
+  <tr><td>•</td><td class="nw">time cat</td><td>Запустить секундомер. Ctrl-d чтобы остановить его. См. также <a href="scripts/stopwatch/">sw</a></td></tr>
+  <tr><td>•</td><td class="nw">nice <a href="lkdb/info.html">info</a></td><td>Запустить команду с низким приоритетом (”info” reader в данном случае)</td></tr>
+  <tr><td>•</td><td class="nw">renice 19 -p $$</td><td>Установить shell (скрипту) низкий приоритет. Используется для неинтерактивных задач.</td></tr>
+
+<tr id="dirs" class="pbtitle"><td colspan="3"><b>Навигация по директориям</b></td></tr>
+  <tr><td>•</td><td class="nw">cd -</td><td>Перейти в предыдущую директорию</td></tr>
+  <tr><td>•</td><td class="nw">cd</td><td>Перейти в $HOME директорию</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">(cd dir &amp;&amp; command)</td><td>Перейти в директорию, выполнить комманду (command) и вернуться в текущую директорию</td></tr>
+  <tr><td>•</td><td class="nw">pushd <b>.</b></td><td>Положить текущую директорию в стек, чтобы позже вернуться к ней с помощью <strong>popd</strong></td></tr>
+
+<tr id="file_search" class="pbtitle"><td colspan="3"><b>Поиск файлов</b></td></tr>
+  <tr><td>•</td><td class="nw"><a href="settings/.bashrc">alias</a> l='ls -l --color=auto'</td><td>Быстрое отображение содержимого директории</td></tr>
+  <tr><td>•</td><td class="nw">ls -lrt</td><td>Список файлов по дате. См. также <a href="scripts/newest">newest</a> и <a href="scripts/find_mm_yyyy">find_mm_yyyy</a></td></tr>
+  <tr><td>•</td><td class="nw">ls /usr/bin | pr -T9 -W$COLUMNS</td><td>Напечатать в 9 столбцов в ширину терминала</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find -name '*.[ch]' | xargs grep -E 'expr'</td><td>Искать ‘expr’ в текущей директории и в нижестоящих директориях. См. также <a href="scripts/findrepo">findrepo</a></td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find -type f -print0 | xargs -r0 grep -F 'example'</td><td>Поиск всех файлов по ‘example’ в текущей директории и ниже</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find -maxdepth 1 -type f | xargs grep -F 'example'</td><td>Поиск всех файлов по ‘example’ в текущей директории</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find -maxdepth 1 -type d | while <a href="programming/readline/">read</a> dir; do echo $dir; echo cmd2; done</td><td>Обработать каждый элемент с несколькими командами (в цикле while)</td></tr>
+  <tr><td>•</td><td class="nw">find -type f ! -perm -444</td><td>Найти файлы, которые не являются видимыми для всех (полезно для веб сайта)</td></tr>
+  <tr><td>•</td><td class="nw">find -type d ! -perm -111</td><td>Найти директории не доступные для всех (полезно для web сайтов)</td></tr>
+  <tr><td>•</td><td class="nw">locate -r 'file[^/]*\.txt'</td><td>Искать в кешированном индексе по именам.</td></tr>
+  <tr><td>•</td><td class="nw">look reference</td><td>Быстрый поиск (сортированный) словаря по префиксу</td></tr>
+  <tr><td>•</td><td class="nw">grep <a href="settings/.bashrc">--color</a> reference /usr/share/dict/words</td><td>Подсвечивание мест где регулярное выражение появляется в словаре</td></tr>
+
+<tr id="archives" class="pbtitle"><td colspan="3"><b>Архивирование и сжатие</b></td></tr>
+  <tr><td>&nbsp;</td><td class="nw">gpg -c file</td><td>Зашифровать файл</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">gpg file.gpg</td><td>Расшифровать файл</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">tar -c dir/ | bzip2 &gt; dir.tar.bz2</td><td>Заархивировать директорию (папку) dir/</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">bzip2 -dc dir.tar.bz2 | tar -x</td><td>Разархивировать архив (используйте gzip вместо bzip2 для файлов tar.gz)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">tar -c dir/ | gzip | gpg -c | ssh user@remote 'dd of=dir.tar.gz.gpg'</td><td>Создать зашифрованный архив директории (папки) dir/ на удаленном компьютере</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find dir/ -name '*.txt' | tar -c --files-from=- | bzip2 &gt; dir_txt.tar.bz2</td><td>Создать архив для папки dir/ и всех вложенных папок</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">find dir/ -name '*.txt' | xargs cp -a --target-directory=dir_txt/ --parents</td><td>Создать копию папки dir/ с вложенными папками</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">( tar -c /dir/to/copy ) | ( cd /where/to/ &amp;&amp; tar -x -p )</td><td>Скопировать (с правами доступа) папку copy/ в папку /where/to/</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">( cd /dir/to/copy &amp;&amp; tar -c <b>.</b> ) | ( cd /where/to/ &amp;&amp; tar -x -p )</td><td>Скопировать (с правами доступа) содержимое папки copy/ в /where/to</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">( tar -c /dir/to/copy ) | ssh -C user@remote 'cd /where/to/ &amp;&amp; tar -x -p' </td><td>Скопировать (с правами доступа) папку copy/ на удаленный компьютер remote:/where/to</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">dd bs=1M if=/dev/sda | gzip | ssh user@remote 'dd of=sda.gz'</td><td>Сделать резервную копию (сбекапить) жесткого диска и послать ее на удаленный компьютер</td></tr>
+
+<tr id="rsync" class="pbtitle"><td colspan="3"><b>rsync</b> (Эффективный сетевой копировщик файлов: Используйте опцию –dry-run для тестирования)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">rsync -P rsync://rsync.server.com/path/to/file file</td><td>Только отобразить различия. Делайте много раз чтобы проверить прошли ли нормально закачки</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">rsync --bwlimit=1000 fromfile tofile</td><td>Скопировать локально с предельной скоростью. Это приятно для I/O</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">rsync -az -e ssh --delete ~/public_html/ remote.com:'~/public_html'</td><td>Зеркальный веб сайт (используется шифрование и дешифрование)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">rsync -auz -e ssh remote:/dir/ <b>.</b> &amp;&amp; rsync -auz -e ssh <b>.</b> remote:/dir/</td><td>Синхронизировать текушую папку с папкой на удаленном компьютере</td></tr>
+
+<tr id="ssh" class="pbtitle"><td colspan="3"><b>ssh</b> (Secure SHell)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ssh $USER@$HOST command</td><td>Запустить команду command на удаленном хосте $HOST от имени пользователя $USER<br/>(команда по умолчанию = shell)</td></tr>
+  <tr><td>•</td><td class="nw">ssh -f -Y $USER@$HOSTNAME xeyes</td><td>Запустить GUI команду на удаленном хосте $HOST от имени пользователя $USER</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">scp -p -r $USER@$HOST: file dir/</td><td>Скопировать папку dir/ с правами доступа в домашнию папку пользователя $USER на хосте $HOST</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ssh -g -L 8080:localhost:80 root@$HOST</td><td>Перенаправить соединения к $HOSTNAME:8080 наружу к $HOST:80</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ssh -R 1434:imap:143 root@$HOST</td><td>Перенаправить соединения от $HOST:1434 к внутр. imap:143</td></tr>
+
+<tr id="wget" class="pbtitle"><td colspan="3"><b>wget</b> (многоцелевой инструмент для скачивания)</td></tr>
+  <tr><td>•</td><td class="nw">(cd cli &amp;&amp; wget -nd -pHEKk http://www.pixelbeat.org/cmdline.html)</td><td>Сохранить веб страницу (как она открывается локально) в текущую директорию</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget -c http://www.example.com/large.file</td><td>Продолжить скачивание частично скаченного файла</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget -r -nd -np -l1 -A '*.jpg' http://www.example.com/</td><td>Скачать множество файлов в текущую директорию</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget ftp://remote/file[1-9].iso/</td><td>Ftp непосредственная поддержка globbing</td></tr>
+  <tr><td>•</td><td class="nw">wget -q -O- http://www.pixelbeat.org/timeline.html | grep 'a href' | head</td><td>Отображать вывод напрямую (на экран)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">echo 'wget url' | at 01:00</td><td>Скачать url в 01:00 в текущую директорию</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget --limit-rate=20k url</td><td>Сделать закачку с уменьшенной скоростью (ограничить скорость до 20 КB/s в этом примере)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget -nv --spider --force-html -i bookmarks.html</td><td>Проверить ссылки в файле</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">wget --mirror http://www.example.com/</td><td>Оперативно обновлять локальную копию сайта (удобно использовать с cron)</td></tr>
+
+<tr id="net" class="pbtitle"><td colspan="3"><b>Сетевые команды</b> (Обратите внимание, что команды ifconfig, route, mii-tool, nslookup устарели)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw"><acronym title="usually in /sbin/">ethtool</acronym> eth0</td><td>Отобразить статус сетевого устройства (интерфейса) eth0</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ethtool --change eth0 autoneg off speed 100 duplex full</td><td>Вручную установить скорость сетевого интерфейса (устройства)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw"><acronym title="usually in /sbin/">iwconfig</acronym> eth1</td><td>Отобразить статус беспроводного интерфейса (устройства) eth1</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">iwconfig eth1 rate 1Mb/s fixed</td><td>Вручную установить скорость беспроводного интерфейса (устройства)</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">iwlist</acronym> scan</td><td>Список беспроводных сетей в радиусе действия</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">ip</acronym> link show</td><td>Список сетевых интерфейсов (устройств)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ip link set dev eth0 name wan</td><td>Переименовать интерфейс (устройство) eth0 в wan</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ip link set dev eth0 up</td><td>Включить интерфейс eth0 (чтобы выключить - down)</td></tr>
+  <tr><td>•</td><td class="nw">ip addr show</td><td>Список ip адресов интерфейсов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ip addr add 1.2.3.4/24 brd + dev eth0</td><td>Добавить (или удалить) ip адрес и маску (255.255.255.0)</td></tr>
+  <tr><td>•</td><td class="nw">ip route show</td><td>Вывести таблицу маршрутизации</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">ip route add default via 1.2.3.254</td><td>Установить 1.2.3.254 в качестве шлюза по умолчанию</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">tc</acronym> qdisc add dev lo root handle 1:0 netem delay 20msec</td><td>Добавить 20мс латентность к устройству loopback (для тестирования)</td></tr>
+  <tr><td>•</td><td class="nw">tc qdisc del dev lo root</td><td>Убрать латентность добавленную выше</td></tr>
+  <tr><td>•</td><td class="nw">host pixelbeat.org</td><td>Поиск ДНС ip адреса по имени хоста или наоборот</td></tr>
+  <tr><td>•</td><td class="nw">hostname -i</td><td>Поиск локального ip адреса (идентично host ‘hostname’)</td></tr>
+  <tr><td>•</td><td class="nw">whois pixelbeat.org</td><td>Поиск whois информации по имени хоста или ip адресу</td></tr>
+  <tr><td>•</td><td class="nw">netstat -tupl</td><td>Список интернет сервисов в системе</td></tr>
+  <tr><td>•</td><td class="nw">netstat -tup</td><td>Список активных соединений к системе (от системы)</td></tr>
+
+<tr id="windows" class="pbtitle"><td colspan="3"><b>Сетевые команды связанные с windows</b> (Обратите внимание, что samba - это пакет который предоставляет всю windows специфичную поддержку сети)</td></tr>
+  <tr><td>•</td><td class="nw">smbtree</td><td>Найти windows компьютеры в сети. См. также findsmb</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">nmblookup -A 1.2.3.4</td><td>Найти windows (netbios) имя, ассоциируемое с ip адресом</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">smbclient -L windows_box</td><td>Список shares на windows компьютере или samba сервере</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">mount -t smbfs -o fmask=666,guest //windows_box/share /mnt/share</td><td>Смонтировать windows share (папку с открытым доступом)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">echo 'message' | smbclient -M windows_box</td><td>Послать popup сообщение на windows комьютер (отключено по умолчанию в XP sp2)</td></tr>
+
+<tr id="text" class="pbtitle"><td colspan="3"><b>Манипуляции с текстом</b> (Обратите внимание, sed использует stdin и stdout, так что если Вы хотите редактировать файлы, добавляйте &lt;oldfile &gt;newfile)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed 's/string1/string2/g'</td><td>Заменить строку string1 строкой string2</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed 's/\(.*\)1/\12/g'</td><td>Изменить строку anystring1 на anystring2</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed '/ *#/d; /^ *$/d'</td><td>Убрать комментарии и пустые строки</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed ':a; /\\$/N; s/\\\n//; ta'</td><td>Соединить строки (линии) с предшествующим \</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed 's/[ \t]*$//'</td><td>Удалить предшествующие пробелы с строк</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed 's/\([\\`\\&quot;$\\\\]\)/\\\1/g'</td><td>Заескейпить активные метасимволы оболочки двумя ковычками</td></tr>
+  <tr><td>•</td><td class="nw">seq 10 | sed "s/^/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/; s/ *\(.\{7,\}\)/\1/"</td><td>Выровнять числа по правой границе</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed -n '1000p;<acronym title="quit ASAP">1000q</acronym>'</td><td>Напечатать 1000-ную строку</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed -n '10,20p;<acronym title="quit ASAP">20q</acronym>'</td><td>Напечатать строки с 10 по 20-ую</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sed -n 's/.*&lt;title&gt;\(.*\)&lt;\/title&gt;.*/\1/ip;<acronym title="quit after match">T;q</acronym>'</td><td>Получить title из HTML страницы</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sort -t. -k1,1n -k2,2n -k3,3n -k4,4n</td><td>Отсортировать IPV4 ip адреса</td></tr>
+  <tr><td>•</td><td class="nw">echo 'Test' | tr '[:lower:]' '[:upper:]'</td><td>Перевести из одного регистра в другой</td></tr>
+  <tr><td>•</td><td class="nw">tr -dc '[:print:]' &lt; /dev/urandom</td><td>Отфильтровать не печатаемые символы</td></tr>
+  <tr><td>•</td><td class="nw">history | wc -l</td><td>Посчитать число строк</td></tr>
+
+<tr id="sets" class="pbtitle"><td colspan="3"><b>Операции с множествами</b> (Обратите внимание, что Вы можете <a href="docs/env.html">export LANG=C</a> для скорости. Это также полагает отсутствие линий дупликатов в файле)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sort file1 file2 | uniq</td><td>Объединение неотсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sort file1 file2 | uniq -d</td><td>Пересечение неотсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sort file1 file1 file2 | uniq -u</td><td>Разность неотсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">sort file1 file2 | uniq -u</td><td>Симметрическая разность неотсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">join <acronym title="process whole line (assuming no NUL characters present)">-t'\0'</acronym> -a1 -a2 file1 file2</td><td>Объединение отсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">join -t'\0' file1 file2</td><td>Пересечение отсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">join -t'\0' -v2 file1 file2</td><td>Разность отсортированных файлов</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">join -t'\0' -v1 -v2 file1 file2</td><td>Симметрическая разность отсортированных файлов</td></tr>
+
+<tr id="math" class="pbtitle"><td colspan="3"><b>Математические операции</b></td></tr>
+  <tr><td>•</td><td class="nw">echo '(1 + sqrt(5))/2' | bc -l</td><td>Простая математика (Вычисление числа φ). См. также <a href="scripts/bc">bc</a></td></tr>
+  <tr><td>•</td><td class="nw">echo 'pad=20; min=64; (100*10^6)/((pad+min)*8)' | bc</td><td>Более сложная (целая). Этот пример показывает максимум FastE packet rate</td></tr>
+  <tr><td>•</td><td class="nw">echo 'pad=20; min=64; print (100E6)/((pad+min)*8)' | python</td><td>Питон занимается математическими вычислениями</td></tr>
+  <tr><td>•</td><td class="nw">echo 'pad=20; plot [64:1518] (100*10**6)/((pad+x)*8)' | gnuplot -persist</td><td>Напечатать FastE packet rate против packet size</td></tr>
+  <tr><td>•</td><td class="nw">echo 'obase=16; ibase=10; 64206' | bc</td><td>Конвертация систем счисления (десятичную в шестнадцатиричную)</td></tr>
+  <tr><td>•</td><td class="nw">echo $((0x2dec))</td><td>Конвертация систем счисления (шестнадцатиричную в десятичную)<br/>((арифметическое расширение shell-а))</td></tr>
+  <tr><td>•</td><td class="nw">units -t '100m/<a href="misc/usain_bolt.html">9.58s</a>' 'miles/hour'</td><td>Unit конвертация (метрической системы в имперскую)</td></tr>
+  <tr><td>•</td><td class="nw">units -t '500GB' 'GiB'</td><td>Unit конвертация (SI в IEC префиксы)</td></tr>
+  <tr><td>•</td><td class="nw">units -t '1 googol'</td><td>Поиск определения</td></tr>
+  <tr><td>•</td><td class="nw">seq 100 | (tr '\n' +; echo 0) | bc</td><td>Добавить столбец чисел. См. также <a href="scripts/add">add</a> и <a href="scripts/funcpy">funcpy</a></td></tr>
+
+<tr id="dates" class="pbtitle"><td colspan="3"><b>Календарь</b></td></tr>
+  <tr><td>•</td><td class="nw">cal -3</td><td>Отобразить календарь</td></tr>
+  <tr><td>•</td><td class="nw">cal 9 1752</td><td>Отобразить календарь для конкретного месяца года</td></tr>
+  <tr><td>•</td><td class="nw">date -d fri</td><td>Какая дата у текущей пятницы. См. также <a href="scripts/day">day</a></td></tr>
+  <tr><td>•</td><td class="nw">[ $(date -d "tomorrow" +%d) = "01" ] || exit</td><td>Завершить выполнение скрипта, если только сейчас не последний день месяца</td></tr>
+  <tr><td>•</td><td class="nw">date --date='25 Dec' +%A</td><td>Какого числа будет рождество в текущем году</td></tr>
+  <tr><td>•</td><td class="nw">date --date='@2147483647'</td><td>Перевести секунды прошедшие с epoch (1970-01-01 UTC) в дату</td></tr>
+  <tr><td>•</td><td class="nw">TZ=':America/Los_Angeles' date</td><td>Сколько времени сейчас на Западном побережье США (используйте tzselect чтобы найти TZ)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">echo &quot;mail -s 'get the train' P@draigBrady.com &lt; /dev/null&quot; | at 17:45</td><td>Напоминать по Email</td></tr>
+  <tr><td>•</td><td class="nw">echo &quot;DISPLAY=$DISPLAY xmessage cooker&quot; | at "NOW + 30 minutes"</td><td>Напоминать в Popup окне</td></tr>
+
+<tr id="locale" class="pbtitle"><td colspan="3"><b>Locales (локализация)</b></td></tr>
+  <tr><td>•</td><td class="nw">printf &quot;%'d\n&quot; 1234</td><td>Напечатать четырехзначное число сгруппированное соответственно локали</td></tr>
+  <tr><td>•</td><td class="nw">BLOCK_SIZE=\'1 ls -l</td><td>Сделать чтобы ls группировала тысячи соответственно локали</td></tr>
+  <tr><td>•</td><td class="nw">echo &quot;I live in `locale territory`&quot;</td><td>Получить информацию из базы данных локали</td></tr>
+  <tr><td>•</td><td class="nw">LANG=en_IE.utf8 locale int_prefix</td><td>Искать информацию о локали для конкретной страны См. также <a href="scripts/ccodes">ccodes</a></td></tr>
+  <tr><td>•</td><td class="nw">locale | cut -d= -f1 | xargs locale -kc | less</td><td>Список полей, доступных в базе данных локали</td></tr>
+
+<tr id="recode" class="pbtitle"><td colspan="3"><b>Перекодирование</b> (команды iconv, dos2unix, unix2dos устарели)</td></tr>
+  <tr><td>•</td><td class="nw">recode -l | less</td><td>Отобразить доступные переходы (по 1 алиасу на каждой строке)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode windows-1252.. file_to_change.txt</td><td>Перевести Windows “ansi” в локальную (текущую) кодировку (auto делает CRFL перевод)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode utf-8/CRLF.. file_to_change.txt</td><td>Перевести windows utf8 в локальную (текущую) кодирувку</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode iso-8859-15..utf8 file_to_change.txt</td><td>Перевести из кодировки latin9 (западная европейская) в utf8</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode ../b64 &lt; file.txt &gt; file.b64</td><td>Кодирование base64</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode /qp.. &lt; file.txt &gt; file.qp</td><td>Раскодирование с кавычками</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">recode ..HTML &lt; file.txt &gt; file.html</td><td>Перевести text в HTML</td></tr>
+  <tr><td>•</td><td class="nw">recode -lf windows-1252 | grep euro</td><td>Поиск в <a href="docs/utf8.html">таблице символов</a></td></tr>
+  <tr><td>•</td><td class="nw">echo -n 0x80 | recode latin-9/x1..dump</td><td>Показать символ в кодировке latin9 по коду</td></tr>
+  <tr><td>•</td><td class="nw">echo -n 0x20AC | recode ucs-2/x2..latin-9/x</td><td>Показать latin-9 encoding</td></tr>
+  <tr><td>•</td><td class="nw">echo -n 0x20AC | recode ucs-2/x2..utf-8/x</td><td>Показать utf-8 encoding</td></tr>
+
+<tr id="CDs" class="pbtitle"><td colspan="3"><b>CDs</b> (операции с CD дисками)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">gzip &lt; /dev/cdrom &gt; cdrom.iso.gz</td><td>Сохранить копию CD с данными</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">mkisofs -V LABEL -r dir | gzip &gt; cdrom.iso.gz</td><td>Создать образ CD диска из содержимого директории</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">mount -o loop cdrom.iso /mnt/dir</td><td>Смонтировать CD образ на /mnt/dir (только для чтения)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">cdrecord -v dev=/dev/cdrom blank=fast</td><td>Очистить CDRW</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">gzip -dc cdrom.iso.gz | cdrecord -v dev=/dev/cdrom -</td><td>Записать CD образ (используйте dev=ATAPI -scanbus для выбора устройства записи)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">cdparanoia -B</td><td>Сохранить аудио треки с CD в wav файлы (сохранятся в текущую папку)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">cdrecord -v dev=/dev/cdrom -audio *.wav</td><td>Создать аудио диск (audio CD) из всех wav файлов,<br/>находящихся в текущей директории (см. также cdrdao)</td></tr>
+  <tr><td>&nbsp;</td><td class="nw">oggenc --tracknum='track' track.cdda.wav -o 'track.ogg'</td><td>Создать ogg файл из wav файла</td></tr>
+
+<tr id="disk_space" class="pbtitle"><td colspan="3"><b>Дисковое пространство</b> (См. также <a href="fslint/">FSlint</a>)</td></tr>
+  <tr><td>•</td><td class="nw">ls -lSr</td><td>Список файлов, отсортированных по размеру (файл с наибольшим размером - последний)</td></tr>
+  <tr><td>•</td><td class="nw">du -s * | sort -k1,1rn | head</td><td>Показать пользователей в текущей папке с наибольшим объемом используемых данных.<br/>См. также <a href="scripts/dutop">dutop</a></td></tr>
+  <tr><td>•</td><td class="nw">df -h</td><td>Показать свободное место на смонтированных файловых системах</td></tr>
+  <tr><td>•</td><td class="nw">df -i</td><td>Показать свободные индексные дескрипторы на смонтированных файловых системах</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">fdisk</acronym> -l</td><td>Показать размеры разделов дисков и типы (запускается от root-а)</td></tr>
+  <tr><td>•</td><td class="nw"><a href="docs/packaging.html">rpm</a> -q -a --qf '%10{SIZE}\t%{NAME}\n' | sort -k1,1n</td><td>Список всех <a href="docs/packaging.html">пакетов</a> с размером дистрибутивов (размер - в Байтах)</td></tr>
+  <tr><td>•</td><td class="nw"><a href="docs/packaging.html">dpkg</a>-query -W -f='${Installed-Size;10}\t${Package}\n' | sort -k1,1n</td><td>Список всех <a href="docs/packaging.html">пакетов</a> с размерами установки (размер - в килобайтах) для debian дистрибутивов</td></tr>
+  <tr><td>•</td><td class="nw">dd bs=1 seek=2TB if=/dev/null of=ext3.test</td><td>Создать большой тестовый файл. См. также <a href="scripts/truncate">truncate</a></td></tr>
+
+<tr id="monitor" class="pbtitle"><td colspan="3"><b>Мониторинг/отладка</b></td></tr>
+  <tr><td>•</td><td class="nw">tail -f /var/log/messages</td><td><a href="docs/web/access_log/monitoring.html">Мониторинг сообщений</a> в log файле</td></tr>
+  <tr><td>•</td><td class="nw">strace -c ls &gt;/dev/null</td><td>Сумма/профиль системных вызовов, сделанных командой</td></tr>
+  <tr><td>•</td><td class="nw">strace -f -e open ls &gt;/dev/null</td><td>Список системных вызовов, сделанных командой</td></tr>
+  <tr><td>•</td><td class="nw">ltrace -f -e getenv ls &gt;/dev/null</td><td>Список библиотечных вызовов, сделанных командой</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /usr/sbin/">lsof</acronym> -p <acronym title="process id of current shell">$$</acronym></td><td>Список путей, которые открывал процесс</td></tr>
+  <tr><td>•</td><td class="nw">lsof ~</td><td>Список процессов, которые имеют открытые пути</td></tr>
+  <tr><td>•</td><td class="nw">tcpdump not port 22</td><td>Отобразить сетевой (кроме ssh) траффик. См. также <a href="scripts/tcpdump_not_me">tcpdump_not_me</a></td></tr>
+  <tr><td>•</td><td class="nw">ps -e -o pid,args --forest</td><td>Иерархический список процессов</td></tr>
+  <tr><td>•</td><td class="nw">ps -e -o pcpu,cpu,nice,state,cputime,args --sort pcpu | sed '/^ 0.0 /d'</td><td>Список процессов с % использования процессора</td></tr>
+  <tr><td>•</td><td class="nw">ps -e -orss=,args= | sort -b -k1,1n | pr -TW$COLUMNS</td><td>Список процессов с используемой ими памятью (См. также <a href="scripts/ps_mem.py">ps_mem.py</a>)</td></tr>
+  <tr><td>•</td><td class="nw">ps -C firefox-bin -L -o pid,tid,pcpu,state</td><td>Список всех потоков для конкретного процесса</td></tr>
+  <tr><td>•</td><td class="nw">ps -p 1,2</td><td>Список информации о процессах с конкретными IDs (идентификаторами)</td></tr>
+  <tr><td>•</td><td class="nw">last reboot</td><td>Показать историю ребутов системы</td></tr>
+  <tr><td>•</td><td class="nw">free -m</td><td>Показать количество оставшейся оперативной памяти (-m отображает в мегабайтах)</td></tr>
+  <tr><td>•</td><td class="nw">watch -n.1 'cat /proc/interrupts'</td><td>Наблюдать последовательно за изменяющимися данными</td></tr>
+
+<tr id="sysinfo" class="pbtitle"><td colspan="3"><b>Информация о системе</b> (см. также <a href="scripts/sysinfo">sysinfo</a>) (’#’ означает, что для запуска нужны права root-а)</td></tr>
+  <tr><td>•</td><td class="nw">uname -a</td><td>Показать версию ядра и системную архитектуру</td></tr>
+  <tr><td>•</td><td class="nw">head -n1 /etc/issue</td><td>Показать название и версию дистрибутива (операционной системы)</td></tr>
+  <tr><td>•</td><td class="nw">cat /proc/partitions</td><td>Показать все разделы, зарегистрированные в системе</td></tr>
+  <tr><td>•</td><td class="nw">grep MemTotal /proc/meminfo</td><td>Показать всю оперативную память, которую видит система</td></tr>
+  <tr><td>•</td><td class="nw">grep "model name" /proc/cpuinfo</td><td>Показать информацию о процессоре(ах) (CPU)</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">lspci</acronym> -tv</td><td>Показать информацию о шине PCI</td></tr>
+  <tr><td>•</td><td class="nw"><acronym title="usually in /sbin/">lsusb</acronym> -tv</td><td>Показать информацию о USB</td></tr>
+  <tr><td>•</td><td class="nw">mount | column -t</td><td>Список смонтированных файловых систем в системе (херархический вывод)</td></tr>
+  <tr><td>#</td><td class="nw">dmidecode -q | less</td><td>Отобразить информацию о SMBIOS/DMI</td></tr>
+  <tr><td>#</td><td class="nw">smartctl -A /dev/sda | grep Power_On_Hours</td><td>Какой промежуток времени этот диск (система) был включен (работал)</td></tr>
+  <tr><td>#</td><td class="nw">hdparm -i /dev/sda</td><td>Показать информацию о диске sda</td></tr>
+  <tr><td>#</td><td class="nw">hdparm -tT /dev/sda</td><td>Протестировать скорость чтения на диске sda</td></tr>
+  <tr><td>#</td><td class="nw">badblocks -s /dev/sda</td><td>Протестировать на нечитаемые блоки диск sda</td></tr>
+
+<tr id="interactive" class="pbtitle"><td colspan="3"><b>Интерактивность</b> (см. также <a href="lkdb/">горячие клавиши linux</a>)</td</tr>
+  <tr><td>•</td><td class="nw"><a href="lkdb/readline.html">readline</a></td><td>Редактор строки, используемый bash, python, gnuplot, …</td></tr>
+  <tr><td>•</td><td class="nw"><a href="lkdb/screen.html">screen</a></td><td>Виртуальные терминалы с возможностями открепления, …</td></tr>
+  <tr><td>•</td><td class="nw"><a href="lkdb/mc.html">mc</a></td><td>Мощный файл менеджер, которые может просматривать rpm, tar, ftp, ssh, …</td></tr>
+  <tr><td>•</td><td class="nw"><a href="docs/web/access_log/analyzing.html">gnuplot</a></td><td>Интерактивная (скриптовая) графика</td></tr>
+  <tr><td>•</td><td class="nw">links</td><td>Текстовый веб браузер</td></tr>
+
+<tr id="misc" class="pbtitle"><td colspan="3"><b>Разное</b></td></tr>
+  <tr><td>•</td><td class="nw"><a href="settings/.bashrc">alias</a> hd='od -Ax -tx1z -v'</td><td>Ручной 16-ричный дамп (пример использования: hd /proc/self/cmdline | less)</td></tr>
+  <tr><td>•</td><td class="nw"><a href="settings/.bashrc">alias</a> realpath='readlink -f'</td><td>Канонический путь (пример использования: realpath ~/../$USER)</td></tr>
+  <tr><td>•</td><td class="nw">set | grep $USER</td><td>Поиск в текущем <a href="docs/env.html">environment (окружении)</a></td></tr>
+  <tr><td>&nbsp;</td><td class="nw">touch -c -t 0304050607 file</td><td>Установить дату для файла (YYMMDDhhmm)</td></tr>
+  <tr><td>•</td><td class="nw">python -m SimpleHTTPServer</td><td>Отобразить дерево текущего каталога по адресу http://$HOSTNAME:8000/</td></tr>
+
+</tbody>
+</table>
+</div><!--font-size-->
+
+<!-- google_ad_section_start(weight=ignore) -->
+        <div style="color: gray; padding-top: 1em; width:728px;">
+        
+        <span style="text-align:left;"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">©</a> Sep  9 2008</span>
+        <script type="text/javascript">
+        <!--
+        document.write('&nbsp;&nbsp;[<a href="javascript:comments()">Comments</a>]')
+        document.write('&nbsp;|&nbsp;[<a href="javascript:bookmark()">Add&nbsp;link&nbsp;to&nbsp;...</a>]')
+        //-->
+        </script>
+        </div>
+
+        <div style="padding-top: 1em;">
+        <script type="text/javascript"><!--
+        google_ad_client = "pub-3527575214508372";
+        google_ad_width = 728;
+        google_ad_height = 15;
+        google_ad_format = "728x15_0ads_al";
+        //2007-01-15: link_units
+        google_ad_channel = "0445407648";
+        google_color_border = "FFFFC0";
+        google_color_bg = "FFFFC0";
+        google_color_link = "0000FF";
+        google_color_text = "000000";
+        google_color_url = "0000FF";
+        //--></script>
+        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+        </div>
+<!-- google_ad_section_end -->
+
+
+</div>
+</div>
+
+<div id="sidebar">
+<div id="menu">
+
+<a href="/" rel="me">Home</a>
+
+</div>
+
+
+
+<!-- vertical -->
+<table width="100%" height="100%" cellpadding="0" cellspacing="0">
+<tr><td align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3527575214508372";
+google_ad_slot = "3344111843";
+google_ad_width = 120;
+google_ad_height = 240;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script>
+
+<!--[if IE]>
+<!-- IE specific content -->
+<![endif]-->
+
+</td></tr>
+</table>
+
+
+<!-- google_ad_section_start(weight=ignore) -->
+<div id="footer">
+<a href="/timeline.html">Timemap</a><span class="invisible">&nbsp;|&nbsp;</span>
+<a href="http://twitter.com/pixelbeat_">Twitter</a><span class="invisible">&nbsp;|&nbsp;</span>
+<!--<a href="/pixelbeat.asc">Key</a><span class="invisible">&nbsp;|&nbsp;</span>-->
+<a style="margin-bottom:0;" href="mailto:P@draigBrady.com">Email</a><span class="invisible">&nbsp;|&nbsp;</span>
+</div>
+<!-- google_ad_section_end -->
+
+</div>
+
+</body>
+</html>

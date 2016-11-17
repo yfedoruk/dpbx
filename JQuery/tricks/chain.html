@@ -1,0 +1,43 @@
+Ultra-Chaining with jQuery
+
+We were having a discussion, the other day, on the jQuery-dev mailing list concerning style and jQuery code. There was some discussion about how it could be improved.
+
+One of the points discussed was concerning the use of callbacks and jQuery(this). Callbacks (passing in a function as the final argument to a jQuery method, to be called later) are used all throughout jQuery code. It's a rather core aspect of jQuery (especially the use of closures to pass around information).
+
+We began to wonder: What would jQuery look like if there were no callbacks? A couple solutions were proposed but I posited one that, I think, promotes the idioms present in jQuery.
+
+Its use is simple (although its implementation is definitely a mind-twister). Instead of using a callback you now using jQuery chaining to execute all the methods that you need.
+
+Where previously you would've done:
+<script>
+jQuery("div").hide("slow", function(){
+  jQuery(this)
+    .addClass("done")
+    .find("span")
+      .addClass("done")
+    .end()
+    .show("slow", function(){
+      jQuery(this).removeClass("done");
+    });
+});
+
+//You would now write:
+jQuery("div").chain("hide", "slow")
+  .addClass("done")
+  .find("span")
+    .addClass("done")
+  .end()
+  .chain("show", "slow")
+    .removeClass("done")
+  .end()
+.end();
+</script>
+The end result is quite interesting. It definitely moves jQuery farther into the land of a "Domain Specific Language." I wanted to put this code out there for people to try out and play with even though I have a number of reservations:
+
+    1. I'm really not a fan of passing in a method name as a string argument, to another method. This is used a lot in Prototype.js but it just never sat right with me.
+    2. The .chain() method name probably isn't right. Some other name probably fits better here.
+    3. The fact that you lose out on the power of normal JavaScript is daunting (you can no longer do something like: jQuery(this).html( jQuery(this).attr("href") ) - you'd have to go back to using a callback).
+
+Nevertheless I think the result holds a lot of potential even if just as a proof-of-concept.
+
+Posted: October 14th, 2008 · 

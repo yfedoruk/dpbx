@@ -1,0 +1,7 @@
+If your file is already sorted simply use the uniq command:
+
+cat myfile|uniq
+
+If the file isn't sorted, sort it with the unique switch:
+
+sort -u myfile

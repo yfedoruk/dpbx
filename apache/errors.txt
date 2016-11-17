@@ -1,0 +1,31 @@
+if you don't have httpd.conf under /etc/apache2, you should have apache2.conf - simply add
+
+ServerName localhost
+
+then restart apache2 service
+
+
+
+******************************** Forbidden You don't have permission to access / on this server. *********************************
+// http://forum.ubuntu.ru/index.php?topic=201930.0
+
+sudo gedit /etc/apache2/apache2.conf
++ add
+
+<Directory /home/your_user/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
++
+sudo service apache2 restart
+
+
+
+********************* [SOLVED] The requested URL /signup was not found on this server ******************
+sudo a2enmod rewrite
+
+
+*** php mkdir(): Permission denied **
+chmod -R 777 :)
+

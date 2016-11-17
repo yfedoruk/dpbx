@@ -1,3 +1,14 @@
 /*
 !/.gitignore
 !/sh/
+!/install/
+!/bash/
+!/apache/
+!/_/
+!/settings/
+!/js/
+!/JQuery/
+!/git/
+!/yii/
+!/vim/
+!/psql/

@@ -1,0 +1,67 @@
+<div id="abc" ng-hide="showadv" ng-controller="optsCtrl">
+	<select name="end" id="end" ng-model="end" ng-click="endType(end)" >
+		<option value="never" >never</option>
+		<option value="count" >by occurrences</option>
+		<option value="date" >by date</option>
+	</select>
+	<p ng-show="shwoccurences" > Foo </p>
+	<p ng-show="shwbydate">	Bar	</p>
+</div>
+<script>
+var optsCtrl = function($scope){
+	$scope.end = 'never'; //initial value ( selected="selected" )
+	$scope.endType = function(e){
+		switch(e){
+			case 'never' : 
+				$scope.shwoccurences = false; 
+				$scope.shwbydate = false;
+				break;
+			case 'count' : 
+				$scope.shwoccurences = true; 
+				$scope.shwbydate = false;
+				break;
+			case 'date' :
+				$scope.shwoccurences = false; 
+				$scope.shwbydate = true;
+				break;
+		}
+	}
+}
+</script>
+
+
+/* ******************************** */
+<div ng-controller="tasksCtrl">
+	<select ng-model="assignPlaylist" ng-change="submit(val)" >
+		<option ng-repeat="(num, item) in playlists" ng-selected="selectedPlaylist(val,item)" ng-value="item.id">{{item.title}}</option>
+		<option value="">-playlist-</option>
+	</select>
+</div>
+<script>
+	
+	//val is file from outer ng-repeat. 
+	
+	// As you change selected, "ng-value" is setted to "assignPlaylist" model
+	
+	
+	angular.module('app').controller('tasksCtrl', ['$scope', '$http', 'vacPlaylists', function ($scope, $http, vacPlaylists) {
+		$scope.playlists = vacPlaylists.playlists;
+		
+		// set initial value (selected).
+		$scope.selectedPlaylist = function (file, playlistItem) {
+			return playlistItem.id == file.playlist_id;
+		}
+		
+		// submit on change selected
+		$scope.submit = function (video) {
+			$http.get($scope.VIDEOURL + "default/assignPlaylist", {
+				params: {playlist_id: $scope.assignPlaylist, id: video.id}
+			})
+				.success(function (data) {
+					if (data.error) {
+						Video.alert(data.error);
+					}
+				});
+		}
+	}]);
+</script>

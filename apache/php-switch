@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+WANT=$1
+
+if [[ $WANT == 7  ]]; then
+	VERSION=7.0-dev
+	SOFILE=/usr/lib/apache2/modules/libphp7.0.12.so
+else
+	VERSION=5.6-dev
+	SOFILE=/usr/lib/apache2/modules/libphp5.6.so
+fi
+	
+CONFFILE5=/etc/apache2/mods-available/php5.6.load
+CONFFILE7=/etc/apache2/mods-available/php7.load
+
+source ~/.phpbrew/bashrc
+
+if [ -f $SOFILE  ]; then
+	echo $VERSION
+    phpbrew switch $VERSION
+    php -v
+    phpbrew list
+
+    if [[ $VERSION == 7*  ]]; then
+        FILECONTENTS="LoadModule php7_module $SOFILE"
+        CONFFILE=$CONFFILE7
+        sudo a2enmod php7
+        sudo a2dismod php5.6
+    else
+        FILECONTENTS="LoadModule php5_module $SOFILE"
+        CONFFILE=$CONFFILE5
+        sudo a2enmod php5.6
+        sudo a2dismod php7
+    fi;
+
+    echo $FILECONTENTS > $CONFFILE
+    echo "AddType application/x-httpd-php .php" >> $CONFFILE
+    echo "Updated $CONFFILE"
+    sudo service apache2 restart
+
+else
+    echo $VERSION "is not configured for apache"
+    phpbrew list
+fi
+
+#sudo chmod 777 /etc/apache2/mods-available/php5.6.load
+#sudo chmod 777 /etc/apache2/mods-available/php7.load

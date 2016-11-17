@@ -1,0 +1,211 @@
+ awk or gawk (gnu awk)
+
+Find and Replace text, database sort/validate/index
+
+Syntax
+
+      awk <options> 'Program' Input-File1 Input-File2 ...
+
+      awk -f PROGRAM-FILE <options> Input-File1 Input-File2 ...
+
+Key
+ -F FS
+ --field-separator FS
+     Use FS for the input field separator (the value of the `FS'
+     predefined variable).
+
+ -f PROGRAM-FILE
+ --file PROGRAM-FILE
+     Read the `awk' program source from the file PROGRAM-FILE, instead
+     of from the first command line argument.
+
+ -mf NNN
+ -mr NNN
+     The `f' flag sets the maximum number of fields, and the `r' flag
+     sets the maximum record size.  These options are ignored by
+     `gawk', since `gawk' has no predefined limits; they are only for
+     compatibility with the Bell Labs research version of Unix `awk'.
+
+ -v VAR=VAL
+ --assign VAR=VAL
+     Assign the variable VAR the value VAL before program execution
+     begins.
+
+ -W traditional
+ -W compat
+ --traditional
+ --compat
+     Use compatibility mode, in which `gawk' extensions are turned off.
+
+ -W lint
+ --lint
+     Give warnings about dubious or non-portable `awk' constructs.
+
+ -W lint-old
+ --lint-old
+     Warn about constructs that are not available in the original
+     Version 7 Unix version of `awk'.
+
+ -W posix
+ --posix
+     Use POSIX compatibility mode, in which `gawk' extensions are
+     turned off and additional restrictions apply.
+
+ -W re-interval
+ --re-interval
+     Allow interval expressions, in regexps.
+
+ -W source=PROGRAM-TEXT
+ --source PROGRAM-TEXT
+     Use PROGRAM-TEXT as `awk' program source code.  This option allows
+     mixing command line source code with source code from files, and is
+     particularly useful for mixing command line programs with library
+     functions.
+
+ --
+     Signal the end of options.  This is useful to allow further
+     arguments to the `awk' program itself to start with a `-'.  This
+     is mainly for consistency with POSIX argument parsing conventions.
+
+'Program'
+     A series of patterns and actions: see below
+
+Input-File
+     If no Input-File is specified then `awk' applies the Program to 
+     "standard input", (piped output of some other command or the terminal.
+     Typed input will continue until end-of-file (typing `Control-d')
+
+Basic functions
+
+The basic function of awk is to search files for lines (or other units of text) that contain a pattern. When a line matches, awk performs a specific action on that line.
+
+The Program statement that tells `awk' what to do; consists of a series of "rules". Each rule specifies one pattern to search for, and one action to perform when that pattern is found.
+
+For ease of reading, each line in an `awk' program is normally a separate Program statement , like this:
+
+     pattern { action }
+     pattern { action }
+     ...
+
+e.g. Display lines from my_file containing the string "123" or "abc" or "some text":
+
+awk '/123/ { print $0 } 
+     /abc/ { print $0 }
+     /some text/ { print $0 }' my_file
+
+A regular expression enclosed in slashes (`/') is an `awk' pattern that matches every input record whose text belongs to that set. e.g. the pattern /foo/ matches any input record containing the three characters `foo', *anywhere* in the record.
+
+`awk' patterns may be one of the following:
+
+/Regular Expression/        - Match =
+Pattern && Pattern          - AND
+Pattern || Pattern          - OR
+! Pattern                   - NOT
+Pattern ? Pattern : Pattern - If, Then, Else
+Pattern1, Pattern2          - Range Start - end
+BEGIN                       - Perform action BEFORE input file is read
+END                         - Perform action AFTER input file is read
+
+The special patterns BEGIN and END may be used to capture control before the first input line is read and after the last. BEGIN and END do not combine with other patterns.
+
+Variable names with special meanings:
+
+     CONVFMT  conversion  format  used  when  converting  numbers
+              (default %.6g)
+
+     FS       regular  expression  used  to separate fields; also
+              settable by option -Ffs.
+
+     NF       number of fields in the current record
+
+     NR       ordinal number of the current record
+
+     FNR      ordinal number of the current record in the current
+              file
+
+     FILENAME the name of the current input file
+
+     RS       input record separator (default newline)
+
+     OFS      output field separator (default blank)
+
+     ORS      output record separator (default newline)
+
+     OFMT     output format for numbers (default %.6g)
+
+     SUBSEP   separates multiple subscripts (default 034)
+
+     ARGC     argument count, assignable
+
+     ARGV     argument  array,  assignable;  non-null members are
+              taken as filenames
+
+     ENVIRON  array  of  environment  variables;  subscripts  are
+              names.
+
+In addition to simple pattern matching `awk' has a huge range of text and arithmetic Functions, Variables and Operators.
+
+`gawk' will ignore newlines after any of the following:
+
+    , { ? : || && do else
+
+Comments - start with a `#', and continue to the end of the line:
+
+ # This program prints a nice friendly message
+
+Examples
+
+Print the Row Number (NR), then a dash and space ("- ") and then the first item ($1) from each line in samplefile.txt:
+
+$ awk '{print NR "- " $1 }' samplefile.txt
+
+Print the first item ($1) and then the third last item $(NF-2) from each line in samplefile.txt:
+
+$ awk '{print $1, $(NF-2) }' samplefile.txt
+
+This program prints every line that has at least one field. This is an easy way to delete blank lines from a file (or rather, to
+create a new file similar to the old file but from which the blank lines have been deleted)
+
+ awk 'NF > 0' data.txt
+
+Comparison with grep:
+
+    Running grep Dec against the following file listing would return the 3 rows shown in bold as it matches text in different places:
+
+    -rw-r--r-- 7 simon simon 12043 Jan 31 09:36 December.pdf
+    -rw-r--r-- 3 simon simon 1024 Dec 01 11:59 README
+    -rw-r--r-- 3 simon simon 5096 Nov 14 18:22 Decision.txt
+
+    Running awk '$6 == "Dec"'against the same file listing, the relational operator $6 matches the exact field (column 6 = Month) so it will list only the December file:
+
+    $ ls -l /tmp/demo | awk '$6 == "Dec"'
+
+This program prints the length of the longest input line:
+
+ awk '{ if (length($0) > max) max = length($0) }
+      END { print max }' data
+
+This program prints seven random numbers from zero to 100, inclusive.
+
+ awk 'BEGIN { for (i = 1; i <= 7; i++)
+                print int(101 * rand()) }'
+
+This program prints the total number of bytes used by FILES.
+
+ ls -lg FILES | awk '{ x += $5 } ; END { print "total bytes: " x }'
+
+This program prints a sorted list of the login names of all users.
+
+ awk -F: '{ print $1 }' /etc/passwd | sort
+
+This program counts lines in a file.
+
+ awk 'END { print NR }' data
+
+This program prints the even numbered lines in the data file. If you were to use the expression `NR % 2 == 1' instead, it would print the odd numbered lines.
+
+ awk 'NR % 2 == 0' data
+
+“Justice is such a fine thing that we cannot pay too dearly for it” - Alain-Rene Lesage
+
+Related:

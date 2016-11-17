@@ -1,0 +1,9 @@
+Change each 'foo' to 'bar', but ask for confirmation first.
+:%s/foo/bar/gcI
+
+% - in all lines (without % - only in current line). :5,12s/ - from 5 to 12 inclusive
+s - substitute,
+g - global,
+c - confirmance,
+i - ignorecase (default)
+I - case sensitive

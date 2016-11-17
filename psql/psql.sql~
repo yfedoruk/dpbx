@@ -1,0 +1,24 @@
+#describe(list)
+\deu+ 
+\du
+
+#create user
+psql -c "CREATE USER admin WITH PASSWORD '1';"
+
+#change password
+ALTER USER "user_name" WITH PASSWORD 'new_password';
+
+#rename user
+ALTER USER myuser RENAME TO newname;
+
+
+# -------------- roles -----------
+#set superuser/nosuperuser
+ALTER USER myuser WITH SUPERUSER;
+ALTER USER myuser WITH NOSUPERUSER
+
+#list 
+SELECT rolname, rolsuper FROM pg_roles;
+SELECT * FROM pg_ ...
+
+

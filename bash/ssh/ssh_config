@@ -1,0 +1,13 @@
+Also, I'm on my mac now, and if you do want to allow empty passwords, you want to "sudo pico /private/etc/sshd_config", go down towards the bottom, and find the lines:
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+
+
+And replace the PermitEmptyPasswords line with one that says yes (without a # in front of it). So the lines would then read:
+# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+PermitEmptyPasswords yes
+
+
+Hope this helps :)
