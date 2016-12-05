@@ -1,0 +1,72 @@
+Log into your account in the TTY.
+Run sudo apt-get purge nvidia-*
+Run sudo add-apt-repository ppa:graphics-drivers/ppa and then sudo apt-get
+update.
+Run sudo apt-get install nvidia-364.
+Reboot and your graphics issue should be fixed.
+
+
+
+
+
+
+$$$$$$$$$$$$$$$$
+sudo apt-get update
+sudo rm -f /var/lib/dpkg/updates/*
+sudo apt-get purge nvidia-*
+sudo dpkg --configure -a
+sudo apt-get install nvidia-364
+sudo apt-get install nvidia-current
+
+
+
+
+
+
+
+
+
+
+You referred a wrong link. Try the below commands on terminal to remove all
+the files inside /var/lib/dpkg/updates directory ,
+
+cd /var/lib/dpkg/updates
+sudo rm *
+And then run the below command to get newer ones,
+
+sudo apt-get update
+
+#############################
+bram1221l Hey ,,,
+
+I am of a mind to clean all out, and start again fresh, installing the 367
+driver from our PPA. 
+To clean :
+Code:
+
+sudo NVIDIA-Linux-x86_64-367.27.run --uninstall
+sudo NVIDIA-Linux-x86_64-370.28.run --uninstall
+sudo apt-get remove --purge nvidia* bbswitch-dkms
+sudo rm /etc/X11/xorg.conf
+
+add our PPA to the sources:
+Code:
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+
+and now reinstall:
+Code:
+
+sudo apt update
+sudo apt install nvidia-367 bbswitch-dkms nvidia-settings nvidia-prime
+sudo apt upgrade
+
+Now see what our handy-work looks like:
+Code:
+
+sudo reboot
+Now when you come back up IF all is not good, let's look then at what X
+thinks:
+Code:
+
+cat /var/log/Xorg.0.log
