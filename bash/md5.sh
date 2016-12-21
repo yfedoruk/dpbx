@@ -1,0 +1,1 @@
+echo "FD0CD44EF08E70BCA84DFADF13F19A87  FileTocheck.iso" | md5sum -c -
