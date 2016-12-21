@@ -10,7 +10,6 @@ docker -d
 
 #It will force docker to recreate the bridge and reinit all the network rules
 
-
 #docker vs cisco
   https://groups.google.com/forum/#!msg/docker-user/gDDCYKAG2Yw/yXg14aROuhkJ
   https://help.ubuntu.com/community/IptablesHowTo

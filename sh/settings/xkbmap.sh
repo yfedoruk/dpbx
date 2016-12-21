@@ -2,7 +2,7 @@
 setxkbmap -option grp:rwin_toggle 
 
 if setxkbmap -query | grep -q us,ru ; then 
-    setxkbmap -option grp:lwin_toggle us,ua ;
+    setxkbmap -option grp:rwin_toggle us,ua ;
 else 
-    setxkbmap -option grp:lwin_toggle us,ru;
+    setxkbmap -option grp:rwin_toggle us,ru;
 fi
