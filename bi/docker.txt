@@ -1,0 +1,53 @@
+ failed 5ecff056 refactor Dockerfiles ready for build · about 5 hours ago by Maksymenko Mykola
+* - to install docker ( https://www.docker.com/products/docker ): *
+- - install docker for your OS ( https://docs.docker.com/engine/installation/linux/ubuntulinux/ )
+- - add user to docker group ( https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group )
+- - install docker-compose ( https://docs.docker.com/compose/install/ ):
+- - - curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
+- - - chmod +x /usr/local/bin/docker-compose
+
+
+* - to install and first run: *
+- ./run/ihub/install
+- add to /etc/hosts "172.17.0.1 ihub.dev"
+
+
+
+* - to use: *
+- !!! look at the ./run/ directory !!!
+=============================
+=== postgres port - 15432 ===
+=============================
+- http://ihub.dev:8081/ - project
+- http://localhost:8090/ - kibana
+- http://localhost:8091/ - statsd admin
+- http://localhost:8092/ - redis admin
+- http://localhost:8093/ - mongo admin
+- http://localhost:8095/ - rabbitmq management panel
+
+
+* - to attach to ihub container: *
+- ./run/phpfpm/ssh.sh
+- - ./vendor/bin/codecept run
+- - ...
+
+
+* - to show all containers *
+docker ps [-a]
+
+* - attach to detached container: *
+docker exec -ti [CONTAINER-ID] bash
+
+- ssh to php-fpm container:
+docker exec -it docker_webserver-phpfpm_1 bash
+
+- follow from tail in logs (STDOUT and STDERR):
+docker logs -f --tail 2 [CONTAINER-ID]
+
+- to stop all:
+docker-compose down
+
+
+
+ELK - https://github.com/deviantony/docker-elk
+docker run -it -v /home/psyhonut/PhpstormProjects/docker/containers/elkr/logstash/data:/data -v /home/psyhonut/PhpstormProjects/docker/containers/elkr/logstash/config:/etc/logstash/conf.d docker_elkr-logstash bash

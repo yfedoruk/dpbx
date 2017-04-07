@@ -8,3 +8,15 @@ Copy result of play, for example "ihub-errors"
 
 2. Go to "Management"->"Index patterns"->"Add New" and paste "ihub-errors" (and click somewhere on page)
 3. Gp tp "Discover". Paste "ihub-errors" and select (on top menu) "Last 15 minutes"
+
+
+
+# red kibana
+
+sudo sysctl -w vm.max_map_count=262144
+sudo rm -rf containers/elkr/elasticsearch/data/
+ -- restart docker --
+ 
+ 
+
+
