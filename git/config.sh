@@ -1,10 +1,10 @@
 # git config --global user.name "yfedoruck"
 # git config --global user.email yfedoruck@gmail.com
-git config --global user.name "y.fedoruk"
+git config --global user.name "Fedoruk Yaroslav"
 git config --global user.email y.fedoruk@favbet.com
 
 git config --global core.pager 'less -+$LESS -R' #exit from `pager`
-git config --global pager.diff false #or git --no-pager diff
+git config --global pager.diff true #or git --no-pager diff
 
 
 git config --global core.mergeoptions --no-edit
