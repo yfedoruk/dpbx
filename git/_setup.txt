@@ -50,3 +50,9 @@ Another way to make a directory stay empty (in the repo) is to create a .gitigno
     !.gitignore
 #+++++++++++++++++++++++++++++++++++++
 or you could always put a README file in the directory with an explanation of why you want this, otherwise empty, directory in the repository.
+
+
+
+######## git history nice! #######
+
+apt install gitk
