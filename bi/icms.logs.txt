@@ -1,2 +1,0 @@
-1. in .env and .env.testing set LOG_DRIVER=file
-2. clear icms/storage/logs/laravel.log
