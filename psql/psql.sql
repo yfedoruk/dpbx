@@ -59,6 +59,10 @@ Password for user foo: {gthcgtrnbdf}
 
 																			# ----------- ALTER TABLE -----------
 ALTER TABLE egt.log ADD partner_id bigint;
+
+ALTER TABLE custoemr ADD COLUMN fax VARCHAR, ADD COLUMN email VARCHAR;
+ALTER TABLE icms.content ADD COLUMN translation text not null default ''::text;
+
 ALTER TABLE distributors ADD PRIMARY KEY (dist_id);
 ALTER TABLE egt.log ADD CONSTRAINT egt_transferid_partner_id UNIQUE (type_operation,transferid,partner_id);
 ALTER TABLE cms.games2 ADD CONSTRAINT game_description_game_id_fkey FOREIGN KEY (id) REFERENCES cms.games(id);
