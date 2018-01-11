@@ -72,7 +72,9 @@ ALTER TABLE egt.log DROP CONSTRAINT egt_transferid_partner_id;
 
 # ---- modify ----
 ALTER TABLE distributors ALTER COLUMN street SET NOT NULL;
+ALTER TABLE distributors ALTER COLUMN street DROP NOT NULL;
 ALTER TABLE egt.log ALTER COLUMN operation_id TYPE varchar(64);
+
 
 
 CREATE INDEX indx_cms_games_title ON cms.games (title);
@@ -104,6 +106,16 @@ create table netent.games_new (
 	gameid bigint,
 	inner_game_id bigint references cms.games(id) ON UPDATE CASCADE ON DELETE CASCADE,
 PRIMARY KEY (id));
+
+
+#https://wiki.postgresql.org/wiki/Deleting_duplicates
+# This query does that for all rows of tablename having the same column1, column2, and column3.
+DELETE FROM tablename
+WHERE id IN (SELECT id
+              FROM (SELECT id,
+                             ROW_NUMBER() OVER (partition BY column1, column2, column3 ORDER BY id) AS rnum
+                     FROM tablename) t
+              WHERE t.rnum > 1);
 
 
 

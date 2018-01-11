@@ -1,0 +1,5 @@
+# The requested package could not be found in any version.
+
+See main composer.json, section "required", and module composer.json section "name". Thei must be the same.
+
+
