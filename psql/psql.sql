@@ -1,3 +1,8 @@
+#connect psql and `set search_path to MY_SCHEMANAME`
+
+alias pg-connect="PGOPTIONS=--search_path=MY_SCHEMANAME expect -c 'spawn psql -U MY_USERNAME -h MY_HOSTNAME -p 5432 -d MY_DBNAME; expect Password; send \"MY_PASSWORD\n\" ; interact'"
+
+
 #describe(list)
 \deu+ 
 \du
