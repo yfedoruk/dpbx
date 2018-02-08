@@ -63,6 +63,9 @@ Password for user foo: {gthcgtrnbdf}
 \df+ check_event_insert_update_new
 
 																			# ----------- ALTER TABLE -----------
+-- reset autoincrement
+ALTER SEQUENCE games_id_seq RESTART WITH 1;
+
 ALTER TABLE egt.log ADD partner_id bigint;
 
 ALTER TABLE custoemr ADD COLUMN fax VARCHAR, ADD COLUMN email VARCHAR;
@@ -87,9 +90,6 @@ DROP INDEX cms.indx_title;
 
 --?? alter table public.pref_scores drop constraint pref_scores_gid_fkey, add constraint pref_scores_gid_fkey foreign key (gid) references pref_games(gid) on delete cascade;
 
-															/* reset id for all next rows.*/
--- First see id description: cms.games_id_seq'::regclass
-ALTER SEQUENCE games_id_seq RESTART WITH 61;
 
 
 																			/** ----------- CLONE, DUMPS ----------------- */
