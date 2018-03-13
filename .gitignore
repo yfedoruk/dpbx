@@ -16,5 +16,3 @@
 !/configs/
 !/plugins/
 !/php/
-/php/*
-!/php/array/

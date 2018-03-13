@@ -1,0 +1,1 @@
+http://amdy.su/shablon-dlya-php-prilozheniy/
