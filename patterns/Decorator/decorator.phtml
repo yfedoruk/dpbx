@@ -1,0 +1,79 @@
+***** According to Wikipedia: *****
+
+The decorator pattern (also known as Wrapper, an alternative naming 
+shared with the Adapter pattern) is a design pattern that allows behavior 
+to be added to an individual object, either statically or dynamically, 
+without affecting the behavior of other objects from the same class.
+
+***********************************
+Advantages:
+ - change object functionality without change class.
+drawbacks:
+ - many small classes.
+***********************************
+Why and where it is needed: (Decorator vs inheritance)
+1. We have:  
+<?php class Text{} ?>
+
+and then we want create bold italic and underscore texttext. Okay. Do it:
+<?php  class Bold extend Text{} ?>
+<?php  class Italic extend Text{} ?>
+<?php  class Underscore extend Text{} ?>
+
+And here we want various combination of its: italic-underscore-bold text.
+We can do:
+<?php 
+    class ItalicBold
+    class BoldUnderscore
+    class ItalicBoldUnderscore
+    ...
+?>
+or we can use combinationod Decorators:
+<?php 
+class IDecorator(Text $text);
+class BDecorator(Text $text);
+class UDecorator(Text $text);
+
+$text = new Text();
+$bi = new BDecorator(new IDecorator($text));
+$biu = new UDecorator(new BDecorator(new IDecorator($text)));
+//or
+$text = new Text();
+$text = new BDecorator($text);
+$text = new IDecorator($text); //b+i
+
+?>
+***********************************
+
+
+
+
+
+http://amdy.su/pattern-decorator/
+
+artoodetoo
+2014/09/09 в 09:37
+декоратор ни коим образом не наследует от декорируемого класса, то чисто формально он не получает его интерфейсы! Поэтому проверка вроде
+<?php
+if ($decoratedObject instanceof ContainerAware) {
+// ... set container or whatever
+}
+?>
+провалится, хотя de facto декорированный объект продолжает выполнять контракт. Такова цена «магии».
+
+
+AmdY Автор записи
+2014/09/09 в 10:45
+Ну, никто не мешает декоратор отнаследовать от декорируемого класса, это частая практика. class Decorator extends Object { …. }, тогда проверки проходить будут. Главное не забывать, что в декорируемом классе тоже могут быть магические методы.
+
+Вадим
+2014/09/22 в 18:19
+зачем тогда вообще нужен декоратор, если мы и так получим все свойства и методы родителя? мы так же может расширять и переопределять класс как хотим.
+
+
+AmdY Автор записи
+2014/09/24 в 10:47
+Ключевым моментом является то, что нам приходит объект, порождённый где-то в системе на которую мы влиять не можем, соответственно, мы его менять не можем, потому декорируем.
+Магия с extends нужна для дружбы с тайпхинтингом и обхода зоны видимости, это скорее костыль.
+Ну и сам паттерн во многом костыль, который применяется из-за отсутствие грамотного DI.
+ 
