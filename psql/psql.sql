@@ -123,7 +123,9 @@ WHERE id IN (SELECT id
               WHERE t.rnum > 1);
 
 
-
+# search in array-json attributes:
+cashdesk_list     | [-61, -11, -5, 9999]
+select * from cms_tree where cashdesk_list @> '9999';
 
 
 
