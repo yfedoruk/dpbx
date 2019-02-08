@@ -143,3 +143,9 @@ git show | grep 'git'
 
 #### gitolite. List of removed repositories ###
 ssh git@git.xxx.com info
+
+
+# clean untraced new files
+
+#see what would be removed
+git clean -n dirname/
