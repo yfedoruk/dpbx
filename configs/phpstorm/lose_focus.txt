@@ -1,0 +1,9 @@
+#https://stackoverflow.com/questions/53957831/intellij-in-blocked-mode-when-window-comes-into-focus
+
+#open 
+
+/home/slava/programs/PhpStorm/bin/idea.properties
+
+#add
+
+suppress.focus.stealing=false
