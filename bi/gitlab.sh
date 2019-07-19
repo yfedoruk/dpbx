@@ -8,12 +8,12 @@ token=$(<~/bi/gitlab_token.txt)
 
 project="${project:19}"
 project="${project:0:-4}"
-echo $project
+echo ${project}
 
 project="${project//\//$delimiter}"
 
 url="https://gitlab.favorit/api/v4/projects/${project}/merge_requests"
-echo $url
+echo ${url}
 
 
 echo "Source branch is: ${source_branch} ? (y/n)"
