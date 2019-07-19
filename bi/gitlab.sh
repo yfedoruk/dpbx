@@ -21,9 +21,6 @@ read -s -n 1 is_source_correct
 
 if [[ "${is_source_correct}" == "y" || "${is_source_correct}" == "" ]]; then
     echo "...proceed..."
-elif [[ "${is_source_correct}" == "n"  ]]; then
-    echo "Enter source branch:"
-    read source_branch
 else
     echo "wrong!"
     exit 1
