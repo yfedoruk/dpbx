@@ -25,7 +25,7 @@ else
     exit 1
 fi
 
-echo "Create merge request ${source_branch} ==> dev"
+echo "Create merge request ${source_branch} ==> master"
 
 create_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X POST "${url}?source_branch=${source_branch}&target_branch=master&title=WIP:${source_branch}&assignee_id=103"`
 
