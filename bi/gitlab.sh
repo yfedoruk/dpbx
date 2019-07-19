@@ -27,11 +27,7 @@ fi
 
 echo "Create merge request ${source_branch} ==> dev"
 
-echo "${url}?source_branch=${source_branch}&target_branch=dev&title=${source_branch}&assignee_id=75"
-#exit 1;
-
 create_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X POST "${url}?source_branch=${source_branch}&target_branch=dev&title=${source_branch}&assignee_id=75"`
-#create_result="{\"id\":26436,\"iid\":1373dd}"
 
 iid=`echo ${create_result} | jq '.iid'`
 
