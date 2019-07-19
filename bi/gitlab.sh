@@ -16,7 +16,7 @@ echo ${url}
 
 
 echo "Source branch is: ${source_branch} ? (y/n)"
-read -s -n 1 is_source_correct 
+read -s -n 1 is_source_correct
 
 if [[ "${is_source_correct}" == "y" || "${is_source_correct}" == "" ]]; then
     echo "...proceed..."
