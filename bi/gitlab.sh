@@ -5,10 +5,14 @@ delimiter="%2F"
 source_branch=`git symbolic-ref --short HEAD`
 token=$(<~/bi/gitlab_token.txt)
 
+#remove `git@gitlab.favorit:` from start
 project="${project:19}"
+
+#remove `.git` from end
 project="${project:0:-4}"
 echo ${project}
 
+#replace `/` on `%2F` in whole string
 project="${project//\//$delimiter}"
 
 url="https://gitlab.favorit/api/v4/projects/${project}/merge_requests"
