@@ -46,10 +46,17 @@ fi
 echo "iid=${iid}"
 
 echo "merge ${source_branch} ==> dev"
-merge_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X PUT "${url}/${iid}/merge?&should_remove_source_branch=false&merge_when_pipeline_succeeds=true" | jq '.message'`
+merge_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X PUT "${url}/${iid}/merge?&should_remove_source_branch=false&merge_when_pipeline_succeeds=true"`
 echo ${merge_result}
+
 message=`echo ${merge_result} | jq '.message'`
 
-#if [[ "${message}" == "405 Method Not Allowed" ]]; then
-#    curl -k -H "PRIVATE-TOKEN: ${token}" -X DELETE "${url}/${iid}"
-#fi
+if [[ "${message}" == "\"405 Method Not Allowed\"" ]]; then
+    echo "close iid=${iid}"
+    close_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X PUT "${url}/${iid}?state_event=close"`
+    close_state=`echo ${close_result}  | jq '.state'`
+
+    if [[ "${close_state}" != "\"closed\"" ]]; then
+        echo ${close_result}
+    fi
+fi
