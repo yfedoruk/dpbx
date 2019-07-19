@@ -5,7 +5,6 @@ delimiter="%2F"
 source_branch=`git symbolic-ref --short HEAD`
 token=$(<~/bi/gitlab_token.txt)
 
-
 project="${project:19}"
 project="${project:0:-4}"
 echo ${project}
@@ -52,7 +51,10 @@ echo ${merge_result}
 message=`echo ${merge_result} | jq '.message'`
 
 if [[ "${message}" == "\"405 Method Not Allowed\"" ]]; then
-    echo "close iid=${iid}"
+
+    close_msg="close iid=${iid}"
+    echo -e "\033[41m${close_msg}\033[0m"
+
     close_result=`curl -k -H "PRIVATE-TOKEN: ${token}" -X PUT "${url}/${iid}?state_event=close"`
     close_state=`echo ${close_result}  | jq '.state'`
 
