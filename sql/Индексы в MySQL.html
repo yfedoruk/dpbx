@@ -1,0 +1,627 @@
+<html>
+<head>
+    <title>Индексы в MySQL</title>
+    <meta name=description
+          content="Что такое индексы в Mysql и как их использовать для оптимизации запросов"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" type="application/rss+xml" title="Хайлоад в RSS" href="/rss"/>
+    <meta property="og:site_name" content="Хайлоад"/>
+    <meta property="fb:admins" content="729597381"/>
+    <meta property="fb:pages" content="1275367325876371"/>
+
+	        <link rel="amphtml" href="https://ruhighload.com/%d0%98%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+mysql?amp=1">
+	
+		        <link rel="stylesheet" href="/css/docs.css?v=12">
+	        <link rel="stylesheet" href="/css/layout.css?v=12">
+	        <link rel="stylesheet" href="/css/pager.css?v=12">
+	        <link rel="stylesheet" href="/css/posts.css?v=12">
+	        <link rel="stylesheet" href="/css/write.css?v=12">
+	
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7003508399888210",
+          enable_page_level_ads: true
+     });
+</script>
+
+</head>
+<body>
+<div id="head">
+    <div class="content">
+        <div id="navigation">
+            <a href="/" id="logo"></a>
+            <a href="javascript:;" id="search"></a>
+            <input type="text" id="search-input" class="off" placeholder="Что искать?"/>
+        </div>
+
+        <h1>Индексы в MySQL</h1>
+    </div>
+</div>
+
+<div id="content-container">
+
+    <div class="content" id="content">
+		<article data-io-article-url="https://ruhighload.com/%d0%98%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+mysql">
+    <p>Индексы в MySQL (Mysql indexes) &mdash; отличный инструмент для оптимизации SQL запросов. Чтобы понять, как они работают, посмотрим на работу с данными без них.
+
+<h2>1. Чтение данных с диска</h2>
+
+<p>На жестком диске нет такого понятия, как файл. Есть понятие блок. Один файл обычно занимает несколько блоков. Каждый блок знает, какой блок идет после него. Файл делится на куски и каждый кусок сохраняется в пустой блок.
+
+<img src="https://i.onthe.io/smngozohjlnqdlc7.2e8ef4b1.jpg" alt="" title="" class="img-responsive"/>
+
+<p>При чтении файла, мы по очереди проходимся по всем блокам и собираем файл из кусков. Блоки одного файла могут быть раскиданы по диску (фрагментация). Тогда чтение файла замедлится, т.к. понадобится прыгать разным участкам диска.
+
+<p>Когда мы ищем что-то внутри файла, нам понадобится пройтись по всем блокам, в которых он сохранен. Если файл очень большой, то и количество блоков будет значительным. Необходимость перепрыгивать с блока на блок, которые могут находиться в разных местах, сильно замедлит поиск данных.
+
+<h2>2. Поиск данных в MySQL</h2>
+
+<p>Таблицы MySQL &mdash; это обычные файлы. Выполним запрос такого вида:
+<pre><code >SELECT * FROM users WHERE age = 29</code></pre>
+
+<p>MySQL при этом открывает файл, где хранятся данные из таблицы <b>users</b>. А дальше &mdash; начинает перебирать весь файл, чтобы найти нужные записи.
+
+<p>Кроме этого, MySQL будет сравнивать данные в <b>каждой строке таблицы</b> со значением в запросе. Допустим работа ведется с таблицей, в которой есть 10 записей. Тогда MySQL прочитает все 10 записей, сравнит колонку age каждой из них со значением 29 и отберет только подходящие данные:
+
+<img src="https://i.onthe.io/smngoz67daj2cl9nl.c1263d1e.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Итак, есть две проблемы при чтении данных:
+
+<ul>
+	<li>Низкая скорость чтения файлов из-за расположения блоков в разных частях диска (фрагментация).
+	<li>Большое количество операций сравнения для поиска нужных данных.
+</ul>
+
+<h2>3. Сортировка данных</h2>
+
+<p>Представим, что мы отсортировали наши 10 записей по убыванию. Тогда используя алгоритм <a href="http://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D1%8B%D0%B9_%D0%BF%D0%BE%D0%B8%D1%81%D0%BA" target="_blank">бинарного поиска</a>, мы могли бы максимум за 4 операции отобрать нужные нам значения:
+
+<img src="https://i.onthe.io/smngoz5nq341k2geo.528050fa.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Кроме меньшего количества операций сравнения, мы сэкономили бы на чтении ненужных записей.
+
+<p><b>Индекс</b> &mdash; это и есть отсортированный набор значений. В <b>MySQL индексы</b> всегда строятся для какой-то конкретной колонки. Например, мы могли бы построить индекс для колонки age из примера.
+
+<h2>4. Выбор индексов в MySQL</h2>
+
+<p>В самом простом случае, индекс необходимо создавать для тех колонок, которые присутствуют в условии WHERE.
+
+<img src="https://i.onthe.io/smngoz77vq9i6ilbf.70d941b8.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Рассмотрим запрос из примера:
+
+<pre><code >SELECT * FROM users <b>WHERE age = 29</b></code></pre>
+
+<p>Нам необходимо создать индекс на колонку age:
+
+<pre><code >CREATE INDEX age ON users(<b>age</b>);</code></pre>
+
+<p>После этой операции MySQL начнет использовать индекс age для выполнения подобных запросов. Индекс будет использоваться и для выборок по диапазонам значений этой колонки:
+
+<pre><code >SELECT * FROM users WHERE age <b>&lt;</b> 29</code></pre>
+
+<h3>Сортировка</h3>
+
+<p>Для запросов такого вида:
+
+<pre><code >SELECT * FROM users <b>ORDER BY register_date</b></code></pre>
+
+<p>действует такое же правило &mdash; создаем индекс на колонку, по которой происходит сортировка:
+
+<pre><code >CREATE INDEX register_date ON users(<b>register_date</b>);</code></pre>
+
+<h3>Внутренности хранения индексов</h3>
+
+<p>Представим, что наша таблица выглядит так:
+
+<pre ><strong>id | name   | age</strong>
+1  | Den    | 29
+2  | Alyona | 15
+3  | Putin  | 89
+4  | Petro  | 12</pre>
+
+<p>После создания индекса на колонку age, MySQL сохранит все ее значения в отсортированном виде:
+
+<pre ><strong>age index</strong>
+12
+15
+29
+89</pre>
+
+<p>Кроме этого, будет сохранена связь между значением в индексе и записью, которой соответствует это значение. Обычно для этого используется первичный ключ:
+
+<pre ><strong>age index и связь с записями</strong>
+12: 4
+15: 2
+29: 1
+89: 3</pre>
+
+<h3>Уникальные индексы</h3>
+
+<p>MySQL поддерживает уникальные индексы. Это удобно для колонок, значения в которых должны быть уникальными по всей таблице. Такие индексы улучшают эффективность выборки для уникальных значений. Например:
+
+<pre><code >SELECT * FROM users WHERE <b>email</b> = 'golotyuk@gmail.com';</code></pre>
+
+<p>На колонку email необходимо создать уникальный индекс:
+
+<pre><code >CREATE <b>UNIQUE</b> INDEX email ON users(<b>email</b>)</code></pre>
+
+<p>Тогда при поиске данных, MySQL остановится после обнаружения первого соответствия. В случае обычного индекса будет обязательно проведена еще одна проверка (следующего значения в индексе).
+
+
+<h2>5. Составные индексы</h2>
+
+<p>MySQL может использовать только <b>один индекс для запроса</b> (кроме случаев, когда MySQL способен <a href="https://www.percona.com/blog/2012/12/14/the-optimization-that-often-isnt-index-merge-intersection/" target="_blank" title="объединить результаты выборок по нескольким индексам">объединить результаты выборок по нескольким индексам</a>). Поэтому, для запросов, в которых используется несколько колонок, необходимо использовать <b>составные индексы</b>.
+
+<img src="https://i.onthe.io/smngoz79t006u56ci.7dc9f1ef.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Рассмотрим такой запрос:
+
+<pre><code >SELECT * FROM users WHERE <b>age = 29 AND gender = 'male'</b></code></pre>
+
+<p>Нам следует создать составной индекс на обе колонки:
+
+<pre><code >CREATE INDEX age_gender ON users(<b>age, gender</b>);</code></pre>
+
+<h3>Устройство составного индекса</h3>
+
+<p>Чтобы правильно использовать составные индексы, необходимо понять структуру их хранения.  Все работает точно так же, как и для обычного индекса. Но для значений используются значений всех входящих колонок сразу. Для таблицы с такими данными:
+
+<pre ><strong>id | name   | age | gender</strong>
+1  | Den    | 29 | male
+2  | Alyona | 15 | female
+3  | Putin  | 89 | tsar
+4  | Petro  | 12 | male</pre>
+
+<p>значения составного индекса будут такими:
+
+<pre ><strong>age_gender</strong>
+12male
+15female
+29male
+89tsar</pre>
+
+<p>Это означает, что очередность колонок в индексе будет играть большую роль. Обычно колонки, которые используются в условиях WHERE, следует ставить в начало индекса. Колонки из ORDER BY &mdash; в конец.
+
+<h3>Поиск по диапазону</h3>
+
+<p>Представим, что наш запрос будет использовать не сравнение, а поиск по диапазону:
+
+<pre><code >SELECT * FROM users WHERE <b>age &lt;= 29</b> AND gender = 'male'</code></pre>
+
+<p>Тогда MySQL не сможет использовать полный индекс, т.к. значения gender будут отличаться для разных значений колонки age. В этом случае база данных попытается использовать часть индекса (только age), чтобы выполнить этот запрос:
+
+<pre ><strong>age_gender</strong>
+<b>12</b>male
+<b>15</b>female
+<b>29</b>male
+<b>89</b>tsar</pre>
+
+<p>Сначала будут отфильтрованы все данные, которые подходят под условие <var>age <= 29</var>. Затем, поиск по значению "male" будет произведен без использования индекса.
+
+<h3>Сортировка</h3>
+
+<p>Составные индексы также можно использовать, если выполняется сортировка:
+
+<pre><code >SELECT * FROM users WHERE gender = 'male' <b>ORDER BY age</b></code></pre>
+
+<p>В этом случае нам нужно будет создать индекс в другом порядке, т.к. сортировка (ORDER) происходит после фильтрации (WHERE):
+
+<pre><code >CREATE INDEX gender_age ON users(<b>gender, age</b>);</code></pre>
+
+<p>Такой порядок колонок в индексе позволит выполнить фильтрацию по первой части индекса, а затем отсортировать результат по второй. 
+
+<p>Колонок в индексе может быть больше, если требуется:
+
+<pre><code >SELECT * FROM users WHERE <b>gender = 'male' AND country = 'UA' ORDER BY age, register_time</b></code></pre>
+
+<p>В этом случае следует создать такой индекс:
+
+<pre><code >CREATE INDEX gender_country_age_register ON users(<b>gender, country, age, register_time</b>);</code></pre>
+
+
+<h2>6. Использование EXPLAIN для анализа индексов</h2>
+
+<p>Инструкция EXPLAIN покажет данные об использовании индексов для конкретного запроса. Например:
+
+<pre >mysql&gt; EXPLAIN SELECT * FROM users WHERE email = 'golotyuk@gmail.com';
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+| id | select_type | table | type | possible_keys | <b>key</b>  | key_len | ref  | <b>rows</b> | Extra       |
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+|  1 | SIMPLE      | users | ALL  | NULL          | <b>NULL</b> | NULL    | NULL |  <b>336</b> | Using where |
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+</pre>
+
+<p>Колонка <b>key</b> показывает используемый индекс. Колонка <b>possible_keys</b> показывает все индексы, которые могут быть использованы для этого запроса. Колонка <b>rows</b> показывает число записей, которые пришлось прочитать базе данных для выполнения этого запроса (в таблице всего 336 записей).
+
+<p>Как видим, в примере не используется ни один индекс. После создания индекса:
+
+<pre >mysql&gt; EXPLAIN SELECT * FROM users WHERE email = 'golotyuk@gmail.com';
++----+-------------+-------+-------+---------------+-------+---------+-------+------+-------+
+| id | select_type | table | type  | possible_keys | <b>key</b>   | key_len | ref   | <b>rows</b> | Extra |
++----+-------------+-------+-------+---------------+-------+---------+-------+------+-------+
+|  1 | SIMPLE      | users | const | email         | <b>email</b> | 386     | const |    <b>1</b> |       |
++----+-------------+-------+-------+---------------+-------+---------+-------+------+-------+</pre>
+
+<p>Прочитана всего одна запись, т.к. был использован индекс.
+
+<h3>Проверка длинны составных индексов</h3>
+
+<p>Explain также поможет определить правильность использования составного индекса. Проверим запрос из примера (с индексом на колонки age и gender):
+
+<pre >mysql&gt; EXPLAIN SELECT * FROM users WHERE age = 29 AND gender = 'male';
++----+-------------+--------+------+---------------+------------+---------+-------------+------+-------------+
+| id | select_type | table  | type | possible_keys | key        | <b>key_len</b> | ref         | rows | Extra       |
++----+-------------+--------+------+---------------+------------+---------+-------------+------+-------------+
+|  1 | SIMPLE      | users  | ref  | age_gender    | <b>age_gender</b> | <b>24</b>      | const,const |    1 | Using where |
++----+-------------+--------+------+---------------+------------+---------+-------------+------+-------------+</pre>
+
+<p>Значение <b>key_len</b> показывает используемую длину индекса. В нашем случае 24 байта &mdash; длинна всего индекса (5 байт age + 19 байт gender).
+
+<p>Если мы выполним изменим точное сравнение на поиск по диапазону, увидим что MySQL использует только часть индекса:
+
+<pre >mysql&gt; EXPLAIN SELECT * FROM users WHERE <b>age &lt;= 29</b> AND gender = 'male';
++----+-------------+--------+------+---------------+------------+---------+------+------+-------------+
+| id | select_type | table  | type | possible_keys | key        | <b>key_len</b> | ref  | rows | Extra       |
++----+-------------+--------+------+---------------+------------+---------+------+------+-------------+
+|  1 | SIMPLE      | users  | ref  | age_gender    | <b>age_gender</b> | <b>5</b>       |      |   82 | Using where |
++----+-------------+--------+------+---------------+------------+---------+------+------+-------------+</pre>
+
+<p>Это сигнал о том, что созданный индекс не подходит для этого запроса. Если же мы создадим правильный индекс:
+
+<pre >mysql&gt; Create index gender_age on users(gender, age);
+mysql&gt; EXPLAIN SELECT * FROM users WHERE age &lt; 29 and gender = 'male';
++----+-------------+--------+-------+-----------------------+------------+---------+------+------+-------------+
+| id | select_type | table  | type  | possible_keys         | key        | <b>key_len</b> | ref  | rows | Extra       |
++----+-------------+--------+-------+-----------------------+------------+---------+------+------+-------------+
+|  1 | SIMPLE      | users  | range | age_gender,gender_age | <b>gender_age</b> | <b>24</b>      | NULL |   47 | Using where |
++----+-------------+--------+-------+-----------------------+------------+---------+------+------+-------------+</pre>
+
+<p>В этом случае MySQL использует весь индекс gender_age, т.к. порядок колонок в нем позволяет сделать эту выборку.
+
+
+
+<h2>7. Селективность индексов</h2>
+
+<p>Вернемся к запросу:
+
+<pre><code >SELECT * FROM users WHERE age = 29 AND gender = 'male'</code></pre>
+
+<p>Для такого запроса необходимо создать составной индекс. Но как правильно выбрать последовательность колонок в индексе? Варианта два:
+<ul>
+	<li>age, gender
+	<li>gender, age
+</ul>
+
+<p>Подойдут оба. Но работать они будут с разной эффективностью.
+
+<p>Чтобы понять это, рассмотрим уникальность значений каждой колонки и количество соответствующих записей в таблице:
+
+<pre >mysql&gt; select age, count(*) from users group by age;
++------+----------+
+| age  | count(*) |
++------+----------+
+|   15 |      <b>160</b> |
+|   16 |      <b>250</b> |
+|        ...      |
+|   76 |      <b>210</b> |
+|   85 |      <b>230</b> |
++------+----------+
+68 rows in set (0.00 sec)
+
+mysql&gt; select gender, count(*) from users group by gender;
++--------+----------+
+| gender | count(*) |
++--------+----------+
+| female |     <b>8740</b> |
+| male   |     <b>4500</b> |
++--------+----------+
+2 rows in set (0.00 sec)</pre>
+
+<p>Эта информация говорит нам вот о чем:
+
+<ol>
+	<li>Любое значение колонки age обычно содержит около 200 записей.
+	<li>Любое значение колонки gender &mdash; около 6000 записей.
+</ol>
+
+<p>Если колонка age будет идти первой в индексе, тогда MySQL после первой части индекса сократит количество записей до 200. Останется сделать выборку по ним. Если же колонка gender будет идти первой, то количество записей будет сокращено до 6000 после первой части индекса. Т.е. на порядок больше, чем в случае age.
+
+<p>Это значит, что индекс age_gender будет работать лучше, чем gender_age.
+
+<img src="/selectivity.jpg?1" alt="" title="" class="img-responsive"/>
+
+<p><b>Селективность</b> колонки определяется количеством записей в таблице с одинаковыми значениями. Когда записей с одинаковым значением мало &mdash; селективность высокая. Такие колонки необходимо использовать первыми в составных индексах.
+
+
+<h2>8. Первичные ключи</h2>
+
+<p>Первичный ключ (Primary Key) &mdash; это особый тип индекса, который является идентификатором записей в таблице. Он обязательно уникальный и указывается при создании таблиц:
+
+<pre><code >CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(128) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  <b>PRIMARY KEY (`id`)</b>,
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8</code></pre>
+
+<p>При использовании таблиц InnoDB <b>всегда определяйте первичные ключи</b>. Если первичного ключа нет, MySQL все равно создаст виртуальный скрытый ключ.
+
+<h3>Кластерные индексы</h3>
+
+<p>Обычные индексы являются некластерными. Это означает, что сам индекс хранит только ссылки на записи таблицы. Когда происходит работа с индексом, определяется только список записей (точнее список их первичных ключей), подходящих под запрос. После этого происходит еще один запрос &mdash; для получения данных каждой записи из этого списка.
+
+<img src="https://i.onthe.io/smngoz3amcc362ojm.2aaa9608.jpg" alt="" title="" class="img-responsive"/>
+
+<p><b>Кластерные индексы</b> сохраняют данные записей целиком, а не ссылки на них. При работе с таким индексом не требуется дополнительной операции чтения данных.
+
+<img src="https://i.onthe.io/smngoz5vbdg9c7eat.feca7d35.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Первичные ключи таблиц InnoDB являются кластерными. Поэтому выборки по ним происходят очень эффективно.
+
+
+<h2>Overhead</h2>
+
+<p>Важно помнить, что индексы предполагают дополнительные операции записи на диск. При каждом обновлении или добавлении данных в таблицу, происходит также запись и обновление данных в индексе.
+
+<img src="https://i.onthe.io/smngoz3h8s17q80m1g.10da0c19.jpg" alt="" title="" class="img-responsive"/>
+
+<p>Создавайте только необходимые индексы, чтобы не расходовать зря ресурсы сервера. Контролируйте размеры индексов для Ваших таблиц:
+
+<pre >mysql&gt; <b>show table status</b>;
++-------------------+--------+---------+------------+--------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+----------------+---------+
+| Name              | Engine | Version | Row_format | Rows   | Avg_row_length | <b>Data_length</b> | Max_data_length | <b>Index_length</b> | Data_free | Auto_increment | Create_time         | Update_time | Check_time | Collation       | Checksum | Create_options | Comment |
++-------------------+--------+---------+------------+--------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+----------------+---------+
+...
+| users             | InnoDB |      10 | Compact    |    314 |            208 |       <b>65536</b> |               0 |        <b>16384</b> |         0 |            355 | 2014-07-11 01:12:17 | NULL        | NULL       | utf8_general_ci |     NULL |                |         |
++-------------------+--------+---------+------------+--------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+-------------+------------+-----------------+----------+----------------+---------+
+18 rows in set (0.06 sec)</pre>
+
+<h2>Когда создавать индексы?</h2>
+
+<ul>
+	<li>Индексы следует создавать по мере обнаружения медленных запросов. В этом поможет <a href="/%d0%9a%d0%b0%d0%ba+%d0%b2%d0%ba%d0%bb%d1%8e%d1%87%d0%b8%d1%82%d1%8c+slow+log+%d0%b2+mysql%3f" target="_blank" title="Как включить slow log в MySQL?"> slow log</a> в MySQL. Запросы, которые выполняются более 1 секунды являются первыми кандидатами на оптимизацию.
+	<li>Начинайте создание индексов с самых частых запросов. Запрос, выполняющийся секунду, но 1000 раз в день наносит больше ущерба, чем 10-секундный запрос, который выполняется несколько раз в день.
+	<li>Не создавайте индексы на таблицах, число записей в которых меньше нескольких тысяч. Для таких размеров выигрыш от использования индекса будет почти незаметен.
+	<li>Не создавайте индексы заранее, например, в среде разработки. Индексы должны устанавливаться исключительно под форму и тип нагрузки работающей системы.
+	<li>Удаляйте  неиспользуемые индексы.
+</ul>
+
+<h2>Самое важное</h2>
+
+<p>Выделяйте достаточно времени на анализ и организацию индексов в MySQL (и других базах данных). На это может уйти намного больше времени, чем на проектирование структуры базы данных. Удобно будет организовать тестовую среду с копией реальных данных и проверять там разные структуры индексов.
+
+<p>Не создавайте индексы на каждую колонку, которая есть в запросе, MySQL так не работает. Используйте уникальные индексы, где необходимо. Всегда устанавливайте первичные ключи.
+
+<p>Не ссыте.</article>
+
+<p class="article-tags">
+            <a href="/mysql">#mysql</a>
+            <a href="/индексы">#индексы</a>
+            <a href="/профилирование">#профилирование</a>
+    
+    ID: 215</p>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+  },
+  "image": ["https://ruhighload.com/media/logo.png"],
+  "headline": "Индексы в MySQL",
+  "datePublished": "2019-04-21T12:54:20+02:00",
+  "dateModified": "2019-04-21T12:54:20+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Den Golotyuk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Den Golotyuk",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://ruhighload.com/media/logo.png"
+    }
+  },
+  "description": "Что такое индексы в Mysql и как их использовать для оптимизации запросов"
+}
+</script>
+    </div>
+</div>
+
+    <ul id="read-more">
+		            <li>
+                <a href="/%d0%9e%d0%bf%d1%82%d0%b8%d0%bc%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f+%d1%80%d0%b5%d0%bf%d0%bb%d0%b8%d0%ba%d0%b0%d1%86%d0%b8%d0%b8+%d0%b2+mysql">Оптимизация репликации в Mysql</a>
+                <p>Ускорение репликации в Mysql 5.6+</p>
+            </li>
+					            <li>
+                <a href="/%d0%9e%d0%bf%d1%82%d0%b8%d0%bc%d0%b0%d0%bb%d1%8c%d0%bd%d0%b0%d1%8f+%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b9%d0%ba%d0%b0+mysql">Оптимальная настройка Mysql</a>
+                <p>Правильная настройка Mysql под нагрузки и не только. Обновлено.</p>
+            </li>
+					            <li>
+                <a href="/explain+%d0%b2+mysql">EXPLAIN в Mysql</a>
+                <p>Анализ медленных запросов с помощью EXPLAIN</p>
+            </li>
+					            <li>
+                <a href="/%d0%9a%d0%b0%d0%ba+%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d1%82%d1%8c+%d0%b8%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+join+%d0%b7%d0%b0%d0%bf%d1%80%d0%be%d1%81%d0%b0%d1%85+mysql+">Как использовать индексы в JOIN запросах Mysql </a>
+                <p>3 примера установки индексов в JOIN запросах</p>
+            </li>
+			</ul><ul id="read-more">		            <li>
+                <a href="/%d0%9e%d0%bf%d1%80%d0%b5%d0%b4%d0%b5%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5+%d0%bb%d0%b8%d1%88%d0%bd%d0%b8%d1%85+%d0%b8%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d0%be%d0%b2+%d0%b2+mysql">Определение лишних индексов в MySQL</a>
+                <p>Check-unused-keys для определения неиспользуемых индексов в базе данных</p>
+            </li>
+					            <li>
+                <a href="/%d0%9b%d0%be%d0%b3%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5+%d0%b2+mysql">Логирование в MySQL</a>
+                <p>Включение и использование логов ошибок, запросов и медленных запросов, бинарного лога для проверки работы MySQL</p>
+            </li>
+					            <li>
+                <a href="/%d0%a1%d1%80%d0%b0%d0%b2%d0%bd%d0%b5%d0%bd%d0%b8%d0%b5+vertica+%d0%b8+mysql">Сравнение Vertica и Mysql</a>
+                <p>Сравнение Vertica и Mysql на практике</p>
+            </li>
+					            <li>
+                <a href="/%d0%92%d1%8b%d0%b1%d0%be%d1%80+%d1%82%d0%b8%d0%bf%d0%be%d0%b2+%d0%b4%d0%b0%d0%bd%d0%bd%d1%8b%d1%85+%d0%b2+mysql">Выбор типов данных в Mysql</a>
+                <p>Правила выбора типов данных для максимальной производительности в Mysql</p>
+            </li>
+			</ul><ul id="read-more">		            <li>
+                <a href="/mysql+handlersocket">MySQL Handlersocket</a>
+                <p>Повышение скорости работы запросов с MySQL Handlersocket</p>
+            </li>
+					            <li>
+                <a href="/%d0%92%d0%be%d1%81%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5+mysql+%d0%bf%d0%be%d1%81%d0%bb%d0%b5+%d1%81%d0%b1%d0%be%d1%8f">Восстановление Mysql после сбоя</a>
+                <p>Как восстановить данные, если MySQL упал и не поднимается</p>
+            </li>
+					            <li>
+                <a href="/%d0%9f%d0%be%d0%bb%d0%bd%d0%be%d1%82%d0%b5%d0%ba%d1%81%d1%82%d0%be%d0%b2%d1%8b%d0%b9+%d0%bf%d0%be%d0%b8%d1%81%d0%ba+%d0%b2+mysql">Полнотекстовый поиск в Mysql</a>
+                <p>Правильный поиск по тексту в Mysql (full-text search)</p>
+            </li>
+					            <li>
+                <a href="/%d0%9f%d1%80%d0%be%d1%84%d0%b8%d0%bb%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5+%d0%b2+mysql">Профилирование в MySQL</a>
+                <p>Анализ медленных запросов (профилирование) в MySQL с помощью Percona Toolkit</p>
+            </li>
+			</ul><ul id="read-more">		            <li>
+                <a href="/%d0%98%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5+mysql+limit">Использование MySQL LIMIT</a>
+                <p>Синтаксис и оптимизация Mysql LIMIT</p>
+            </li>
+					            <li>
+                <a href="/%d0%9f%d0%be%d1%81%d1%82%d1%80%d0%b0%d0%bd%d0%b8%d1%87%d0%bd%d1%8b%d0%b9+%d0%b2%d1%8b%d0%b2%d0%be%d0%b4+%d0%b2+mysql">Постраничный вывод в MySQL</a>
+                <p>Оптимизация постраничного вывода данных</p>
+            </li>
+					            <li>
+                <a href="/%d0%a3%d0%b4%d0%b0%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5+%d0%b1%d0%be%d0%bb%d1%8c%d1%88%d0%b8%d1%85+%d0%be%d0%b1%d1%8a%d0%b5%d0%bc%d0%be%d0%b2+%d0%b4%d0%b0%d0%bd%d0%bd%d1%8b%d1%85+%d0%b8%d0%b7+mysql+%d1%82%d0%b0%d0%b1%d0%bb%d0%b8%d1%86">Удаление больших объемов данных из Mysql таблиц</a>
+                <p>Использование партиций для ускорения сложных удалений</p>
+            </li>
+					            <li>
+                <a href="/%d0%9a%d0%b0%d0%ba+%d1%83%d1%81%d0%ba%d0%be%d1%80%d0%b8%d1%82%d1%8c+mysqldump%3f">Как ускорить Mysqldump?</a>
+                <p>Быстрая альтернатива Mysqldump для больших таблиц без блокировок и выключений.</p>
+            </li>
+			</ul><ul id="read-more">		            <li>
+                <a href="/%d0%9f%d1%80%d0%be%d1%84%d0%b8%d0%bb%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5+%d0%b2+postgresql">Профилирование в PostgreSQL</a>
+                <p>Анализ работы СУБД при помощи pgFouine</p>
+            </li>
+					            <li>
+                <a href="/%d0%a1%d1%80%d0%b0%d0%b2%d0%bd%d0%b5%d0%bd%d0%b8%d0%b5+innodb+%d0%b8+myisam">Сравнение InnoDB и MyISAM</a>
+                <p>Сравнение двух движков и когда стоит использовать каждый из них</p>
+            </li>
+					            <li>
+                <a href="/%d0%9e%d0%bf%d1%82%d0%b8%d0%bc%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f+order+by+rand%28%29">Оптимизация ORDER BY RAND()</a>
+                <p>Эффективная замена ORDER BY RAND()</p>
+            </li>
+					            <li>
+                <a href="/%d0%9e%d0%bf%d1%82%d0%b8%d0%bc%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f+%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b5%d0%ba+redis">Оптимизация настроек Redis</a>
+                <p>Рекомендации по настройке Redis для оптимизации ресурсов и повышения стабильности на производственном сервере</p>
+            </li>
+			</ul><ul id="read-more">		            <li>
+                <a href="/real+time+%d0%b8%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+sphinx%27e">Real Time индексы в Sphinx'e</a>
+                <p>Создание и использование Real-Time индексов в Sphinx'e</p>
+            </li>
+					            <li>
+                <a href="/%d0%a2%d1%8e%d0%bd%d0%b8%d0%bd%d0%b3+%d0%b1%d0%b0%d0%b7%d1%8b+postgres">Тюнинг базы Postgres</a>
+                <p>Настройки для улучшения производительности Postgres</p>
+            </li>
+					            <li>
+                <a href="/%d0%9a%d0%be%d0%bb%d0%be%d0%bd%d0%be%d1%87%d0%bd%d1%8b%d0%b5+%d0%b1%d0%b0%d0%b7%d1%8b+%d0%b4%d0%b0%d0%bd%d0%bd%d1%8b%d1%85">Колоночные базы данных</a>
+                <p>Устройство колоночных баз данных</p>
+            </li>
+					            <li>
+                <a href="/%d0%9a%d0%b0%d0%ba+%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%b0%d0%b5%d1%82+blockchain">Как работает Blockchain</a>
+                <p>Как устроена распределенная база данных на основе blockchain механизма</p>
+            </li>
+			</ul><ul id="read-more">		    </ul>
+
+<div id="map">
+    <ul>
+        <li><a href="/mysql">Mysql</li>
+        <li><a href="/php">PHP</li>
+        <li><a href="/nginx">Nginx</li>
+        <li><a href="/ошибки">Ошибки</li>
+        <li><a href="/clickhouse">Clickhouse</li>
+    </ul>
+    <ul>
+        <li><a href="/server">Серверная оптимизация</a></li>
+        <li><a href="/server/Web сервер">Web сервер</a></li>
+        <li><a href="/server/Приложение">Приложения</a></li>
+        <li><a href="/server/Базы данных">Базы данных</a></li>
+        <li><a href="https://bashupload.com/" target="_blank">bashupload.com</a></li>
+    </ul>
+    <ul>
+        <li><a class="black" href="/client">Клиентская оптимизация</a></li>
+        <li><a class="black" href="/client/Основы">Основы оптимизации</a></li>
+        <li><a class="black" href="/client/Анализ производительности">Анализ производительности</a></li>
+        <li><a class="black" href="/client/Оптимизация">Оптимизация статики</a></li>
+        <li><a class="black" href="/popular">Популярное</a></li>
+    </ul>
+    <ul>
+        <li><a class="black" href="/scale/Основные принципы">Масштабирование</a></li>
+        <li><a class="black" href="/scale/Работа с данными">Работа с данными</a></li>
+        <li><a class="black" href="/scale/Асинхронность">Асинхронность</a></li>
+    </ul>
+</div>
+
+<div id="footer">
+    <div class="content">
+        Ведет <a href="mailto:golotyuk@gmail.com" target="_blank">den</a>,
+        группы в
+        <a href="https://www.facebook.com/ruhighload/" target="_blank">фейсбуке</a> и
+        <a href="https://t.me/ruhld" target="_blank">телеграме</a>,
+        <a href="/sitemap">sitemap</a> и
+        <a href="/rss">rss</a>.
+
+	<br/>
+	Можете запостить <a href="/write" target="_blank" style="color: #111">статью или вопрос</a>,
+	а идеи и предложения <a href="https://github.com/golotyuk/ruhighload/issues" target="_blank">направляйте в гитхаб</a>.
+	<br/>
+
+        Сгенерировано всего за <b>0.015</b> сек.
+        <span id="loaded-in">Загружено всего за <b>X</b> сек.</span>
+    </div>
+</div>
+
+    <script src="/js/search.js?v=12"></script>
+    <script src="/js/speed.js?v=12"></script>
+
+<script>
+    window._io_config = window._io_config || {};
+    window._io_config['0.2.0'] = window._io_config['0.2.0'] || [];
+    window._io_config['0.2.0'].push({
+        page_url: '/%d0%98%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+mysql',
+        page_title: document.title,
+        page_type: 'article',
+        page_language: 'ru'
+		,
+            page_url_canonical: '/%d0%98%d0%bd%d0%b4%d0%b5%d0%ba%d1%81%d1%8b+%d0%b2+mysql',
+            article_authors: ['Den Golotyuk'],
+            article_categories: ['Серверная'],
+            article_subcategories: ['Базы данных']
+		
+    });
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id; js.async = true;
+        js.src = 'https://cdn.onthe.io/io.js/N0I6L4gdNykU';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'io-cdnjs'));
+
+    setTimeout(function() { fetch('https://rt.onthe.io/track?n=5caa00c8e8260-pageviews&v=1') }, 10);
+    
+    var distance = 0;
+    var x = 0, y = 0;
+    window.onmousemove = function(e) {
+	if ( x ) {
+	    distance += Math.sqrt(Math.abs(e.pageX-x)^2 + Math.abs(e.pageY-y)^2);
+	    if ( distance > 100 ) {
+		fetch('https://rt.onthe.io/track?n=5caa00c8e8260-distance&v=100');
+		distance = 0;
+	    }
+	}
+	x = e.pageX;
+	y = e.pageY;
+    }
+</script>
+
+</body>
+</html>
