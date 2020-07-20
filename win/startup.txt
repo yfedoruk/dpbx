@@ -2,8 +2,8 @@
 
 
 
-+ SunSet Screen
-+ ScreenCloud
-+ AutoHotKey (move `AutoHotkey Script.ahk` to "Rabo4iy stol")
++ SunSet Screen (create and move link to C:\Users\slava\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup)
++ ScreenCloud 
++ AutoHotKey (move `AutoHotkey Script.ahk` to Desctop and create and move link to C:\Users\slava\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup)
 
  (Usb Safely Remove)

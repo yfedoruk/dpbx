@@ -6,9 +6,10 @@ Docker
 Telegram
 Skype
 qBittorrent
+OpenOffice
 
 
-
+AcePlayer
 Movavi Photo Editor
 Steam
 Spotify
