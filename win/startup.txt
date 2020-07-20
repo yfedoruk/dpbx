@@ -1,1 +1,9 @@
 (Windows + r) write shell:startup
+
+
+
++ SunSet Screen
++ ScreenCloud
++ AutoHotKey
+
+ (Usb Safely Remove)
