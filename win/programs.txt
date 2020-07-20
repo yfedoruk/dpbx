@@ -7,14 +7,18 @@ Telegram
 Skype
 qBittorrent
 OpenOffice
+WinRAR
 
 
 AcePlayer
 Movavi Photo Editor
+Movavi Video Converter
+Movavi Video Editor
 Steam
 Spotify
 Discord
 
 
+?foobar2000
 ?Lutcurve
 
