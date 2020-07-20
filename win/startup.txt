@@ -4,6 +4,6 @@
 
 + SunSet Screen
 + ScreenCloud
-+ AutoHotKey
++ AutoHotKey (move `AutoHotkey Script.ahk` to "Rabo4iy stol")
 
  (Usb Safely Remove)
