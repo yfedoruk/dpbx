@@ -1,0 +1,11 @@
+# path of desktop files is here:
+
+~/.local/share/applications
+
+copy from there to:
+
+~/Desktop 
+
+and then on desktop => Right mouse click => Allow Launching
+
+
