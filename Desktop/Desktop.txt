@@ -1,3 +1,20 @@
+
+# https://askubuntu.com/questions/1237042/desktop-files-not-launching-from-desktop-in-ubuntu-20-04-lts
+
+
+* Move the .desktop file into ~/.local/share/applications/ and make executable if need be.
+
+* Move the .sh and .png files into ~/Documents and make sure the .sh is executable.
+
+* Modify your .desktop file for the new locations for the .sh and .png files.
+
+* Hit the Super key and type the name of your shortcut.
+
+* You can save your .desktop file as a favorite in the Dock for quick access.
+
+
+And 
+
 # path of desktop files is here:
 
 ~/.local/share/applications
