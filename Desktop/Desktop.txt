@@ -26,3 +26,6 @@ copy from there to:
 and then on desktop => Right mouse click => Allow Launching
 
 
+# Add to FAVORITES!
+A convenient workaround for me was adding it to my favorites from the DASH.
+
