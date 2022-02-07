@@ -34,3 +34,10 @@ ll ~/.local/share/applications
 gsettings get org.gnome.shell favorite-apps
 gsettings set org.gnome.shell favorite-apps "['thunderbird.desktop', 'org.gnome.Nautilus.desktop', 'postman_postman.desktop', 'jetbrains-goland.desktop', 'google-chrome.desktop', 'spotify_spotify.desktop', 'chromium_chromium.desktop', 'appimagekit_2affce31ba67e37a1a575a616543473e-Telegram_Desktop.desktop', 'gnome-system-monitor.desktop', 'gnome-control-center.desktop', 'org.gnome.Terminal.desktop', 'st.desktop']"
 
+
+# Dubicated icons in Favorites issue:
+
+don'nt know why it is, but for jetbrains products, filename must has prefix 'jetbrains-':
+
+jetbrains-goland.desktop
+jetbrains-pycharm.desktop
