@@ -36,8 +36,9 @@ gsettings set org.gnome.shell favorite-apps "['thunderbird.desktop', 'org.gnome.
 
 
 # Dubicated icons in Favorites issue:
+https://askubuntu.com/questions/403766/duplicate-icons-for-manually-created-gnome-launcher-items
 
-don'nt know why it is, but for jetbrains products, filename must has prefix 'jetbrains-':
-
-jetbrains-goland.desktop
-jetbrains-pycharm.desktop
+1. Launch the application
+2. Fire up a terminal and run xprop WM_CLASS. Click on the window of the the application that is running with a duplicate icon.
+3. You'll get some output like WM_CLASS(STRING) = "Navigator", "Firefox". Choose one of the classes, eg Firefox in this example
+4. Add the class as the value of StartupWMClass in the .desktop file. For example, StartupWMClass=Firefox
