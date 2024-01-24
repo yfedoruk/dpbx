@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Idea
+Icon=/opt/idea-IC-233.13135.103/bin/idea.svg
+Exec="/opt/idea-IC-233.13135.103/bin/idea.sh" %f
+Comment=Cross-platform IDE built specially for Java developers
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-idea-c
+
+
+# StartupWMClass: in terminal print
+# xprop WM_CLASS
+# then click right click on IdeaIC window 
+
+# right click on icon and select 'Allow launching'

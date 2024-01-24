@@ -30,3 +30,5 @@ git config --global color.ui auto
 
 # git remote -v
 # git remote set-url origin git@github.com:USERNAME/OTHERREPOSITORY.git
+git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+
