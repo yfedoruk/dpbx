@@ -1,0 +1,10 @@
+" Maximize GVim on start
+if has("gui_running")
+  set lines=200 columns=999
+endif
+
+" Cursor
+"vertical
+set guicursor=n-v-c:ver25-Cursor
+" set guicursor+=i:block-Cursor
+" set guicursor=n-v-c:blinkon0-block-Cursor

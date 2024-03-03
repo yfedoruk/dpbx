@@ -1,0 +1,16 @@
+exec  --no-startup-id google-chrome
+exec  --no-startup-id gnome-terminal
+exec  --no-startup-id /usr/local/bin/pstorm
+exec  --no-startup-id $HOME/bin/telegram
+exec  --no-startup-id /usr/bin/skype
+#exec  --no-startup-id /usr/bin/thunderbird
+#xbindkeys -f $HOME/.xbindkeysrc
+
+exec --no-startup-id feh --bg-scale $HOME/Pictures/Dark-pattern.jpg
+
+# disable non gui menu
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+x [urgent=latest] focus
+
+# lock computer ($mod + Delete)
+bindcode $mod+119 exec i3lock -c 000000

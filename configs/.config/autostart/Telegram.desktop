@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/penguin/Documents/Telegram/Telegram
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=telegram
+Name=telegram
+Comment[en_US]=
+Comment=

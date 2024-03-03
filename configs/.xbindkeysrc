@@ -1,0 +1,29 @@
+keystate_scrolllock= enable
+
+# Examples of commands:
+# "xbindkeys_show"
+# control + 0
+
+"amixer set Master 1%-"
+control + 1
+#ScrollLock
+
+"amixer set Master 1%+"
+control + 2
+
+#mute
+"amixer set Master 100%-"
+control + 3
+
+#"mocp -P"
+"mpv pause "
+control + p
+
+"mocp -U"
+control + shift + p
+
+"setxkbmap -option grp:rwin_toggle us,ru"
+control + shift + 1
+
+"setxkbmap -option grp:rwin_toggle us,ua"
+control + shift + 2

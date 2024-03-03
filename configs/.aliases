@@ -1,0 +1,111 @@
+#!/bin/bash
+
+alias diff='colordiff'
+alias ge='geany'
+alias em='emacs'
+alias gvi='gvim'
+alias vi='nvim'
+alias vie='vi ~/.vimrc'
+alias vis='vi ~/.vim/settings/'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias md='mkdir -pv'
+alias moc='mocp'
+alias ll='ls -alFh'
+alias l.='ls -d .* --color=auto'
+alias wget='wget -c'
+alias df='df -h'
+alias chowns='sudo chown -R slava:slava'
+alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
+alias cmus="cmus --show-cursor"
+
+alias ffind='find . -name'
+# alias src='source ~/.bashrc'
+alias src='source ~/.zshrc'
+alias srce='vi ~/.aliases'
+alias srcl='vi ~/.local_aliases'
+
+alias awkf="awk -F: '{print $1\" +\"$2}'"
+alias grepf="grep -rn --color=always  $@[1] $@[2] | awk -F: '{print $1\" +\"$2}'"
+alias mp3="find -iname '*.mp3' -print0 | xargs -0 mid3iconv -eCP1251 --remove-v1"
+# alias killp="sudo kill -9 $(ps aux | pidof $1)"
+alias tf='tail -f'
+alias sound='pulseaudio -k && sudo alsa force-reload'
+
+# ubuntu
+alias install='sudo apt install'
+alias update="sudo apt update && sudo apt -y  upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove"
+alias suspend='systemctl suspend'
+alias snap-apps='ls -la /var/lib/snapd/desktop/applications/'
+alias shutdown="sudo shutdown -h now"
+alias swap='sudo swapoff -a && sudo swapon -a'
+alias ppa-list='grep -RoPish "ppa.launchpad.net/[^/]+/[^/ ]+" /etc/apt | sort -u | sed -r "s/\.[^/]+\//:/"'
+alias ppa-find="grep -rn \'$1\' /etc/apt/sources.list /etc/apt/sources.list.d/"
+alias ppa-remove="sudo apt-add-repository --remove"
+alias app-list="ls /usr/share/applications/*.desktop"
+
+# grep aliases
+alias grepk="grep -rn --exclude-dir=runtime"
+alias psgrep="ps aux | grep $1"
+
+#Git aliases
+alias gittree='git diff-tree --no-commit-id --name-only -r'
+alias gs='git status'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gstl='git stash list'
+alias gsw='git show'
+alias gswn='git show --name-only'
+alias gb='git branch'
+alias gt='git tag'
+alias gm='git merge'
+alias gc='git commit -m'
+alias gmsgedit='git reset --soft HEAD^ && git commit -c ORIG_HEAD'
+alias gd='git diff -w'
+alias gdn='git diff -w --name-only'
+alias gfd='git ls-files --modified | head -1 | xargs git diff'
+alias fd='git ls-files --modified | head -1 | xargs git diff'
+alias gfdn='git ls-files --modified | head -1 | xargs git diff -w'
+alias gfrm='git ls-files --modified | head -1 | xargs git rm'
+alias gfa='git ls-files --modified | head -1 | xargs git add'
+alias fa='git ls-files --modified | head -1 | xargs git add'
+#alias fi='git ls-files --modified | head -1 | xargs git update-index --assume-unchanged'
+alias gfr='git ls-files --modified | head -1 | xargs git checkout HEAD'
+alias ga='git add'
+alias grhrd='git reset --hard'
+alias grsft='git reset --soft'
+alias grm='git rm'
+alias grmcached='git rm -r --cached'
+alias gl='git log'
+alias glfp='git log --first-parent'
+alias gk='git checkout'
+alias gkb='git checkout -b'
+alias gkm='git checkout master'
+alias gmm='git merge master'
+alias gchh='git checkout HEAD'
+alias gll='git pull'
+alias glm='git pull origin master'
+alias gsh='git push'
+alias gauto='git add --all && git commit -m"--" && git pull && git push'
+alias gprev='git rev-parse --verify HEAD^1'
+alias grprev='git rev-parse --verify HEAD^1 | xargs git reset --soft'
+alias ghead='git rev-parse --abbrev-ref HEAD'
+alias grename='git branch -m'
+alias gremove-first-commit='git update-ref -d HEAD'
+#alias grh='git reset HEAD'
+#alias grhH='git reset --hard HEAD'
+#alias grsH='git reset --soft HEAD^'
+#alias gA='git add --all :/'
+
+# docker
+alias docker-stop-all='docker stop $(docker ps -aq)'
+#alias docker-clean='docker system prune'
+alias docker-up='docker-compose down --remove-orphans && docker-compose up -d'
+alias dps='docker ps -a'
+alias docker-prune='docker container prune'
+
+# go
+alias gotidy="go mod tidy"
+alias gg='go generate ./...'
+
+alias k9="kill -9"
