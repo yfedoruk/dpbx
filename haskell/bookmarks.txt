@@ -1,0 +1,2 @@
+-- ghcup vs stack
+https://github.com/haskell-infra/www.haskell.org/issues/191#issuecomment-1186253209
