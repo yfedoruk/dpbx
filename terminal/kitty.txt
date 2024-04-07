@@ -1,0 +1,14 @@
+# Get current font
+kitty --debug-font-fallback
+
+# list of fonts
+kitty list-fonts
+
+# the close/minimize/maximize buttons bug
+https://github.com/kovidgoyal/kitty/issues/3284#issuecomment-822535459
+
+
+# kitty as terminal multiplexer
+https://sw.kovidgoyal.net/kitty/overview/#tabs-and-windows
+https://stackoverflow.com/a/66543260/2310783
+

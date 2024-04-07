@@ -1,4 +1,6 @@
-Install on linux
+1. Install on linux
 https://bytexd.com/how-to-install-nerd-fonts-on-linux/
 https://ostechnix.com/install-nerd-fonts-to-add-glyphs-in-your-code-on-linux/
 
+2. Set NF in terminal (kitty)
+3. Enable in kickstart init.lua (vim.g.has_nerd_font = true)

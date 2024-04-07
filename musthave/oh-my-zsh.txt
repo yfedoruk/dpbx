@@ -1,0 +1,33 @@
+Install musthave plugins:
+
+-- Autosuggestions
+
+1. Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+git clone --depth=1 git@github.com:zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+2. Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
+plugins=( 
+    # other plugins...
+    zsh-autosuggestions
+)
+
+-- zsh-syntax-highlighting
+
+1. Clone this repository in oh-my-zsh's plugins directory:
+git clone --depth=1 git@github.com:zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+2. Activate the plugin in ~/.zshrc:
+plugins=( [plugins...] zsh-syntax-highlighting)
+
+
+-- Powerlevel10
+# Add powerlevel10k to the list of Oh My Zsh themes.
+git clone --depth=1 git@github.com:romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+# Replace ZSH_THEME with ZSH_THEME="powerlevel10k/powerlevel10k". Edit ~/.zshrc
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Restart Zsh.
+exec zsh
+

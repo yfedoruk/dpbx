@@ -1,2 +1,5 @@
 Clear nvim cache
 rm -rf ~/.local/share/nvim ~/.local/state/nvim
+
+Show option/value
+:lua print(vim.o.<option>)
