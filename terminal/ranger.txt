@@ -1,0 +1,2 @@
+# open a shell in the current directory
+https://unix.stackexchange.com/a/342132/201377
