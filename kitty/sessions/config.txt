@@ -1,0 +1,4 @@
+https://sw.kovidgoyal.net/kitty/launch/
+
+https://sw.kovidgoyal.net/kitty/overview/#startup-sessions
+https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.startup_session
