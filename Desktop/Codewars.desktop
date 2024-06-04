@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Codewars
+Icon=/opt/GoLand-2023.3.2/bin/goland.svg
+Exec="/home/yaroslav/.local/bin/kitty" %f --session=codewars.conf
+Comment=Cross-platform IDE built specially for Go developers
+Categories=Development;IDE;
+Terminal=true
+StartupWMClass=kitty
