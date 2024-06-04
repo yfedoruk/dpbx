@@ -1,0 +1,1 @@
+https://askubuntu.com/questions/436891/create-a-desktop-file-that-opens-and-execute-a-command-in-a-terminal
