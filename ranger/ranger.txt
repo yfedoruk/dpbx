@@ -1,0 +1,10 @@
+# open a shell in the current directory
+https://unix.stackexchange.com/a/342132/201377
+
+# copy configs
+mkdir ~/.config/ranger
+ranger --copy-config=rifle # (or =all)
+
+# default application for 'open with'
+Then rearrange the programs (or add more) in the appropriate section so that your preferred application is at the top.
+https://superuser.com/a/1316026
