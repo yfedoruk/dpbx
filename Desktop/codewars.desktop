@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=Codewars
-Icon=/opt/GoLand-2023.3.2/bin/goland.svg
+Icon=/home/yaroslav/.local/share/icons/logo.codewars.svg
 Exec="/home/yaroslav/.local/bin/kitty" %f --session=codewars.conf
 Comment=Cross-platform IDE built specially for Go developers
 Categories=Development;IDE;
-Terminal=true
+Terminal=false
 StartupWMClass=kitty
