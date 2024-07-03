@@ -1,0 +1,15 @@
+# standard
+https://www.pathname.com/fhs/pub/fhs-2.3.html
+
+# local (not-standardized)
+https://www.reddit.com/r/linuxquestions/comments/11zenhm/comment/jdf0pwt/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+I usually put my own scripts in ~/bin, my own scripts that I need for my setup to work in ~/.local/sbin, and I clone git repos to ~/.local/src if compiled, ~/.local/lib if not compiled, and ~/.local/opt if I just downloaded the binaries. I symlink all the binaries to ~/.local/bin so I get automatic updates by just cloning and building again
+
+# symlink manager 
+https://www.gnu.org/software/stow/
+
+# local built binaries 
+https://unix.stackexchange.com/questions/337622/how-to-correctly-deal-with-locally-built-binaries
+
+https://askubuntu.com/questions/14535/whats-the-local-folder-for-in-my-home-directory

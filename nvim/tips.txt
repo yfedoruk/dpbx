@@ -3,3 +3,7 @@ rm -rf ~/.local/share/nvim ~/.local/state/nvim
 
 Show option/value
 :lua print(vim.o.<option>)
+
+This command will list all global variables:
+:let g:
+Using :let by itself will list all variables, and passing it just a prefix (such as g: or b: or v:) will filter the output to only include variables in that prefix. 
