@@ -3,8 +3,10 @@ Version=1.0
 Type=Application
 Name=Codewars
 Icon=/home/yaroslav/.local/share/icons/logo.codewars.svg
-Exec="/home/yaroslav/.local/bin/kitty" %f --session=codewars.conf
+Exec="/home/yaroslav/.local/bin/kitty" %f --session=codewars.conf --class=codewars
 Comment=Cross-platform IDE built specially for Go developers
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=kitty
+
+# don't set WM_CLASS. Set instead kitty's --class option. 
+# StartupWMClass=kitty
