@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=qutebrowser
+Comment=Fast, vim-like, keyboard based browser
+Exec=/home/yaroslav/.local/bin/qutebrowser
+Icon=/home/yaroslav/.local/opt/qutebrowser/qutebrowser/icons/qutebrowser-256x256.png
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupWMClass=org.qutebrowser.qutebrowser
