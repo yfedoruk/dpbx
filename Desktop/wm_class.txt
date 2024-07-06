@@ -1,0 +1,10 @@
+https://askubuntu.com/questions/367396/what-does-the-startupwmclass-field-of-a-desktop-file-represent
+
+https://askubuntu.com/a/1468539
+
+On newer systems with Wayland, xprop tool won't work anymore.
+If you are using GNOME Shell, you can use a built-in tool Looking Glass.
+Press Alt + F2, type lg and press Enter. In the top-right panel, select "Windows".
+The WM_CLASS will be displayed under the wmclass key.
+
+
