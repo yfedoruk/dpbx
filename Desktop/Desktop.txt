@@ -1,4 +1,30 @@
 # launchers
+# icon in launcher and add to favorites
+~/.local/share/applications/app-name.desktop (for launcher and favorites)
+~/Desktop/app-name.desktop (Right click -> Properties -> Permissions -> `Allow executing file as program`)
+
+with field 
+
+StartupWMClass
+
+how to get WM_CLASS
+in terminal `$ xprop WM_CLASS`  and click on window 
+or better way
+Alt + F2 then print `lg` (looking glass) then select tab `Windows`
+
+example desktop: 
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=qutebrowser
+Comment=Fast, vim-like, keyboard based browser
+Exec=/home/yaroslav/.local/bin/qutebrowser
+Icon=/home/yaroslav/.local/opt/qutebrowser/qutebrowser/icons/qutebrowser-256x256.png
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupWMClass=org.qutebrowser.qutebrowser
+
 
 # https://askubuntu.com/questions/975178/duplicate-application-icons-in-ubuntu-dock-upon-launch/975230#975230
 
@@ -6,7 +32,6 @@
 
 
 * Move the .desktop file into ~/.local/share/applications/ and make executable if need be.
-
 * Move the .sh and .png files into ~/Documents and make sure the .sh is executable.
 
 * Modify your .desktop file for the new locations for the .sh and .png files.
